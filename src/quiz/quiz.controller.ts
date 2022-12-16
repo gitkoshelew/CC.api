@@ -1,16 +1,16 @@
 import { Controller, Get, Param } from "@nestjs/common";
 import { QuizService } from "./quiz.service";
 
-@Controller('/api')
+@Controller('/api/quiz')
 export class QuizController {
   constructor(private readonly quizService: QuizService) {}
 
-  @Get('/quiz')
+  @Get('/')
   getQuiz(): string {
     return this.quizService.getQuiz()
   }
 
-  @Get('/quiz/:id')
+  @Get('/:id')
   getOneQuiz(@Param('id') id : string): string {
     return this.quizService.getOneQuiz(id)
   }
