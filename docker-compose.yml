@@ -1,4 +1,4 @@
-version: '3.9'
+version: '3.8'
 
 services:
   main:
@@ -6,30 +6,26 @@ services:
     build:
       context: .
     env_file:
-      - .env
+      - .development.env
     volumes:
       - .:/app
       - /app/node_modules
     ports:
       - 5000:5000
       - 9229:9229
-    command: npm run start:dev
-    depends_on:
-      - postgres
-    restart: always
-  postgres:
-    container_name: postgres
-    image: postgres
-    
-    env_file:
-      - .env
-    environment:
-      PG_DATA: /var/lib/postgresql/data
-    ports:
-      - 5432:5432
-    volumes:
-      - pgdata:/var/lib/postgresql/data
+    command: yarn start:dev
     restart: always
 
-volumes:
-  pgdata:
+  pg-admin:
+    container_name: pgadmin
+    image: dpage/padmin4    
+    restart: always
+    environment:
+     PGADMIN_DEFAULT_EMAIL: noemail@noemail.com
+     PGADMIN_DEFAULT_PASSWORD: 1234
+
+    ports:
+      - "5050:80"
+
+  
+      
