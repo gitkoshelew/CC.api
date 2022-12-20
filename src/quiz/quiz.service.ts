@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { CreateQuizDto } from './dto/create-quiz.dto';
 
 @Injectable()
 export class QuizService {
@@ -8,5 +9,8 @@ export class QuizService {
 
   getOneQuiz(id: string): string {
     return `only one quiz with id = ${id}`;
+  }
+  createQuiz(createQuizDto: CreateQuizDto): string {
+    return `Quiz ${createQuizDto.testTitle} was successfully created`;
   }
 }
