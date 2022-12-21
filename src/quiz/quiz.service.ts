@@ -3,11 +3,11 @@ import { CreateQuizDto } from './dto/create-quiz.dto';
 
 @Injectable()
 export class QuizService {
-  getQuiz(): string {
+  getAll(): string {
     return 'All quiz';
   }
 
-  getOneQuiz(id: string): string {
+  getById(id: string): string {
     return `only one quiz with id = ${id}`;
   }
   createQuiz(createQuizDto: CreateQuizDto): string {
