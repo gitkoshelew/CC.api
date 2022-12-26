@@ -23,6 +23,7 @@ export class QuizController {
   getById(@Param('id') id: string): string {
     return this.quizService.getById(id);
   }
+
   @Post()
   @HttpCode(HttpStatus.CREATED)
   create(@Body() createQuizDto: CreateQuizDto): string {
