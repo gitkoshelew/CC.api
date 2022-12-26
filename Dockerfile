@@ -4,8 +4,7 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN yarn 
-
+RUN yarn
 
 COPY . .
 
