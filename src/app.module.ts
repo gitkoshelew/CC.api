@@ -8,6 +8,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { TopicModule } from './topic/topic.module';
 import { Topic } from './topic/topic.model';
 import { ModerationModule } from './moderation/moderation.module';
+import { Moderation } from './moderation/moderation.model';
 
 @Module({
   imports: [
@@ -21,7 +22,7 @@ import { ModerationModule } from './moderation/moderation.module';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [Topic],
+      models: [Topic, Moderation],
       autoLoadModels: true,
     }),
     QuizModule,

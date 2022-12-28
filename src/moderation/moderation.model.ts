@@ -25,10 +25,11 @@ export class Moderation extends Model<Moderation, ModerationCreationAttrs> {
     type: DataType.STRING,
     allowNull: false,
   })
-  comment: number;
+  comment: string;
 
   @Column({
     type: DataType.ENUM,
+    values: ['change', 'block', 'rewrite'],
   })
-  status: string;
+  status: ModerationStatus;
 }

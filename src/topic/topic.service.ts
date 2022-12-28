@@ -7,12 +7,10 @@ import { CreateTopicDto } from './dto/create-topic.dto';
 export class TopicService {
   constructor(@InjectModel(Topic) private topicRepository: typeof Topic) {}
   async createTopic(dto: CreateTopicDto) {
-    const topic = await this.topicRepository.create(dto);
-    return topic;
+    return await this.topicRepository.create(dto);
   }
 
   async getAllTopics() {
-    const topics = await this.topicRepository.findAll();
-    return topics;
+    return await this.topicRepository.findAll();
   }
 }
