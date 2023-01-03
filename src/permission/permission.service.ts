@@ -15,6 +15,5 @@ export class PermissionService {
 
     async getAllPermissions(){
         return await this.permissionRepository.findAll()
-
     }
 }
