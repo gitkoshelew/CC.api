@@ -5,6 +5,10 @@ import { QuizModule } from "./quiz/quiz.module";
 import { ConfigModule } from "@nestjs/config";
 import * as process from "process";
 import { SequelizeModule } from '@nestjs/sequelize';
+import { Permission } from './permission/permission.model';
+import { PermissionModule } from './permission/permission.module';
+import { PermissionGroupModule } from './permission-group/permission-group.module';
+import { PermissionGroup } from './permission-group/permission-group.model';
 
 @Module({
   imports: [ConfigModule.forRoot({
@@ -16,10 +20,12 @@ import { SequelizeModule } from '@nestjs/sequelize';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [],
+      models: [Permission, PermissionGroup],
       autoLoadModels: true
   }),
-  QuizModule],
+  QuizModule,
+   PermissionModule,
+   PermissionGroupModule],
   controllers: [AppController],
   providers: [AppService],
 })
