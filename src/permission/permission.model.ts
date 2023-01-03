@@ -29,6 +29,4 @@ export class Permission extends Model<Permission, PermissoinsCreationAttrs> {
 
   @BelongsTo(() => PermissionGroup)
     permissionGroup: PermissionGroup;
-
-    
 }
