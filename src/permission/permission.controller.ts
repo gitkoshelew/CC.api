@@ -17,6 +17,4 @@ constructor(private permissionService: PermissionService) {}
     getAll() {
      return this.permissionService.getAllPermissions()
     }
-
-    
 }
