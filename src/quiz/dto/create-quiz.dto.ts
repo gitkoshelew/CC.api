@@ -1,12 +1,9 @@
+import { ApiProperty } from '@nestjs/swagger';
+
 export class CreateQuizDto {
-  readonly testTitle: string;
-  readonly testDescription: string;
-  readonly theme: string;
-  readonly questions: Array<Question>;
+  @ApiProperty({example: '{id: 1, name: Mary, nickname: GodFather}', description: 'foreign key'})
+  readonly author: string;
+  @ApiProperty({example: 'NodeJS', description: 'required name / not uniq / string'})
+  readonly title: string;
 }
-class Question {
-  question: string;
-  hasSeveralCorrectAnswers: boolean;
-  answers: Array<string>;
-  rightAnswers: Array<string>;
-}
+
