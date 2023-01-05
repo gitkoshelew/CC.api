@@ -1,9 +1,7 @@
-import { BelongsTo, BelongsToMany, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
-import { PermissionGroup } from "src/permission-group/permission.group.model";
+import { BelongsToMany, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
+import { AccessGroup } from "src/access-group/access.group.model";
 import { ApiProperty } from "@nestjs/swagger";
-import { Quiz } from "../quiz/quiz.model";
-import { Quiz_Question } from "../quiz/quiz_question.model";
-import { PermissionGroupPermission } from "src/permission-group/permissions.group.model";
+import { AccessGroupPermission } from "src/access-group/access.permission.model";
 
 interface PermissionsCreationAttrs {
   name: string;
@@ -21,10 +19,6 @@ export class Permission extends Model<Permission, PermissionsCreationAttrs> {
   @Column({type: DataType.STRING, allowNull: false})
   name: string
 
-  @ForeignKey(() => PermissionGroup)
-  @ApiProperty({example: 'stock user group', description: 'uniq permission group that should consist of permissions'})
-  permissionGroupId: number
-
-  @BelongsToMany(() => PermissionGroup, () => PermissionGroupPermission)
-  permissionGroup: PermissionGroup[];
+  @BelongsToMany(() => AccessGroup, () => AccessGroupPermission)
+  accessGroup: AccessGroup[];
 }

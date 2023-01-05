@@ -13,7 +13,7 @@ export class ModerationController {
   @ApiResponse({status: 201, type: Moderation})
   @Post()
   create(@Body() dto: CreateModerationDto) {
-    return this.moderationService.createModerationStatus(dto);
+    return this.moderationService.createModeration(dto);
   }
 
   @ApiOperation({summary: 'Method to get all status checkpoints'})

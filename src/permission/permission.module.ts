@@ -1,15 +1,15 @@
 import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { PermissionGroup } from 'src/permission-group/permission.group.model';
+import { AccessGroup } from 'src/access-group/access.group.model';
 import { PermissionController } from './permission.controller';
 import { Permission } from './permission.model';
 import { PermissionService } from './permission.service';
-import { PermissionGroupPermission } from "../permission-group/permissions.group.model";
+import { AccessGroupPermission } from "../access-group/access.permission.model";
 
 @Module({
   controllers: [PermissionController],
   providers: [PermissionService],
-  imports: [SequelizeModule.forFeature([Permission, PermissionGroup, PermissionGroupPermission])],
-  exports: [PermissionModule]
+  imports: [SequelizeModule.forFeature([Permission, AccessGroup, AccessGroupPermission])],
+  exports: [PermissionService]
 })
 export class PermissionModule {}

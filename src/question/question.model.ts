@@ -1,8 +1,9 @@
-import { BelongsTo, BelongsToMany, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
+import { BelongsTo, BelongsToMany, Column, DataType, ForeignKey, HasOne, Model, Table } from "sequelize-typescript";
 import { ApiProperty } from '@nestjs/swagger';
 import { Quiz } from "../quiz/quiz.model";
 import { Quiz_Question } from "../quiz/quiz_question.model";
 import { Topic } from "../topic/topic.model";
+import { Moderation } from "../moderation/moderation.model";
 
 export enum QuestionType {
   oneChoice = 'oneChoice',
@@ -67,4 +68,7 @@ export class Question extends Model<Question, QuestionCreationAttrs> {
   @ApiProperty({example: '1', description: 'number of topic that should be import into question'})
   @ForeignKey(()=> Topic)
   topicId: number
+
+  @HasOne(() => Moderation)
+  moderation: Moderation
 }

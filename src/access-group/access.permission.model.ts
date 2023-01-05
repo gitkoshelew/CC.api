@@ -1,11 +1,11 @@
 import { Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
 import { ApiProperty } from '@nestjs/swagger';
 import { Permission } from "../permission/permission.model";
-import { PermissionGroup } from "./permission.group.model";
+import { AccessGroup } from "./access.group.model";
 
 
 @Table({tableName: 'Group_Permission', createdAt: false, updatedAt: false})
-export class PermissionGroupPermission extends Model<PermissionGroupPermission> {
+export class AccessGroupPermission extends Model<AccessGroupPermission> {
 
   @ApiProperty({example: '1', description: 'uniq id'})
   @Column({type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true})
@@ -16,9 +16,9 @@ export class PermissionGroupPermission extends Model<PermissionGroupPermission> 
   @Column({type: DataType.INTEGER})
   permissionId: number;
 
-  @ForeignKey(() => PermissionGroup)
+  @ForeignKey(() => AccessGroup)
   @ApiProperty({example: '1', description: 'id for permission group'})
   @Column({type: DataType.INTEGER})
-  permissionGroupId: number;
+  accessGroupId: number;
 
 }

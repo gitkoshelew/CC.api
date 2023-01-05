@@ -8,7 +8,7 @@ export class ModerationService {
 
   constructor(@InjectModel(Moderation) private moderationRepository: typeof Moderation) {}
 
-  async createModerationStatus(dto: CreateModerationDto) {
+  async createModeration(dto: CreateModerationDto) {
     const model = await this.moderationRepository.create(dto);
     return model;
   }

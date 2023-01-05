@@ -15,11 +15,11 @@ import { Topic } from "./topic/topic.model";
 import { ModerationModule } from './moderation/moderation.module';
 import { Moderation } from "./moderation/moderation.model";
 import { PermissionModule } from './permission/permission.module';
-import { PermissionGroupModule } from './permission-group/permission-group.module';
+import { AccessGroupModule } from './access-group/access-group.module';
 import { Permission } from "./permission/permission.model";
-import { PermissionGroup } from "./permission-group/permission.group.model";
+import { AccessGroup } from "./access-group/access.group.model";
 import { Quiz_Question } from "./quiz/quiz_question.model";
-import { PermissionGroupPermission } from "./permission-group/permissions.group.model";
+import { AccessGroupPermission } from "./access-group/access.permission.model";
 
 @Module({
   imports: [ConfigModule.forRoot({
@@ -31,7 +31,7 @@ import { PermissionGroupPermission } from "./permission-group/permissions.group.
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [User, Quiz, Question, Topic, Moderation, Permission, PermissionGroup, Quiz_Question, PermissionGroupPermission],
+      models: [User, Quiz, Question, Topic, Moderation, Permission, AccessGroup, Quiz_Question, AccessGroupPermission],
       autoLoadModels: true
   }),
   QuizModule,
@@ -40,7 +40,7 @@ import { PermissionGroupPermission } from "./permission-group/permissions.group.
   TopicModule,
   ModerationModule,
   PermissionModule,
-  PermissionGroupModule],
+  AccessGroupModule],
   controllers: [AppController],
   providers: [AppService],
 })

@@ -1,11 +1,13 @@
-import { Column, DataType, Model, Table } from 'sequelize-typescript';
-import { ApiProperty } from "@nestjs/swagger";
+import { BelongsTo, Column, DataType, ForeignKey, HasOne, Model, Table } from "sequelize-typescript";
+import { ApiProperty } from '@nestjs/swagger';
+import { Question } from '../question/question.model';
 
 export enum ModerationStatus {
+  review = 'review',
   change = 'change',
   block = 'block',
   rewrite = 'rewrite',
-  done = 'done'
+  accept = 'accept'
 }
 
 interface ModerationCreationAttrs {
@@ -25,6 +27,13 @@ export class Moderation extends Model<Moderation, ModerationCreationAttrs> {
   comment: string;
 
   @ApiProperty({example: 'rewrite', description: 'enum status (rewrite/change/block/done)'})
-  @Column({type: DataType.ENUM, values: ['change', 'block', 'rewrite', 'done']})
+  @Column({type: DataType.ENUM, values: ['review', 'change', 'block', 'rewrite', 'accept']})
   status: ModerationStatus;
+
+  @ForeignKey(()=>Question)
+  @Column({type: DataType.INTEGER, unique: true, allowNull: false})
+  questionId : number
+
+  @BelongsTo(()=> Question)
+  question: Question
 }
