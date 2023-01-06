@@ -1,20 +1,30 @@
-import { Body, Controller, Get, Post } from "@nestjs/common";
-import { CreatePermissionDto } from "./dto/create-permission.dto";
-import { PermissionService } from "./permission.service";
-
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Delete, Put, Query } from '@nestjs/common/decorators';
+import { UpdatedAt } from 'sequelize-typescript';
+import { CreatePermissionDto } from './dto/create-permission.dto';
+import { PermissionService } from './permission.service';
 
 @Controller('permission')
 export class PermissionController {
-constructor(private permissionService: PermissionService) {}
+  constructor(private permissionService: PermissionService) {}
 
-    @Post()
-    create(@Body() permissionDto: CreatePermissionDto) {
-     return this.permissionService.createPermission(permissionDto)
-    }
+  @Post()
+  create(@Body() permissionDto: CreatePermissionDto) {
+    return this.permissionService.createPermission(permissionDto);
+  }
 
+  @Put(':name')
+  addPermissionToAccessGroup(@Param('name') name: string) {
+    return this.permissionService.addPermissionToAccessGroup(name);
+  }
 
-    @Get()
-    getAll() {
-     return this.permissionService.getAllPermissions()
-    }
+  @Get('all')
+  getAll() {
+    return this.permissionService.getAllPermissions();
+  }
+
+  @Delete(':id')
+  deletePermission(@Param('id') id: number) {
+    return this.permissionService.deletePermission(id);
+  }
 }

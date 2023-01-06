@@ -1,32 +1,33 @@
-import { BelongsTo, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
-import { PermissionGroup } from "src/permission-group/permission-group.model";
+import {
+  BelongsToMany,
+  Column,
+  DataType,
+  Model,
+  Table,
+} from 'sequelize-typescript';
+import { AccessGroup } from 'src/access-group/access-group.model';
+import { AccessPermission } from 'src/access-group/access-permission.model';
 
 interface PermissoinsCreationAttrs {
- name: string;
+  name: string;
 }
 
-
-@Table( {tableName: "Permission"})
+@Table({ tableName: 'permission' })
 export class Permission extends Model<Permission, PermissoinsCreationAttrs> {
-  @ForeignKey(() => PermissionGroup)
-  @Column({type: DataType.INTEGER})
-     permissionGroupId: number
-
-     
   @Column({
-        type: DataType.INTEGER,
-        unique: true,
-        autoIncrement: true,
-        primaryKey: true,
-      })
-    id: number
+    type: DataType.INTEGER,
+    unique: true,
+    autoIncrement: true,
+    primaryKey: true,
+  })
+  id: number;
 
   @Column({
-        type: DataType.STRING,
-        allowNull: false,
-      })
-    name: string
+    type: DataType.STRING,
+    allowNull: false,
+  })
+  name: string;
 
-  @BelongsTo(() => PermissionGroup)
-    permissionGroup: PermissionGroup;
+  @BelongsToMany(() => AccessGroup, () => AccessPermission)
+  accessGroup: AccessGroup[];
 }
