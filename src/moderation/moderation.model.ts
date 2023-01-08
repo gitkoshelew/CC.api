@@ -1,4 +1,5 @@
-import { Column, DataType, Model, Table } from 'sequelize-typescript';
+import { Column, DataType, HasOne, Model, Table } from 'sequelize-typescript';
+import { Question } from '../questions/questions.model';
 
 export enum ModerationStatus {
   change = 'change',
@@ -11,7 +12,7 @@ interface ModerationCreationAttrs {
   status: ModerationStatus;
 }
 
-@Table({ tableName: 'Moderation' })
+@Table({ tableName: 'moderations' })
 export class Moderation extends Model<Moderation, ModerationCreationAttrs> {
   @Column({
     type: DataType.INTEGER,
@@ -32,4 +33,7 @@ export class Moderation extends Model<Moderation, ModerationCreationAttrs> {
     values: ['change', 'block', 'rewrite'],
   })
   status: ModerationStatus;
+
+  @HasOne(() => Question)
+  question: Question;
 }
