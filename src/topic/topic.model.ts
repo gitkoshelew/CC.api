@@ -1,10 +1,11 @@
-import { Column, DataType, Model, Table } from 'sequelize-typescript';
+import { Column, DataType, HasMany, Model, Table } from 'sequelize-typescript';
+import { Question } from '../questions/questions.model';
 
 interface TopicCreationAttrs {
   title: string;
 }
 
-@Table({ tableName: 'Topic' })
+@Table({ tableName: 'topics' })
 export class Topic extends Model<Topic, TopicCreationAttrs> {
   @Column({
     type: DataType.INTEGER,
@@ -19,4 +20,7 @@ export class Topic extends Model<Topic, TopicCreationAttrs> {
     allowNull: false,
   })
   title: string;
+
+  @HasMany(() => Question)
+  questions: Question[];
 }
