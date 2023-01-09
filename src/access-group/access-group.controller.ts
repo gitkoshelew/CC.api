@@ -11,6 +11,11 @@ export class AccessGroupController {
     return this.accessGroupService.createAccessGroup(accessGroupDto);
   }
 
+  @Get()
+  getAll() {
+    return this.accessGroupService.getAllAccessGroup();
+  }
+
   @Get(':name')
   getByName(@Param('name') name: string) {
     return this.accessGroupService.getAccessGroup(name);

@@ -13,18 +13,23 @@ export class PermissionController {
     return this.permissionService.createPermission(permissionDto);
   }
 
+  @Delete(':id')
+  deletePermission(@Param('id') id: number) {
+    return this.permissionService.deletePermission(id);
+  }
+
   @Put(':name')
   addPermissionToAccessGroup(@Param('name') name: string) {
     return this.permissionService.addPermissionToAccessGroup(name);
   }
 
-  @Get('all')
+  @Get()
   getAll() {
     return this.permissionService.getAllPermissions();
   }
 
-  @Delete(':id')
-  deletePermission(@Param('id') id: number) {
-    return this.permissionService.deletePermission(id);
+  @Get(':name')
+  getPermissionByName(@Param('name') name: string) {
+    return this.permissionService.getPermission(name);
   }
 }

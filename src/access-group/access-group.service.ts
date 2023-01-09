@@ -24,6 +24,10 @@ export class AccessGroupService {
     return await this.accessGroupRepository.findAll({ include: { all: true } });
   }
 
+  async getAllAccessGroup(){
+    return await this.accessGroupRepository.findAll()
+  }
+
   async getAccessGroup(name: string) {
     return await this.accessGroupRepository.findOne({
       where: { name },

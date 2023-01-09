@@ -25,6 +25,13 @@ export class PermissionService {
     return await this.permissionRepository.findAll({ include: { all: true } });
   }
 
+  async getPermission(name: string) {
+    return await this.permissionRepository.findOne({
+      where: { name },
+      include: { all: true },
+    });
+  }
+
   async getAllPermissions() {
     return await this.permissionRepository.findAll({ include: { all: true } });
   }
