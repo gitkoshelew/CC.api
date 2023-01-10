@@ -13,12 +13,12 @@ export class QuestionsService {
     return await this.questionRepository.create(dto);
   }
 
-  async deleteQuestionById(value: string) {
-    return await this.questionRepository.destroy({ where: { value } });
+  async deleteQuestionById(id: string) {
+    return await this.questionRepository.destroy({ where: { id } });
   }
 
-  async getQuestionById(value: string) {
-    return await this.questionRepository.findOne({ where: { value } });
+  async getQuestionById(id: string) {
+    return await this.questionRepository.findOne({ where: { id } });
   }
 
   async getAllQuestions() {
