@@ -6,4 +6,5 @@ export class CreateQuestionDto {
   readonly type: QuestionTypes;
   readonly difficulty: DifficultyTypes;
   readonly description: string;
+  readonly correctAnswer: string;
 }
