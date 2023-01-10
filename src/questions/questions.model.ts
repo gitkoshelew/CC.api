@@ -45,6 +45,9 @@ export class Question extends Model<Question, QuestionCreationAttrs> {
   @Column({ type: DataType.STRING, allowNull: false })
   description: string;
 
+  @Column({ type: DataType.STRING, allowNull: false })
+  correctAnswer: string;
+
   @ForeignKey(() => Topic)
   @Column({ type: DataType.INTEGER })
   topicId: number;

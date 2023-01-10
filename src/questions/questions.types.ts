@@ -1,6 +1,6 @@
 export enum QuestionTypes {
-  SINGLE = 'SINGLE',
-  MULTIPLY = 'MULTIPLY',
+  SINGLE = 'SINGLE OPTION',
+  MULTI = 'MULTI OPTION',
 }
 
 export enum DifficultyTypes {
@@ -15,4 +15,5 @@ export interface QuestionCreationAttrs {
   type: QuestionTypes;
   difficulty: DifficultyTypes;
   description: string;
+  correctAnswer: string;
 }
