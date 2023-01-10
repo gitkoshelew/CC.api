@@ -6,12 +6,13 @@ import { Quiz } from "./quiz.model";
 import { Question } from "../question/question.model";
 import { Quiz_Question } from "./quiz_question.model";
 import { QuestionModule } from "../question/question.module";
+import { User } from "../user/user.model";
 
 @Module({
   controllers: [QuizController],
   providers: [QuizService],
   imports: [
-    SequelizeModule.forFeature([Quiz, Question, Quiz_Question]),
+    SequelizeModule.forFeature([Quiz, Question, Quiz_Question, User]),
     QuestionModule
   ],
 })

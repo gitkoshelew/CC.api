@@ -5,7 +5,7 @@ import { Quiz } from "./quiz.model";
 
 
 
-@Table({tableName: 'Quiz_Question', createdAt: false, updatedAt: false})
+@Table({tableName: 'quiz_questions', createdAt: false, updatedAt: false})
 export class Quiz_Question extends Model<Quiz_Question> {
 
   @ApiProperty({example: '1', description: 'uniq id'})

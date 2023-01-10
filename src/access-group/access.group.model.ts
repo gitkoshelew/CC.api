@@ -2,13 +2,15 @@ import { BelongsToMany, Column, DataType, Model, Table } from "sequelize-typescr
 import { Permission } from "src/permission/permission.model";
 import { ApiProperty } from "@nestjs/swagger";
 import { AccessGroupPermission } from "./access.permission.model";
+import { User } from "../user/user.model";
+import { UserAccess } from "src/user/user.access.model";
 
 interface AccessGroupCreationAttrs {
   name: string;
 }
 
 
-@Table( {tableName: "AccessGroup", createdAt: false, updatedAt: false})
+@Table( {tableName: "access_groups", createdAt: false, updatedAt: false})
 export class AccessGroup extends Model<AccessGroup, AccessGroupCreationAttrs> {
 
   @ApiProperty({example: '1', description: 'uniq id'})
@@ -21,4 +23,7 @@ export class AccessGroup extends Model<AccessGroup, AccessGroupCreationAttrs> {
 
   @BelongsToMany(() => Permission, () => AccessGroupPermission)
   permission: Permission[];
+
+  @BelongsToMany(()=> User, ()=> UserAccess)
+  user: User[];
 }

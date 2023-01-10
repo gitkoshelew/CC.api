@@ -1,5 +1,8 @@
-import { Column, DataType, Model, Table } from 'sequelize-typescript';
+import { BelongsToMany, Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
 import { ApiProperty } from '@nestjs/swagger';
+import { AccessGroup } from "../access-group/access.group.model";
+import { UserAccess } from "./user.access.model";
+import { Quiz } from "../quiz/quiz.model";
 
 interface UserCreationAttrs {
   name: string;
@@ -9,12 +12,11 @@ interface UserCreationAttrs {
 }
 
 export enum ModerationStatus {
-  change = 'change',
-  block = 'block',
-  rewrite = 'rewrite',
+  banned = 'banned',
+  free = 'free',
 }
 
-@Table({tableName: 'Users', createdAt: false, updatedAt: false})
+@Table({tableName: 'users', createdAt: false, updatedAt: false})
 export class User extends Model<User, UserCreationAttrs> {
 
   @ApiProperty({example: '1', description: 'uniq id'})
@@ -42,10 +44,12 @@ export class User extends Model<User, UserCreationAttrs> {
   password: string;
 
   @ApiProperty({example: 'change / rewrite', description: 'status for your question on moderation list / enum'})
-  @Column({type: DataType.ENUM, values: ['change', 'block', 'rewrite']})
+  @Column({type: DataType.ENUM, values: ['banned', 'free']})
   status: ModerationStatus;
 
-  @ApiProperty({example: 'advanced', description: 'permission group that consist of some permissions not uniq / foreign key'})
-  @Column({type: DataType.STRING})
-  permission: string;
+  @BelongsToMany(()=> AccessGroup, ()=> UserAccess)
+  access: AccessGroup[];
+
+  @HasMany(()=> Quiz)
+  quiz: Quiz[];
 }

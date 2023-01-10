@@ -1,4 +1,4 @@
-import { BelongsTo, Column, DataType, ForeignKey, HasOne, Model, Table } from "sequelize-typescript";
+import { BelongsTo, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
 import { ApiProperty } from '@nestjs/swagger';
 import { Question } from '../question/question.model';
 
@@ -15,7 +15,7 @@ interface ModerationCreationAttrs {
   status: ModerationStatus;
 }
 
-@Table({ tableName: 'Moderation', createdAt: false, updatedAt: false})
+@Table({ tableName: 'moderations', createdAt: false, updatedAt: false})
 export class Moderation extends Model<Moderation, ModerationCreationAttrs> {
 
   @ApiProperty({example: '1', description: 'uniq id / number'})

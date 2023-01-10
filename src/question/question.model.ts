@@ -31,7 +31,7 @@ interface QuestionCreationAttrs {
 }
 
 
-@Table({tableName: 'Question', createdAt: false, updatedAt: false})
+@Table({tableName: 'questions', createdAt: false, updatedAt: false})
 export class Question extends Model<Question, QuestionCreationAttrs> {
 
   @ApiProperty({example: '1', description: 'uniq id'})

@@ -1,4 +1,4 @@
-import { BelongsToMany, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
+import { BelongsToMany, Column, DataType, Model, Table } from "sequelize-typescript";
 import { AccessGroup } from "src/access-group/access.group.model";
 import { ApiProperty } from "@nestjs/swagger";
 import { AccessGroupPermission } from "src/access-group/access.permission.model";
@@ -8,7 +8,7 @@ interface PermissionsCreationAttrs {
 }
 
 
-@Table( {tableName: "Permission", createdAt: false, updatedAt: false})
+@Table( {tableName: "permissions", createdAt: false, updatedAt: false})
 export class Permission extends Model<Permission, PermissionsCreationAttrs> {
 
   @ApiProperty({example: '1', description: 'uniq id'})
