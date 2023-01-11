@@ -12,6 +12,8 @@ import { TopicModule } from './topic/topic.module';
 import { Topic } from './topic/topic.model';
 import { ModerationModule } from './moderation/moderation.module';
 import { Moderation } from './moderation/moderation.model';
+import { Question } from './questions/questions.model';
+import { QuestionsModule } from './questions/questions.module';
 import { AccessPermission } from './access-group/access-permission.model';
 import { AccessGroup } from './access-group/access-group.model';
 
@@ -27,7 +29,7 @@ import { AccessGroup } from './access-group/access-group.model';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [Permission, AccessGroup, AccessPermission, Topic, Moderation],
+      models: [Permission, AccessGroup, AccessPermission, Topic, Moderation, Question],
       autoLoadModels: true,
     }),
     QuizModule,
@@ -35,6 +37,7 @@ import { AccessGroup } from './access-group/access-group.model';
     AccessGroupModule,
     TopicModule,
     ModerationModule,
+    QuestionsModule,
   ],
 
   controllers: [AppController],
