@@ -5,10 +5,15 @@ import { QuizModule } from './quiz/quiz.module';
 import { ConfigModule } from '@nestjs/config';
 import * as process from 'process';
 import { SequelizeModule } from '@nestjs/sequelize';
+import { Permission } from './permission/permission.model';
+import { PermissionModule } from './permission/permission.module';
+import { AccessGroupModule } from './access-group/access-group.module';
 import { TopicModule } from './topic/topic.module';
 import { Topic } from './topic/topic.model';
 import { ModerationModule } from './moderation/moderation.module';
 import { Moderation } from './moderation/moderation.model';
+import { AccessPermission } from './access-group/access-permission.model';
+import { AccessGroup } from './access-group/access-group.model';
 
 @Module({
   imports: [
@@ -22,13 +27,16 @@ import { Moderation } from './moderation/moderation.model';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [Topic, Moderation],
+      models: [Permission, AccessGroup, AccessPermission, Topic, Moderation],
       autoLoadModels: true,
     }),
     QuizModule,
+    PermissionModule,
+    AccessGroupModule,
     TopicModule,
     ModerationModule,
   ],
+
   controllers: [AppController],
   providers: [AppService],
 })
