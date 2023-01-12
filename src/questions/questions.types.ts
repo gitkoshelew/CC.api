@@ -1,12 +1,12 @@
 export enum QuestionTypes {
-  SINGLE = 'SINGLE OPTION',
-  MULTI = 'MULTI OPTION',
+  SINGLE = 'single',
+  MULTI = 'multi',
 }
 
 export enum DifficultyTypes {
-  LIGHT = 'LIGHT',
-  MEDIUM = 'MEDIUM',
-  HARD = 'HARD',
+  LIGHT = 'light',
+  MEDIUM = 'medium',
+  HARD = 'hard',
 }
 
 export interface QuestionCreationAttrs {
@@ -16,4 +16,5 @@ export interface QuestionCreationAttrs {
   difficulty: DifficultyTypes;
   description: string;
   correctAnswer: string;
+  topic: string;
 }

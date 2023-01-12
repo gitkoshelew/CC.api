@@ -13,11 +13,11 @@ export class QuestionsService {
     return await this.questionRepository.create(dto);
   }
 
-  async deleteQuestionById(id: string) {
+  async deleteQuestionById(id: number) {
     return await this.questionRepository.destroy({ where: { id } });
   }
 
-  async getQuestionById(id: string) {
+  async getQuestionById(id: number) {
     return await this.questionRepository.findOne({ where: { id } });
   }
 
