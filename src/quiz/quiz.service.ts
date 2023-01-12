@@ -34,4 +34,9 @@ export class QuizService {
     }
     throw new HttpException('There is no quiz or question with that id', HttpStatus.NOT_FOUND)
   }
+
+  async deleteQuizById(id: number){
+    const quiz = await this.getById(id)
+    await quiz.destroy()
+  }
 }
