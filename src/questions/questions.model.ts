@@ -1,53 +1,39 @@
-import {
-  Model,
-  Table,
-  Column,
-  DataType,
-  BelongsTo,
-  ForeignKey,
-} from 'sequelize-typescript';
-import {
-  QuestionCreationAttrs,
-  QuestionTypes,
-  DifficultyTypes,
-} from './questions.types';
+import { Model, Table, Column, DataType, BelongsTo, ForeignKey, BelongsToMany } from "sequelize-typescript";
+import { QuestionCreationAttrs, QuestionTypes, DifficultyTypes } from './questions.types';
 import { Topic } from '../topic/topic.model';
 import { Moderation } from '../moderation/moderation.model';
+import { ApiProperty } from "@nestjs/swagger";
+import { Quiz } from "../quiz/quiz.model";
+import { Quiz_Question } from "../quiz/quiz.question.model";
 
-@Table({ tableName: 'questions' })
+@Table({ tableName: 'questions', createdAt: false, updatedAt: false})
 export class Question extends Model<Question, QuestionCreationAttrs> {
-  @Column({
-    type: DataType.INTEGER,
-    unique: true,
-    autoIncrement: true,
-    primaryKey: true,
-  })
+
+  @ApiProperty({example: '1', description: 'uniq id'})
+  @Column({ type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true })
   id: number;
 
+  @ApiProperty({example: 'NodeJS question #13', description: 'required title / not uniq / string'})
   @Column({ type: DataType.STRING, allowNull: false })
   title: string;
 
+  @ApiProperty({example: '{"question": "blablabla", "answers": { "wrong" : "bla", "correct" : "blabla"}}', description: 'sample of question at JSON datatype/ required'})
   @Column({ type: DataType.JSON, allowNull: false })
   content: JSON;
 
-  @Column({
-    type: DataType.ENUM({ values: Object.values(QuestionTypes) }),
-    allowNull: false,
-  })
+  @ApiProperty({example: 'oneChoice / multiChoice', description: 'how many of variables can been chosen for answer / required'})
+  @Column({ type: DataType.ENUM({ values: Object.values(QuestionTypes) }), allowNull: false })
   type: QuestionTypes;
 
-  @Column({
-    type: DataType.ENUM({ values: Object.values(DifficultyTypes) }),
-    allowNull: false,
-  })
+  @ApiProperty({example: 'easy / normal / hard', description: 'set your difficulty / required'})
+  @Column({ type: DataType.ENUM({ values: Object.values(DifficultyTypes) }), allowNull: false })
   difficulty: DifficultyTypes;
 
+  @ApiProperty({example: 'easy / normal / hard', description: 'set your difficulty / required'})
   @Column({ type: DataType.STRING, allowNull: false })
   description: string;
 
-  @Column({ type: DataType.STRING, allowNull: false })
-  correctAnswer: string;
-
+  @ApiProperty({example: '1', description: 'number of topic that should be import into question'})
   @ForeignKey(() => Topic)
   @Column({ type: DataType.INTEGER })
   topicId: number;
@@ -61,4 +47,7 @@ export class Question extends Model<Question, QuestionCreationAttrs> {
 
   @BelongsTo(() => Moderation)
   moderation: Moderation;
+
+  @BelongsToMany(() => Quiz, () => Quiz_Question)
+  quiz: Quiz[];
 }
