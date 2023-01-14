@@ -16,11 +16,11 @@ import { Question } from './questions/questions.model';
 import { QuestionsModule } from './questions/questions.module';
 import { AccessPermission } from './access-group/access-permission.model';
 import { AccessGroup } from './access-group/access-group.model';
-import { User } from "./user/user.model";
-import { Quiz } from "./quiz/quiz.model";
-import { Quiz_Question } from "./quiz/quiz.question.model";
-import { UserAccess } from "./user/user.access.model";
-import { UserModule } from "./user/user.module";
+import { User } from './user/user.model';
+import { Quiz } from './quiz/quiz.model';
+import { Quiz_Question } from './quiz/quiz.question.model';
+import { UserAccess } from './user/user.access.model';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -34,7 +34,18 @@ import { UserModule } from "./user/user.module";
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [User, Quiz, Permission, AccessGroup, AccessPermission, Topic, Moderation, Question, Quiz_Question, UserAccess],
+      models: [
+        User,
+        Quiz,
+        Permission,
+        AccessGroup,
+        AccessPermission,
+        Topic,
+        Moderation,
+        Question,
+        Quiz_Question,
+        UserAccess,
+      ],
       autoLoadModels: true,
     }),
     QuizModule,
