@@ -21,7 +21,7 @@ import { Quiz_Question } from './quiz.question.model';
 export class QuizController {
   constructor(private readonly quizService: QuizService) {}
 
-  @ApiOperation({ summary: 'Method to view all quizs' })
+  @ApiOperation({ summary: 'Method to view all quizzes' })
   @ApiResponse({ status: 200, type: Quiz })
   @Get('/')
   getAll() {

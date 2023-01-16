@@ -72,8 +72,8 @@ export class Question extends Model<Question, QuestionCreationAttrs> {
   description: string;
 
   @ApiProperty({
-    example: 'that test will show us ur power in Node js',
-    description: 'make it by ur own / required',
+    example: '600 sec',
+    description: 'Time to resolve the question in seconds / required',
   })
   @Column({ type: DataType.INTEGER, allowNull: false })
   timer: number;

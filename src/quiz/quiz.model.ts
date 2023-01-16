@@ -16,7 +16,7 @@ interface QuizCreationAttrs {
   title: string;
 }
 
-@Table({ tableName: 'quizs', createdAt: false, updatedAt: false })
+@Table({ tableName: 'quizzes', createdAt: false, updatedAt: false })
 export class Quiz extends Model<Quiz, QuizCreationAttrs> {
   @ApiProperty({ example: '1', description: 'uniq id' })
   @Column({

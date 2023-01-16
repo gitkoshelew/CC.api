@@ -18,7 +18,7 @@ export class Topic extends Model<Topic, TopicCreationAttrs> {
   id: number;
 
   @ApiProperty({
-    example: 'NodeJS question',
+    example: 'NodeJS',
     description: 'Simple sample for title of topic / required',
   })
   @Column({ type: DataType.STRING, allowNull: false, unique: true })

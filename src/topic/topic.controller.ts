@@ -30,7 +30,7 @@ export class TopicController {
     return this.topicService.getTopicById(id);
   }
 
-  @ApiOperation({ summary: 'Method to delete question' })
+  @ApiOperation({ summary: 'Method to delete topic by id' })
   @ApiResponse({ status: 200, type: Topic })
   @Delete('/:id')
   deleteById(@Param('id') id: number) {
