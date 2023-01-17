@@ -5,13 +5,15 @@ import { Moderation } from './moderation.model';
 
 @Injectable()
 export class ModerationService {
-  constructor( @InjectModel(Moderation) private moderationRepository: typeof Moderation ) {}
+  constructor(
+    @InjectModel(Moderation) private moderationRepository: typeof Moderation,
+  ) {}
 
   async createModerationStatus(dto: CreateModerationDto) {
     return await this.moderationRepository.create(dto);
   }
 
   async getAllStatus() {
-    return await this.moderationRepository.findAll({include: {all: true}});
+    return await this.moderationRepository.findAll({ include: { all: true } });
   }
 }

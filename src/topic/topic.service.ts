@@ -15,8 +15,14 @@ export class TopicService {
     return await this.topicRepository.findAll();
   }
 
-  async getById(id: number) {
-    const topic = await this.topicRepository.findOne({where: {id}, include: {all: true}});
-    return topic;
+  async getTopicById(id: number) {
+    return await this.topicRepository.findOne({
+      where: { id },
+      include: { all: true },
+    });
+  }
+
+  async deleteTopicById(id: number) {
+    return await this.topicRepository.destroy({ where: { id } });
   }
 }
