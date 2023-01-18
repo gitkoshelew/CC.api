@@ -17,7 +17,7 @@ interface ModerationCreationAttrs {
 
 @Table({ tableName: 'moderations', createdAt: false, updatedAt: false })
 export class Moderation extends Model<Moderation, ModerationCreationAttrs> {
-  @ApiProperty({ example: '1', description: 'uniq id / number' })
+  @ApiProperty({ example: 1, description: 'uniq id / number' })
   @Column({
     type: DataType.INTEGER,
     unique: true,

@@ -18,7 +18,7 @@ interface QuizCreationAttrs {
 
 @Table({ tableName: 'quizzes', createdAt: false, updatedAt: false })
 export class Quiz extends Model<Quiz, QuizCreationAttrs> {
-  @ApiProperty({ example: '1', description: 'uniq id' })
+  @ApiProperty({ example: 1, description: 'uniq id' })
   @Column({
     type: DataType.INTEGER,
     unique: true,
@@ -35,7 +35,7 @@ export class Quiz extends Model<Quiz, QuizCreationAttrs> {
   title: string;
 
   @ForeignKey(() => User)
-  @ApiProperty({ example: '1', description: 'foreign key' })
+  @ApiProperty({ example: 1, description: 'foreign key for author' })
   @Column({ type: DataType.INTEGER })
   authorId: number;
 
