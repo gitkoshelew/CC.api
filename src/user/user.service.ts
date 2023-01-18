@@ -42,4 +42,18 @@ export class UserService {
       HttpStatus.NOT_FOUND,
     );
   }
+
+  async findUserByEmail(email: string) {
+    return this.userRepository.findOne({
+      where: { email },
+      include: { all: true },
+    });
+  }
+
+  async findUserByNickname(nickname: string) {
+    return this.userRepository.findOne({
+      where: { nickname },
+      include: { all: true },
+    });
+  }
 }
