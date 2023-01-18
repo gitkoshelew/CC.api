@@ -28,6 +28,7 @@ services:
     ports:
       - ${POSTGRES_PORT}:${POSTGRES_PORT}
     volumes:
+      - ./postgresData:/var/lib/postgresql/data
       - pgdata:/var/lib/postgresql/data
     restart: always
 
