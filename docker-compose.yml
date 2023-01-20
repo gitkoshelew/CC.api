@@ -45,13 +45,18 @@ services:
     volumes:
       - pgadmin:/root/.pgadmin
 
+  chat-service:
+    container_name: chat-service
+    build: ./src/chat-service
+    env_file:
+      - ./src/chat-service/.env
+    volumes:
+      - ./src/chat-service:/chat
+      - /chat/node_modules
+    ports:
+      - ${CHAT_SERVICE_PORT}:${CHAT_SERVICE_PORT}
+    restart: always
 
 volumes:
   pgdata:
   pgadmin:
-
-
-
-
-
-
