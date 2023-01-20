@@ -9,5 +9,6 @@ import { Question } from '../questions/questions.model';
   providers: [ModerationService],
   controllers: [ModerationController],
   imports: [SequelizeModule.forFeature([Moderation, Question])],
+  exports: [ModerationService]
 })
 export class ModerationModule {}

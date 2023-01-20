@@ -8,7 +8,7 @@ interface TopicCreationAttrs {
 
 @Table({ tableName: 'topics', createdAt: false, updatedAt: false })
 export class Topic extends Model<Topic, TopicCreationAttrs> {
-  @ApiProperty({ example: '1', description: 'uniq id' })
+  @ApiProperty({ example: 1, description: 'uniq id' })
   @Column({
     type: DataType.INTEGER,
     unique: true,

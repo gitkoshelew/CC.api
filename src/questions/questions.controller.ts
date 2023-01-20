@@ -3,6 +3,8 @@ import { QuestionsService } from './questions.service';
 import { CreateQuestionDto } from './dto/create-question.dto';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Question } from './questions.model';
+import { Put } from "@nestjs/common/decorators";
+import { AddModerationToQuestionDto } from "./dto/addModerationToQuestion.dto";
 
 @ApiTags('Question')
 @Controller('api/questions')
@@ -35,5 +37,12 @@ export class QuestionsController {
   @Delete('/:id')
   deleteById(@Param('id') id: number) {
     return this.questionService.deleteQuestionById(id);
+  }
+
+  @ApiOperation({ summary: 'add moderation to question' })
+  @ApiResponse({ status: 200, type: Question })
+  @Put('/add')
+  addPermissionToAccessGroup(@Body() dto: AddModerationToQuestionDto ) {
+    return this.questionService.addModerationToQuestion(dto)
   }
 }

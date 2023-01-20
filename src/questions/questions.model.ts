@@ -20,7 +20,7 @@ import { Quiz_Question } from '../quiz/quiz.question.model';
 
 @Table({ tableName: 'questions', createdAt: false, updatedAt: false })
 export class Question extends Model<Question, QuestionCreationAttrs> {
-  @ApiProperty({ example: '1', description: 'uniq id' })
+  @ApiProperty({ example: 1, description: 'uniq id' })
   @Column({
     type: DataType.INTEGER,
     unique: true,
@@ -38,14 +38,15 @@ export class Question extends Model<Question, QuestionCreationAttrs> {
 
   @ApiProperty({
     example:
-      '{"question": "blablabla", "answers": { "wrong" : "bla", "correct" : "blabla"}}',
+      {options: ["answer1", "answer2", "answer3", "answer4"],
+      correctAnswer: ["answer2"]},
     description: 'sample of question at JSON datatype/ required',
   })
   @Column({ type: DataType.JSON, allowNull: false })
   content: JSON;
 
   @ApiProperty({
-    example: 'oneChoice / multiChoice',
+    example: 'single / multi',
     description: 'how many of variables can been chosen for answer / required',
   })
   @Column({
@@ -55,7 +56,7 @@ export class Question extends Model<Question, QuestionCreationAttrs> {
   type: QuestionTypes;
 
   @ApiProperty({
-    example: 'easy / normal / hard',
+    example: 'light / medium / hard',
     description: 'set your difficulty / required',
   })
   @Column({
@@ -72,14 +73,14 @@ export class Question extends Model<Question, QuestionCreationAttrs> {
   description: string;
 
   @ApiProperty({
-    example: '600 sec',
+    example: 600,
     description: 'Time to resolve the question in seconds / required',
   })
   @Column({ type: DataType.INTEGER, allowNull: false })
   timer: number;
 
   @ApiProperty({
-    example: '1',
+    example: 1,
     description: 'number of topic that should be import into question',
   })
   @ForeignKey(() => Topic)
@@ -89,6 +90,10 @@ export class Question extends Model<Question, QuestionCreationAttrs> {
   @BelongsTo(() => Topic)
   topic: Topic;
 
+  @ApiProperty({
+    example: 1,
+    description: 'id of moderation if questions needs of moderation (not enough correct)',
+  })
   @ForeignKey(() => Moderation)
   @Column({ type: DataType.INTEGER })
   moderationId: number;
