@@ -4,6 +4,7 @@ import { User } from './user.model';
 import { CreateUserDto } from './dto/create-user.dto';
 import { AddAccessDto } from './dto/addAccessToUser.dto';
 import { AccessGroupService } from 'src/access-group/access-group.service';
+import { AccessGroup } from '../access-group/access-group.model';
 
 @Injectable()
 export class UserService {
@@ -46,7 +47,12 @@ export class UserService {
   async findUserByEmail(email: string) {
     return this.userRepository.findOne({
       where: { email },
-      include: { all: true },
+      include: {
+        model: AccessGroup,
+        through: {
+          attributes: [],
+        },
+      },
     });
   }
 
