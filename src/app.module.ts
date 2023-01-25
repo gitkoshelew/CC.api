@@ -21,6 +21,7 @@ import { Quiz } from './quiz/quiz.model';
 import { Quiz_Question } from './quiz/quiz.question.model';
 import { UserAccess } from './user/user.access.model';
 import { UserModule } from './user/user.module';
+import { RMQModule } from 'nestjs-rmq';
 
 @Module({
   imports: [
@@ -47,6 +48,19 @@ import { UserModule } from './user/user.module';
         UserAccess,
       ],
       autoLoadModels: true,
+    }),
+    RMQModule.forRoot({
+      exchangeName: process.env.AMQP_EXCHANGE_NAME,
+      connections: [
+        {
+          login: process.env.AMQP_LOGIN,
+          password: process.env.AMQP_PASSWORD,
+          host: process.env.NOTIFICATION_SOCKETS_PORT,
+        },
+      ],
+      queueName: process.env.AMQP_QUEUE_NAME,
+      prefetchCount: 32,
+      serviceName: 'notifications-service',
     }),
     QuizModule,
     UserModule,

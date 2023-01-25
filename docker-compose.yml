@@ -45,6 +45,16 @@ services:
     volumes:
       - pgadmin:/root/.pgadmin
 
+  rmq:
+    container_name: rmq
+    image: rabbitmq:3-management
+    env_file:
+      - .env
+    ports:
+      - ${RABBITMQ_LOCAL_PORT}:${RABBITMQ_NATIVE_PORT}
+      - "5672:5672"
+    restart: always
+
 
 volumes:
   pgdata:

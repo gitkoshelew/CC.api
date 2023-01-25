@@ -1,3 +1,4 @@
+import { NotificationsService } from './../shared/services/notifications.service';
 import { Module } from '@nestjs/common';
 import { QuizController } from './quiz.controller';
 import { QuizService } from './quiz.service';
@@ -10,7 +11,7 @@ import { User } from '../user/user.model';
 
 @Module({
   controllers: [QuizController],
-  providers: [QuizService],
+  providers: [QuizService, NotificationsService],
   imports: [
     SequelizeModule.forFeature([Quiz, Question, Quiz_Question, User]),
     QuestionsModule,
