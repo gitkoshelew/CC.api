@@ -104,3 +104,14 @@ dist
 .tern-port
 
 .idea
+
+# PostgresData changing and saving with all dependencies
+postgresData
+!postgresData/base
+!postgresData/base/5
+!postgresData/base/16384
+!postgresData/global
+!postgresData/global/
+!postgresData/pg_wal
+!postgresData/pg_xact
+!postgresData/postmaster.opts
