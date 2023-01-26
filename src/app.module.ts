@@ -21,6 +21,9 @@ import { Quiz } from './quiz/quiz.model';
 import { Quiz_Question } from './quiz/quiz.question.model';
 import { UserAccess } from './user/user.access.model';
 import { UserModule } from './user/user.module';
+import { EnumsController } from './enums/enums.controller';
+import { EnumsService } from './enums/enums.service';
+import { EnumsModule } from './enums/enums.module';
 
 @Module({
   imports: [
@@ -55,9 +58,10 @@ import { UserModule } from './user/user.module';
     TopicModule,
     ModerationModule,
     QuestionsModule,
+    EnumsModule,
   ],
 
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, EnumsController],
+  providers: [AppService, EnumsService],
 })
 export class AppModule {}
