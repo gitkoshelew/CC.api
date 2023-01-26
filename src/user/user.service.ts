@@ -15,8 +15,7 @@ export class UserService {
   ) {}
 
   async createUser(dto: CreateUserDto) {
-    const user = await this.userRepository.create(dto);
-    return user;
+    return await this.userRepository.create(dto);
   }
 
   async getUserById(id: number) {
@@ -27,8 +26,12 @@ export class UserService {
   }
 
   async getAllUsers() {
-    const users = await this.userRepository.findAll({ include: { all: true } });
-    return users;
+    return await this.userRepository.findAll({ include: { all: true } });
+  }
+
+  async deleteUserById(id: number){
+    const user = await this.userRepository.findOne({where: {id}})
+    await user.destroy()
   }
 
   async addAccessToUser(dto: AddAccessDto) {

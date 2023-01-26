@@ -1,18 +1,22 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable } from '@nestjs/common';
 import { Permission } from './permission.model';
 import { InjectModel } from '@nestjs/sequelize';
 import { CreatePermissionDto } from './dto/create-permission.dto';
 
 @Injectable()
 export class PermissionService {
-  constructor( @InjectModel(Permission) private permissionRepository: typeof Permission ) {}
+  constructor(
+    @InjectModel(Permission) private permissionRepository: typeof Permission,
+  ) {}
 
   async createPermission(dto: CreatePermissionDto) {
     return await this.permissionRepository.create(dto);
   }
 
   async deletePermissionById(id: number) {
-    const permission = await this.permissionRepository.findOne({ where: { id }});
+    const permission = await this.permissionRepository.findOne({
+      where: { id },
+    });
     await permission.destroy();
     return await this.permissionRepository.findAll({ include: { all: true } });
   }
@@ -27,5 +31,4 @@ export class PermissionService {
   async getAllPermissions() {
     return await this.permissionRepository.findAll({ include: { all: true } });
   }
-
 }

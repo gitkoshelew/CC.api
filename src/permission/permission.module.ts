@@ -9,7 +9,9 @@ import { PermissionService } from './permission.service';
 @Module({
   controllers: [PermissionController],
   providers: [PermissionService],
-  imports: [SequelizeModule.forFeature([Permission, AccessGroup, AccessPermission])],
-  exports: [PermissionService]
+  imports: [
+    SequelizeModule.forFeature([Permission, AccessGroup, AccessPermission]),
+  ],
+  exports: [PermissionService],
 })
 export class PermissionModule {}
