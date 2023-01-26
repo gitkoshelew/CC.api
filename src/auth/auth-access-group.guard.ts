@@ -8,15 +8,10 @@ import {
 import { JwtService } from '@nestjs/jwt';
 import { Reflector } from '@nestjs/core';
 import { PERMISSION_KEY } from './auth-access-group.decorator';
-import { AccessGroupService } from '../access-group/access-group.service';
 
 @Injectable()
 export class AuthAccessGroupGuard implements CanActivate {
-  constructor(
-    private jwtService: JwtService,
-    private reflector: Reflector,
-    private accessGroupService: AccessGroupService,
-  ) {}
+  constructor(private jwtService: JwtService, private reflector: Reflector) {}
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const req = context.switchToHttp().getRequest();
     try {
@@ -30,30 +25,29 @@ export class AuthAccessGroupGuard implements CanActivate {
       const authHeader = req.headers.authorization;
       const bearer = authHeader.split(' ')[0];
       const token = authHeader.split(' ')[1];
-      if (bearer !== 'Bearer' || !token)
+      if (bearer !== 'Bearer' || !token) {
         throw new HttpException(
           'User is not authorized',
           HttpStatus.UNAUTHORIZED,
         );
-      const user = this.jwtService.verify(token); // В токене юзера передаем accessGroup:[{id:1, name: 'User'}]
+      }
+      const user = this.jwtService.verify(token); // В токене юзера передаем accessGroup:[{id:1, name: 'User'}б{id:12, name: 'admin'}]
       req.user = user;
 
-      const availablePermission = [];
       for (const access of user.accessGroup) {
-        const permissionForCurrentAccessGroup =
-          await this.accessGroupService.getAccessGroupById(access.id); // Ищем права для каждой из accessGroup
-        for (const permissionName of permissionForCurrentAccessGroup.permissions) {
-          availablePermission.push(permissionName.name); // В каждой из групп может быть несколько прав, собираем их все в массив
+        const permissionForCurrentAccessGroup = access.permissions;
+        for (const permission of permissionForCurrentAccessGroup) {
+          if (permission.name === requiredPermissions) {
+            return true;
+          }
         }
       }
-      return requiredPermissions.every(
-        (access) => availablePermission.includes(access), // requiredPermissions - массив который мы передаем на защиту эндпоинта
-      );
+      return false;
+      // return requiredPermissions.every(
+      //   (access) => availablePermission.includes(access), // requiredPermissions - массив который мы передаем на защиту эндпоинта
+      // ); // Проверяем соответствие обязательных прав с доступными правами
     } catch (e) {
-      throw new HttpException(
-        'User is not authorized',
-        HttpStatus.UNAUTHORIZED,
-      );
+      throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
     }
   }
 }
