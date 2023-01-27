@@ -1,10 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/sequelize';
-import { Question } from 'src/questions/questions.model';
 import { DifficultyTypes, QuestionTypes } from 'src/questions/questions.types';
 
 @Injectable()
-export class EnumsService {
+export class InventoryService {
   constructor() {}
 
   getQuestionsTypes() {
