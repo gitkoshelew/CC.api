@@ -53,7 +53,7 @@ export class QuizController {
   }
 
 
-  @Permissions('delete')
+  @Permissions('deleteOwn')
   @UseGuards(AuthAccessGroupGuard)
   @ApiOperation({ summary: 'Method to delete question by id' })
   @ApiResponse({ status: 200 })

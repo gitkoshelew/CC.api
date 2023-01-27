@@ -45,7 +45,6 @@ export class AuthService {
     const findUserWithAccessGroup = await this.userService.findUserByEmail(
       userDto.email,
     );
-    console.log(findUserWithAccessGroup);
     return this.generateToken(user, findUserWithAccessGroup.access);
   }
 
