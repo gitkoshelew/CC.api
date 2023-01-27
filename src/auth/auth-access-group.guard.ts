@@ -31,7 +31,7 @@ export class AuthAccessGroupGuard implements CanActivate {
           HttpStatus.UNAUTHORIZED,
         );
       }
-      const user = this.jwtService.verify(token); // В токене юзера передаем accessGroup:[{id:1, name: 'User'}б{id:12, name: 'admin'}]
+      const user = this.jwtService.verify(token);
       req.user = user;
 
       for (const access of user.accessGroup) {
@@ -43,9 +43,7 @@ export class AuthAccessGroupGuard implements CanActivate {
         }
       }
       return false;
-      // return requiredPermissions.every(
-      //   (access) => availablePermission.includes(access), // requiredPermissions - массив который мы передаем на защиту эндпоинта
-      // ); // Проверяем соответствие обязательных прав с доступными правами
+
     } catch (e) {
       throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
     }

@@ -6,8 +6,8 @@ import {
   HttpCode,
   HttpStatus,
   Param,
-  Post,
-} from '@nestjs/common';
+  Post, UseGuards
+} from "@nestjs/common";
 import { QuizService } from './quiz.service';
 import { CreateQuizDto } from './dto/create-quiz.dto';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
@@ -15,6 +15,8 @@ import { Quiz } from './quiz.model';
 import { AddQuestionDto } from './dto/addQuestion.dto';
 import { Put } from '@nestjs/common/decorators';
 import { Quiz_Question } from './quiz.question.model';
+import { Permissions } from "../auth/auth-access-group.decorator";
+import { AuthAccessGroupGuard } from "../auth/auth-access-group.guard";
 
 @ApiTags('Quiz')
 @Controller('/api/quiz')
@@ -50,6 +52,9 @@ export class QuizController {
     return this.quizService.addQuestionToQuiz(dto);
   }
 
+
+  @Permissions('delete')
+  @UseGuards(AuthAccessGroupGuard)
   @ApiOperation({ summary: 'Method to delete question by id' })
   @ApiResponse({ status: 200 })
   @Delete(':id')

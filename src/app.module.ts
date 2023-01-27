@@ -21,6 +21,8 @@ import { Quiz } from './quiz/quiz.model';
 import { Quiz_Question } from './quiz/quiz.question.model';
 import { UserAccess } from './user/user.access.model';
 import { UserModule } from './user/user.module';
+import { AuthModule } from "./auth/auth.module";
+//import { AuthModule } from "./auth/auth.module";
 
 @Module({
   imports: [
@@ -48,6 +50,7 @@ import { UserModule } from './user/user.module';
       ],
       autoLoadModels: true,
     }),
+    AuthModule,
     QuizModule,
     UserModule,
     PermissionModule,
