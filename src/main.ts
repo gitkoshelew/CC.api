@@ -20,7 +20,7 @@ async function bootstrap() {
   SwaggerModule.setup('/api/docs', app, document);
 
   await app.listen(PORT, () =>
-    console.warn(`[nest main] -> server started on port ${PORT}`),
+    console.log(`[nest main] -> server started on http://localhost:${PORT}`),
   );
 }
 bootstrap();

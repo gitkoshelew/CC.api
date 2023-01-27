@@ -8,10 +8,11 @@ export class CreateQuestionDto {
   })
   readonly title: string;
   @ApiProperty({
-      example:
-        {options: ["answer1", "answer2", "answer3", "answer4"],
-        correctAnswer: ["answer2"]},
-      description: 'sample of question at JSON datatype/ required',
+    example: {
+      options: ['answer1', 'answer2', 'answer3', 'answer4'],
+      correctAnswer: ['answer2'],
+    },
+    description: 'sample of question at JSON datatype/ required',
   })
   readonly content: JSON;
   @ApiProperty({

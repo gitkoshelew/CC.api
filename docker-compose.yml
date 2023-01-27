@@ -13,7 +13,7 @@ services:
     ports:
       - ${PORT}:${PORT}
       - ${ALTERNATIVE_PORT}:${ALTERNATIVE_PORT}
-    command: yarn start:dev
+    command: yarn start
     depends_on:
       - postgres
     restart: always
