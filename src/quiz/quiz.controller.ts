@@ -46,10 +46,7 @@ export class QuizController {
   @HttpCode(HttpStatus.CREATED)
   async create(@Body() createQuizDto: CreateQuizDto) {
     const res = await this.quizService.createQuiz(createQuizDto);
-    this.notificationService.created(
-      NotificationTarget.QUIZ,
-      JSON.stringify(createQuizDto),
-    );
+    this.notificationService.created(NotificationTarget.QUIZ, createQuizDto);
     return res;
   }
 
@@ -58,10 +55,7 @@ export class QuizController {
   @Put('/add')
   async addQuestionToQuiz(@Body() dto: AddQuestionDto) {
     const res = await this.quizService.addQuestionToQuiz(dto);
-    this.notificationService.created(
-      NotificationTarget.QUESTION,
-      JSON.stringify(dto),
-    );
+    this.notificationService.created(NotificationTarget.QUESTION, dto);
     return res;
   }
 

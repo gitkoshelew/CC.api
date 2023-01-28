@@ -35,10 +35,7 @@ export class QuestionsController {
   @Post()
   async create(@Body() dto: CreateQuestionDto) {
     const res = await this.questionService.createQuestion(dto);
-    this.notificationService.created(
-      NotificationTarget.QUESTION,
-      JSON.stringify(dto),
-    );
+    this.notificationService.created(NotificationTarget.QUESTION, dto);
     return res;
   }
 
@@ -47,10 +44,7 @@ export class QuestionsController {
   @Delete('/:id')
   async deleteById(@Param('id') id: number) {
     const res = await this.questionService.deleteQuestionById(id);
-    this.notificationService.deleted(
-      NotificationTarget.QUESTION,
-      JSON.stringify(res),
-    );
+    this.notificationService.deleted(NotificationTarget.QUESTION, res);
     return res;
   }
 

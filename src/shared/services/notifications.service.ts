@@ -36,20 +36,29 @@ export class NotificationsService {
     }
   }
   public async created(notificationTarget: NotificationTarget, message: any) {
-    await this.notify(notificationTarget + '.created', message);
+    await this.notify(notificationTarget, '.created', message);
   }
   public async updated(notificationTarget: NotificationTarget, message: any) {
-    await this.notify(notificationTarget + '.updated', message);
+    await this.notify(notificationTarget, '.updated', message);
   }
   public async deleted(notificationTarget: NotificationTarget, message: any) {
-    await this.notify(notificationTarget + '.deleted', message);
+    await this.notify(notificationTarget, '.deleted', message);
   }
-  private async notify(topic: string, message: any) {
-    console.log({ topic, message }, '-----------------');
+  private async notify(
+    target: NotificationTarget,
+    topic: string,
+    message: any,
+  ) {
     this.channel.publish(
       this.exchangeName,
       this.channelName + '.' + topic,
-      Buffer.from(message),
+      Buffer.from(
+        JSON.stringify({
+          target,
+          action: topic,
+          message,
+        }),
+      ),
     );
   }
 }
