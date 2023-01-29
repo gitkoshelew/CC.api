@@ -20,4 +20,11 @@ export class InventoryController {
   getQuestionsTypes() {
     return this.inventorySerivce.getQuestionsTypes();
   }
+
+  @ApiOperation({ summary: 'Method to get all themes of quiz' })
+  @ApiResponse({ status: 200 })
+  @Get('themes')
+  getQuizThemes() {
+    return this.inventorySerivce.getAllThemes();
+  }
 }

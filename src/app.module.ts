@@ -21,9 +21,6 @@ import { Quiz } from './quiz/quiz.model';
 import { Quiz_Question } from './quiz/quiz.question.model';
 import { UserAccess } from './user/user.access.model';
 import { UserModule } from './user/user.module';
-
-import { InventoryController } from './inventory/inventory.controller';
-import { InventoryService } from './inventory/inventory.service';
 import { InventoryModule } from './inventory/inventory.module';
 
 @Module({
@@ -62,7 +59,7 @@ import { InventoryModule } from './inventory/inventory.module';
     InventoryModule,
   ],
 
-  controllers: [AppController, InventoryController],
-  providers: [AppService, InventoryService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
