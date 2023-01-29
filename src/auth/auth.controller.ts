@@ -4,6 +4,7 @@ import { CreateUserDto } from '../user/dto/create-user.dto';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { LoginUserDto } from './dto/login-user.dto';
 import { Response } from 'express';
+import { Cookies } from './decorators/cookies.decorator';
 
 @ApiTags('Authorization')
 @Controller('/api/auth')
@@ -64,5 +65,33 @@ export class AuthController {
       secure: true,
     });
     return { accessToken: jwtPair.accessToken };
+  }
+
+  @ApiOperation({ summary: 'Generate new pair of access and refresh tokens' })
+  @ApiResponse({
+    status: 200,
+    description:
+      'Returns JWT accessToken (expired after 5 minutes) in body and JWT refreshToken in cookie (http-only, secure) (expired after 24 hours).',
+  })
+  @ApiResponse({
+    status: 401,
+    description:
+      'If the JWT refreshToken inside cookie is missing, expired or incorrect',
+  })
+  @Post('/refresh-token')
+  @HttpCode(200)
+  async updateToken(
+    @Cookies() cookies,
+    @Res({ passthrough: true }) response: Response,
+  ) {
+    const updateToken = await this.authService.updateToken(
+      cookies.refreshToken,
+    );
+
+    response.cookie('refreshToken', updateToken.refreshToken, {
+      httpOnly: true,
+      secure: true,
+    });
+    return { accessToken: updateToken.accessToken };
   }
 }

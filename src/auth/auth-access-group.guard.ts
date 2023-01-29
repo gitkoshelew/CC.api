@@ -43,7 +43,6 @@ export class AuthAccessGroupGuard implements CanActivate {
         }
       }
       return false;
-
     } catch (e) {
       throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
     }
