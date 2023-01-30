@@ -10,8 +10,6 @@ import { LoginUserDto } from './dto/login-user.dto';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { User } from '../user/user.model';
-import { AddAccessDto } from '../user/dto/addAccessToUser.dto';
-import { AccessGroup } from '../access-group/access-group.model';
 
 @Injectable()
 export class AuthService {
@@ -41,25 +39,16 @@ export class AuthService {
       ...userDto,
       password: passwordHash,
     });
-
-    const addAccessGroupForUser: AddAccessDto = {
-      userId: user.id,
-      accessGroupId: 1,
-    };
-    await this.userService.addAccessToUser(addAccessGroupForUser);
-    const findUserWithAccessGroup = await this.userService.findUserByEmail(
-      userDto.email,
-    );
-    return this.generateToken(user, findUserWithAccessGroup.access);
+    return this.generateToken(user);
   }
 
   async login(userDto: LoginUserDto) {
     const user = await this.validateUser(userDto);
-    return this.generateToken(user, user.access);
+    return this.generateToken(user);
   }
 
-  private async generateToken(user: User, accessGroup: AccessGroup[]) {
-    const payload = { userId: user.id, accessGroup: accessGroup };
+  private async generateToken(user: User) {
+    const payload = { userId: user.id };
     return {
       accessToken: this.jwtService.sign(payload, { expiresIn: '1h' }),
       refreshToken: this.jwtService.sign(payload, { expiresIn: '24h' }),
@@ -96,6 +85,6 @@ export class AuthService {
   async updateToken(refreshToken: string) {
     const user = await this.verifyToken(refreshToken);
     if (!user) throw new UnauthorizedException([]);
-    return this.generateToken(user, user.accessGroup);
+    return this.generateToken(user);
   }
 }
