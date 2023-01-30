@@ -46,6 +46,18 @@ services:
     volumes:
       - pgadmin:/root/.pgadmin
 
+  chat-service:
+    container_name: chat-service
+    build: ./src/chat-service
+    env_file:
+      - ./src/chat-service/.env
+    volumes:
+      - ./src/chat-service:/chat
+      - /chat/node_modules
+    ports:
+      - ${CHAT_SERVICE_PORT}:${CHAT_SERVICE_PORT}
+    restart: always
+
   rmq:
     container_name: rmq
     image: rabbitmq:3-management
@@ -56,13 +68,6 @@ services:
       - "5672:5672"
     restart: always
 
-
 volumes:
   pgdata:
   pgadmin:
-
-
-
-
-
-
