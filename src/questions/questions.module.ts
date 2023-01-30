@@ -10,6 +10,7 @@ import { Quiz_Question } from '../quiz/quiz.question.model';
 import { TopicModule } from '../topic/topic.module';
 import { ModerationModule } from '../moderation/moderation.module';
 import { AuthModule } from '../auth/auth.module';
+import { SharedModule } from '../shared/shared.module';
 
 @Module({
   providers: [QuestionsService],
@@ -24,6 +25,7 @@ import { AuthModule } from '../auth/auth.module';
     ]),
     TopicModule,
     ModerationModule,
+    SharedModule,
     AuthModule,
   ],
   exports: [QuestionsService],

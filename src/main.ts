@@ -30,7 +30,10 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('/api/docs', app, document);
+
   app.use(cookieParser());
-  await app.listen(PORT, () => console.log(`server started on port ${PORT}`));
+  await app.listen(PORT, () =>
+    console.log(`[nest main] -> server started on http://localhost:${PORT}`),
+  );
 }
 bootstrap();

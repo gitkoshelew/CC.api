@@ -18,7 +18,7 @@ export class ModerationService {
   }
 
   async getModerationById(id: number) {
-    return await this.moderationRepository.findOne({where: { id }})
+    return await this.moderationRepository.findOne({ where: { id } });
   }
 
   async deleteModerationById(id: number) {

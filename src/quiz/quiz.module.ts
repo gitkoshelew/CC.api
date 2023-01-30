@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { Module } from '@nestjs/common';
 import { QuizController } from './quiz.controller';
 import { QuizService } from './quiz.service';
@@ -15,6 +16,7 @@ import { AuthModule } from '../auth/auth.module';
   imports: [
     SequelizeModule.forFeature([Quiz, Question, Quiz_Question, User]),
     QuestionsModule,
+    SharedModule,
     AuthModule,
   ],
 })
