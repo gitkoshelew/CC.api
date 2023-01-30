@@ -15,6 +15,17 @@ async function bootstrap() {
     .setDescription(
       'This is description for all methods that available in our app. You can find ALL endpoints and examples of data to ANY available method and responce',
     )
+    .addBearerAuth(
+      {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+        name: 'JWT',
+        description: 'Enter JWT token',
+        in: 'header',
+      },
+      'JWT-auth', // This name here is important for matching up with @ApiBearerAuth() in your controller!
+    )
     .setVersion('1.0.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);
