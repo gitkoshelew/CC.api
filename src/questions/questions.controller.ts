@@ -1,10 +1,24 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  UseGuards,
+} from '@nestjs/common';
 import { QuestionsService } from './questions.service';
 import { CreateQuestionDto } from './dto/create-question.dto';
-import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 import { Question } from './questions.model';
-import { Put } from "@nestjs/common/decorators";
-import { AddModerationToQuestionDto } from "./dto/addModerationToQuestion.dto";
+import { Put } from '@nestjs/common/decorators';
+import { AddModerationToQuestionDto } from './dto/addModerationToQuestion.dto';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @ApiTags('Question')
 @Controller('api/questions')
@@ -25,24 +39,42 @@ export class QuestionsController {
     return this.questionService.getQuestionById(id);
   }
 
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth('JWT-auth')
   @ApiOperation({ summary: 'Method to create question' })
   @ApiResponse({ status: 201, type: Question })
+  @ApiResponse({
+    status: 401,
+    description: 'If user is not authorized',
+  })
   @Post()
   create(@Body() dto: CreateQuestionDto) {
     return this.questionService.createQuestion(dto);
   }
 
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth('JWT-auth')
   @ApiOperation({ summary: 'Method to delete question' })
   @ApiResponse({ status: 200, type: Question })
+  @ApiResponse({
+    status: 401,
+    description: 'If user is not authorized',
+  })
   @Delete('/:id')
   deleteById(@Param('id') id: number) {
     return this.questionService.deleteQuestionById(id);
   }
 
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth('JWT-auth')
   @ApiOperation({ summary: 'add moderation to question' })
   @ApiResponse({ status: 200, type: Question })
+  @ApiResponse({
+    status: 401,
+    description: 'If user is not authorized',
+  })
   @Put('/add')
-  addPermissionToAccessGroup(@Body() dto: AddModerationToQuestionDto ) {
-    return this.questionService.addModerationToQuestion(dto)
+  addPermissionToAccessGroup(@Body() dto: AddModerationToQuestionDto) {
+    return this.questionService.addModerationToQuestion(dto);
   }
 }

@@ -8,7 +8,8 @@ import { Moderation } from '../moderation/moderation.model';
 import { Quiz } from '../quiz/quiz.model';
 import { Quiz_Question } from '../quiz/quiz.question.model';
 import { TopicModule } from '../topic/topic.module';
-import { ModerationModule } from "../moderation/moderation.module";
+import { ModerationModule } from '../moderation/moderation.module';
+import { AuthModule } from '../auth/auth.module';
 
 @Module({
   providers: [QuestionsService],
@@ -22,7 +23,8 @@ import { ModerationModule } from "../moderation/moderation.module";
       Quiz_Question,
     ]),
     TopicModule,
-    ModerationModule
+    ModerationModule,
+    AuthModule,
   ],
   exports: [QuestionsService],
 })
