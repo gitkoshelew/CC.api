@@ -37,9 +37,10 @@ export class Question extends Model<Question, QuestionCreationAttrs> {
   title: string;
 
   @ApiProperty({
-    example:
-      {options: ["answer1", "answer2", "answer3", "answer4"],
-      correctAnswer: ["answer2"]},
+    example: {
+      options: ['answer1', 'answer2', 'answer3', 'answer4'],
+      correctAnswer: ['answer2'],
+    },
     description: 'sample of question at JSON datatype/ required',
   })
   @Column({ type: DataType.JSON, allowNull: false })
@@ -92,7 +93,8 @@ export class Question extends Model<Question, QuestionCreationAttrs> {
 
   @ApiProperty({
     example: 1,
-    description: 'id of moderation if questions needs of moderation (not enough correct)',
+    description:
+      'id of moderation if questions needs of moderation (not enough correct)',
   })
   @ForeignKey(() => Moderation)
   @Column({ type: DataType.INTEGER })

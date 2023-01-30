@@ -27,9 +27,9 @@ export class UserService {
     return await this.userRepository.findAll({ include: { all: true } });
   }
 
-  async deleteUserById(id: number){
-    const user = await this.userRepository.findOne({where: {id}})
-    await user.destroy()
+  async deleteUserById(id: number) {
+    const user = await this.userRepository.findOne({ where: { id } });
+    await user.destroy();
   }
 
   async addAccessToUser(dto: AddAccessDto) {
