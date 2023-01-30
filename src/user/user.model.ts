@@ -67,8 +67,8 @@ export class User extends Model<User, UserCreationAttrs> {
   password: string;
 
   @ApiProperty({
-    example: 'change / rewrite',
-    description: 'status for your question on moderation list / enum',
+    example: 'banned / free',
+    description: 'status of user for doing something (ban / free) / enum',
   })
   @Column({ type: DataType.ENUM, values: ['banned', 'free'] })
   status: ModerationStatus;

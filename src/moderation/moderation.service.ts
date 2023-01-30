@@ -16,4 +16,16 @@ export class ModerationService {
   async getAllStatus() {
     return await this.moderationRepository.findAll({ include: { all: true } });
   }
+
+  async getModerationById(id: number) {
+    return await this.moderationRepository.findOne({ where: { id } });
+  }
+
+  async deleteModerationById(id: number) {
+    const permission = await this.moderationRepository.findOne({
+      where: { id },
+    });
+    await permission.destroy();
+    return await this.moderationRepository.findAll({ include: { all: true } });
+  }
 }

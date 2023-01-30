@@ -8,8 +8,10 @@ export class CreateQuestionDto {
   })
   readonly title: string;
   @ApiProperty({
-    example:
-      '{"question": "blablabla", "answers": { "wrong" : "bla", "correct" : "blabla"}}',
+    example: {
+      options: ['answer1', 'answer2', 'answer3', 'answer4'],
+      correctAnswer: ['answer2'],
+    },
     description: 'sample of question at JSON datatype/ required',
   })
   readonly content: JSON;
@@ -29,13 +31,13 @@ export class CreateQuestionDto {
   })
   readonly description: string;
   @ApiProperty({
-    example: '1',
+    example: 1,
     description: 'topic of the question / required',
   })
   readonly topicId: number;
   @ApiProperty({
-    example: '1000',
+    example: 1000,
     description: 'timer in seconds / required',
   })
-  timer: number;
+  readonly timer: number;
 }

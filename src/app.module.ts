@@ -21,11 +21,12 @@ import { Quiz } from './quiz/quiz.model';
 import { Quiz_Question } from './quiz/quiz.question.model';
 import { UserAccess } from './user/user.access.model';
 import { UserModule } from './user/user.module';
+import { InventoryModule } from './inventory/inventory.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: `.${process.env.NODE_ENV}.env`,
+      envFilePath: `.${process.env.NODE_ENV ?? ''}.env`,
     }),
     SequelizeModule.forRoot({
       dialect: 'postgres',
@@ -55,6 +56,7 @@ import { UserModule } from './user/user.module';
     TopicModule,
     ModerationModule,
     QuestionsModule,
+    InventoryModule,
   ],
 
   controllers: [AppController],

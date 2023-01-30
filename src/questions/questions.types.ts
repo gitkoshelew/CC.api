@@ -17,4 +17,5 @@ export interface QuestionCreationAttrs {
   description: string;
   correctAnswer: string;
   topic: string;
+  timer: number;
 }
