@@ -15,11 +15,16 @@ import { Quiz } from './quiz.model';
 import { AddQuestionDto } from './dto/addQuestion.dto';
 import { Put } from '@nestjs/common/decorators';
 import { Quiz_Question } from './quiz.question.model';
+import { NotificationsService } from 'src/shared/services/notifications.service';
+import { NotificationTarget } from 'src/shared/types/notificationTarget.enum';
 
 @ApiTags('Quiz')
 @Controller('/api/quiz')
 export class QuizController {
-  constructor(private readonly quizService: QuizService) {}
+  constructor(
+    private readonly quizService: QuizService,
+    private readonly notificationService: NotificationsService,
+  ) {}
 
   @ApiOperation({ summary: 'Method to view all quizzes' })
   @ApiResponse({ status: 200, type: Quiz })
@@ -39,21 +44,27 @@ export class QuizController {
   @ApiResponse({ status: 201, type: Quiz })
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  create(@Body() createQuizDto: CreateQuizDto) {
-    return this.quizService.createQuiz(createQuizDto);
+  async create(@Body() createQuizDto: CreateQuizDto) {
+    const res = await this.quizService.createQuiz(createQuizDto);
+    this.notificationService.created(NotificationTarget.QUIZ, createQuizDto);
+    return res;
   }
 
   @ApiOperation({ summary: 'Method add question to quiz' })
   @ApiResponse({ status: 201, type: Quiz_Question })
   @Put('/add')
-  addQuestionToQuiz(@Body() dto: AddQuestionDto) {
-    return this.quizService.addQuestionToQuiz(dto);
+  async addQuestionToQuiz(@Body() dto: AddQuestionDto) {
+    const res = await this.quizService.addQuestionToQuiz(dto);
+    this.notificationService.created(NotificationTarget.QUESTION, dto);
+    return res;
   }
 
   @ApiOperation({ summary: 'Method to delete question by id' })
   @ApiResponse({ status: 200 })
   @Delete(':id')
-  deleteQuizById(@Param('id') id: number) {
-    return this.quizService.deleteQuizById(id);
+  async deleteQuizById(@Param('id') id: number) {
+    const res = await this.quizService.deleteQuizById(id);
+    this.notificationService.deleted(NotificationTarget.QUIZ, id);
+    return res;
   }
 }

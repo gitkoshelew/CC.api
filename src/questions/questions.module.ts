@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { Module } from '@nestjs/common';
 import { QuestionsService } from './questions.service';
 import { QuestionsController } from './questions.controller';
@@ -23,6 +24,7 @@ import { ModerationModule } from '../moderation/moderation.module';
     ]),
     TopicModule,
     ModerationModule,
+    SharedModule,
   ],
   exports: [QuestionsService],
 })
