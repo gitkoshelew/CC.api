@@ -8,6 +8,4 @@ RUN yarn
 
 COPY . .
 
-COPY ./dist ./dist
-
 CMD ["yarn", "start:dev"]

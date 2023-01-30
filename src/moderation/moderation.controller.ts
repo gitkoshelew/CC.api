@@ -1,15 +1,14 @@
-import { Body, Controller, Get, Param, Post } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { ModerationService } from './moderation.service';
 import { CreateModerationDto } from './dto/create-moderation.dto';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Moderation } from './moderation.model';
-import { Delete } from "@nestjs/common/decorators";
+import { Delete } from '@nestjs/common/decorators';
 
 @ApiTags('Moderation')
 @Controller('api/moderation')
 export class ModerationController {
-  constructor(private moderationService: ModerationService) {
-  }
+  constructor(private moderationService: ModerationService) {}
 
   @ApiOperation({ summary: 'Method to create moderation status' })
   @ApiResponse({ status: 201, type: Moderation })
