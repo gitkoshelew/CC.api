@@ -4,6 +4,8 @@ import { CreatePermissionDto } from './dto/create-permission.dto';
 import { PermissionService } from './permission.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Permission } from './permission.model';
+import { CustomErrorHandler } from 'src/utils/custom-error-handler';
+import { HttpErrorTypes } from 'src/utils/error.types';
 
 @ApiTags('Permission')
 @Controller('api/permission')
@@ -21,7 +23,11 @@ export class PermissionController {
   @ApiResponse({ status: 200, type: Permission })
   @Delete(':id')
   deletePermission(@Param('id') id: number) {
-    return this.permissionService.deletePermissionById(id);
+    try {
+      return this.permissionService.deletePermissionById(id);
+    } catch (error) {
+      throw new CustomErrorHandler('Check your DTO', HttpErrorTypes.NOT_FOUND);
+    }
   }
 
   @ApiOperation({ summary: 'vue all permissions' })

@@ -1,0 +1,12 @@
+import { HttpStatus } from '@nestjs/common';
+
+export enum HttpErrorTypes {
+  BAD_REQUEST = HttpStatus.BAD_REQUEST,
+  UNAUTHORIZED = HttpStatus.UNAUTHORIZED,
+  FORBIDDEN = HttpStatus.FORBIDDEN,
+  NOT_FOUND = HttpStatus.NOT_FOUND,
+  REQUEST_TIMEOUT = HttpStatus.REQUEST_TIMEOUT,
+  TOO_MANY_REQUEST = HttpStatus.TOO_MANY_REQUESTS,
+  INTERNAL_SERVER_ERROR = HttpStatus.INTERNAL_SERVER_ERROR,
+  SERVICE_UNAVAILABLE = HttpStatus.SERVICE_UNAVAILABLE,
+}

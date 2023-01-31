@@ -2,6 +2,7 @@ import * as dotenv from 'dotenv';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { HttpExceptionFilter } from './utils/custom-exception-filter';
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('/api/docs', app, document);
 
+  app.useGlobalFilters(new HttpExceptionFilter());
   await app.listen(PORT, () =>
     console.log(`[nest main] -> server started on http://localhost:${PORT}`),
   );
