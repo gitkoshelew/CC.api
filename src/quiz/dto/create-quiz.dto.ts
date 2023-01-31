@@ -1,8 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateQuizDto {
-  @ApiProperty({ example: 1, description: 'foreign key' })
-  readonly authorId: number;
   @ApiProperty({
     example: 'NodeJS',
     description: 'required name / not uniq / string',
@@ -13,4 +11,9 @@ export class CreateQuizDto {
     description: 'required field / not uniq / string',
   })
   readonly description: string;
+}
+
+export class CreateQuizDBModel {
+  readonly authorId: number;
+  readonly title: string;
 }

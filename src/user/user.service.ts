@@ -4,6 +4,8 @@ import { User } from './user.model';
 import { CreateUserDto } from './dto/create-user.dto';
 import { AddAccessDto } from './dto/addAccessToUser.dto';
 import { AccessGroupService } from 'src/access-group/access-group.service';
+import { AccessGroup } from '../access-group/access-group.model';
+import { Permission } from '../permission/permission.model';
 
 @Injectable()
 export class UserService {
@@ -44,5 +46,34 @@ export class UserService {
       'Пользователь или роль не найдены',
       HttpStatus.NOT_FOUND,
     );
+  }
+
+  async findUserByEmail(email: string) {
+    return this.userRepository.findOne({
+      where: { email },
+      include: [
+        {
+          model: AccessGroup,
+          through: {
+            attributes: [],
+          },
+          include: [
+            {
+              model: Permission,
+              through: {
+                attributes: [],
+              },
+            },
+          ],
+        },
+      ],
+    });
+  }
+
+  async findUserByNickname(nickname: string) {
+    return this.userRepository.findOne({
+      where: { nickname },
+      include: { all: true },
+    });
   }
 }

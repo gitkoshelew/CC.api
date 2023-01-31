@@ -1,4 +1,3 @@
-import { SharedModule } from './../shared/shared.module';
 import { Module } from '@nestjs/common';
 import { QuestionsService } from './questions.service';
 import { QuestionsController } from './questions.controller';
@@ -10,6 +9,8 @@ import { Quiz } from '../quiz/quiz.model';
 import { Quiz_Question } from '../quiz/quiz.question.model';
 import { TopicModule } from '../topic/topic.module';
 import { ModerationModule } from '../moderation/moderation.module';
+import { AuthModule } from '../auth/auth.module';
+import { SharedModule } from '../shared/shared.module';
 
 @Module({
   providers: [QuestionsService],
@@ -25,6 +26,7 @@ import { ModerationModule } from '../moderation/moderation.module';
     TopicModule,
     ModerationModule,
     SharedModule,
+    AuthModule,
   ],
   exports: [QuestionsService],
 })
