@@ -8,4 +8,9 @@ export class CreateQuizDto {
     description: 'required name / not uniq / string',
   })
   readonly title: string;
+  @ApiProperty({
+    example: 'Some description and/or information of quiz',
+    description: 'required field / not uniq / string',
+  })
+  readonly description: string;
 }

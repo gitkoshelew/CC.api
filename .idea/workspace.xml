@@ -4,44 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0a5d3cc-808d-4c7d-8d54-4fff7de41be8" name="Changes" comment="feat: added .gitignore dependencies">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chat-service/src/app.controller.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/chat-service/src/app.controller.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chat-service/src/app.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/chat-service/src/app.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chat-service/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/chat-service/src/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chat-service/src/app.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/chat-service/src/app.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chat-service/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/chat-service/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chat-service/test/app.e2e-spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/chat-service/test/app.e2e-spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/inventory/inventory.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/inventory/inventory.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/inventory/inventory.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/inventory/inventory.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/inventory/inventory.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/inventory/inventory.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moderation/moderation.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/moderation/moderation.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moderation/moderation.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/moderation/moderation.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moderation/moderation.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/moderation/moderation.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moderation/moderation.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/moderation/moderation.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/questions/dto/addModerationToQuestion.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/questions/dto/addModerationToQuestion.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/questions/dto/create-question.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/questions/dto/create-question.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/questions/questions.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/questions/questions.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/questions/questions.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/questions/questions.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/questions/questions.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/questions/questions.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/questions/questions.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/questions/questions.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/questions/questions.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/questions/questions.types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/quiz/dto/addQuestion.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/quiz/dto/addQuestion.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/quiz/dto/create-quiz.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/quiz/dto/create-quiz.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/quiz/quiz.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/quiz/quiz.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/quiz/quiz.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/quiz/quiz.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/quiz/quiz.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/quiz/quiz.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/services/notifications.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/services/notifications.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/shared.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/shared.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/types/notificationTarget.enum.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/types/notificationTarget.enum.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/topic/topic.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/topic/topic.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/user.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/user.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/user.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/user.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/user.service.ts" afterDir="false" />
-    </list>
+    <list default="true" id="e0a5d3cc-808d-4c7d-8d54-4fff7de41be8" name="Changes" comment="feat: added .gitignore dependencies" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,22 +25,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "E:/entership/CC.api",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "ts.external.directory.path": "E:\\entership\\CC.api\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/entership/CC.api&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;E:\\entership\\CC.api\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\entership\CC.api\src\access-group\dto" />
