@@ -11,7 +11,12 @@ import {
 } from '@nestjs/common';
 import { QuizService } from './quiz.service';
 import { CreateQuizDto } from './dto/create-quiz.dto';
-import { ApiOperation, ApiResponse, ApiTags, ApiBearerAuth } from '@nestjs/swagger';
+import {
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
+  ApiBearerAuth,
+} from '@nestjs/swagger';
 import { Quiz } from './quiz.model';
 import { AddQuestionDto } from './dto/addQuestion.dto';
 import { Put } from '@nestjs/common/decorators';
@@ -54,12 +59,18 @@ export class QuizController {
   })
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  async create(@Body() createQuizDto: CreateQuizDto, @UserInReq() user: UserReqDto) {
+  async create(
+    @Body() createQuizDto: CreateQuizDto,
+    @UserInReq() user: UserReqDto,
+  ) {
     const res = await this.quizService.createQuiz({
       ...createQuizDto,
       authorId: user.userId,
     });
-    this.notificationService.created(NotificationTarget.QUIZ, createQuizDto);
+    this.notificationService.created(NotificationTarget.QUIZ, {
+      ...createQuizDto,
+      authorId: user.userId,
+    });
     return res;
   }
 
