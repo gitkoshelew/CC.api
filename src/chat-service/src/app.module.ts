@@ -15,7 +15,7 @@ import { MessageModule } from './message/message.module';
       port: Number(process.env.POSTGRES_PORT),
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
-      database: 'chat',
+      database: process.env.POSTGRES_DB,
       autoLoadModels: true,
       models: [ChatEntity, MessageEntity, MemberEntity],
     }),
