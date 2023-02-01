@@ -1,8 +1,9 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { ModerationService } from './moderation.service';
 import { CreateModerationDto } from './dto/create-moderation.dto';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Moderation } from './moderation.model';
+import { Delete } from '@nestjs/common/decorators';
 
 @ApiTags('Moderation')
 @Controller('api/moderation')
@@ -19,7 +20,21 @@ export class ModerationController {
   @ApiOperation({ summary: 'Method to get all status checkpoints' })
   @ApiResponse({ status: 200, type: [Moderation] })
   @Get()
-  getAllStatuses() {
+  getAllModerations() {
     return this.moderationService.getAllStatus();
+  }
+
+  @ApiOperation({ summary: 'Method to get all status checkpoints' })
+  @ApiResponse({ status: 200, type: Moderation })
+  @Get(':id')
+  getModerationById(@Param('id') id: number) {
+    return this.moderationService.getModerationById(id);
+  }
+
+  @ApiOperation({ summary: 'delete moderation' })
+  @ApiResponse({ status: 200, type: Moderation })
+  @Delete(':id')
+  deleteModeration(@Param('id') id: number) {
+    return this.moderationService.deleteModerationById(id);
   }
 }

@@ -1,5 +1,11 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { CreateQuizDto } from './dto/create-quiz.dto';
+import {
+  ForbiddenException,
+  HttpException,
+  HttpStatus,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
+import { CreateQuizDBModel } from './dto/create-quiz.dto';
 import { InjectModel } from '@nestjs/sequelize';
 import { Quiz } from './quiz.model';
 import { AddQuestionDto } from './dto/addQuestion.dto';
@@ -23,8 +29,8 @@ export class QuizService {
     });
   }
 
-  async createQuiz(createQuizDto: CreateQuizDto) {
-    return await this.quizRepository.create(createQuizDto);
+  async createQuiz(createQuizDBModel: CreateQuizDBModel) {
+    return await this.quizRepository.create(createQuizDBModel);
   }
 
   async addQuestionToQuiz(dto: AddQuestionDto) {
@@ -39,8 +45,10 @@ export class QuizService {
     );
   }
 
-  async deleteQuizById(id: number) {
+  async deleteQuizById(id: number, userId: number) {
     const quiz = await this.getById(id);
+    if (!quiz) throw new NotFoundException();
+    if (quiz.authorId !== userId) throw new ForbiddenException();
     await quiz.destroy();
   }
 }
