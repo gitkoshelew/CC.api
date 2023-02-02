@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import * as dotenv from 'dotenv';
 import { AppModule } from './app.module';
+import { axios } from 'axios';
 
 dotenv.config();
 

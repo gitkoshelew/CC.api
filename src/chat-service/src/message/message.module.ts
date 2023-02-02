@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { MessageEntity } from './entities/message.entity';
 import { MessageController } from './message.controller';
 import { MessageService } from './message.service';
+import { MessageModel } from './models/message.model';
 
 @Module({
-  imports: [SequelizeModule.forFeature([MessageEntity])],
+  imports: [SequelizeModule.forFeature([MessageModel])],
   controllers: [MessageController],
   providers: [MessageService],
 })

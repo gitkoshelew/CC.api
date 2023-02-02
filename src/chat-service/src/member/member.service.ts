@@ -2,13 +2,13 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { CreateMemberDto } from './dto/create-member.dto';
 import { UpdateMemberDto } from './dto/update-member.dto';
-import { MemberEntity } from './entities/member.entity';
+import { MemberModel } from './models/member.model';
 
 @Injectable()
 export class MemberService {
   constructor(
-    @InjectModel(MemberEntity)
-    private memberModel: typeof MemberEntity,
+    @InjectModel(MemberModel)
+    private memberModel: typeof MemberModel,
   ) {}
 
   create(createMemberDto: CreateMemberDto) {

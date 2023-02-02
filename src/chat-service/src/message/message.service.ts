@@ -2,13 +2,13 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { CreateMessageDto } from './dto/create-message.dto';
 import { UpdateMessageDto } from './dto/update-message.dto';
-import { MessageEntity } from './entities/message.entity';
+import { MessageModel } from './models/message.model';
 
 @Injectable()
 export class MessageService {
   constructor(
-    @InjectModel(MessageEntity)
-    private messageModel: typeof MessageEntity,
+    @InjectModel(MessageModel)
+    private messageModel: typeof MessageModel,
   ) {}
 
   create(createMessageDto: CreateMessageDto) {

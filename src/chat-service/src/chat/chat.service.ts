@@ -2,13 +2,13 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { CreateChatDto } from './dto/create-chat.dto';
 import { UpdateChatDto } from './dto/update-chat.dto';
-import { ChatEntity } from './entities/chat.entity';
+import { ChatModel } from './models/chat.model';
 
 @Injectable()
 export class ChatService {
   constructor(
-    @InjectModel(ChatEntity)
-    private chatModel: typeof ChatEntity,
+    @InjectModel(ChatModel)
+    private chatModel: typeof ChatModel,
   ) {}
 
   create(createChatDto: CreateChatDto) {

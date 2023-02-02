@@ -3,7 +3,7 @@ export class Message {}
 import { Column, Model, Table } from 'sequelize-typescript';
 
 @Table
-export class MessageEntity extends Model {
+export class MessageModel extends Model {
   @Column
   chat_id: string;
 

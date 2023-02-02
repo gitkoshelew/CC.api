@@ -1,10 +1,10 @@
 import { Column, Model, Table } from 'sequelize-typescript';
 
 @Table
-export class MemberEntity extends Model {
+export class ChatModel extends Model {
   @Column
-  user_id: string;
+  creator_id: string;
 
   @Column
-  chat_id: string;
+  name: string;
 }
