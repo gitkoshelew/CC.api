@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0a5d3cc-808d-4c7d-8d54-4fff7de41be8" name="Changes" comment="feat: added .gitignore dependencies" />
+    <list default="true" id="e0a5d3cc-808d-4c7d-8d54-4fff7de41be8" name="Changes" comment="feat: added .gitignore dependencies">
+      <change afterPath="$PROJECT_DIR$/config/config.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/20230203062916-Moderation.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rmq-sockets/src/subscriber.ts" beforeDir="false" afterPath="$PROJECT_DIR$/rmq-sockets/src/subscriber.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/moderation/dto/create-moderation.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/moderation/dto/create-moderation.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/questions/questions.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/questions/questions.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/questions/questions.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/questions/questions.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/quiz/quiz.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/quiz/quiz.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,6 +30,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectId" id="2JZzHGQxsJw0yOJHfDJh2GCKEYz" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -25,28 +41,48 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/entership/CC.api&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;E:\\entership\\CC.api\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "E:/entership/CC.api",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "ts.external.directory.path": "E:\\entership\\CC.api\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\entership\CC.api\src\access-group\dto" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.start:dev">
+  <component name="RunManager" selected="npm.migrate:up">
+    <configuration name="migrate:undo" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="migrate:undo" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="migrate:up" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="migrate:up" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -70,6 +106,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.start:dev" />
+        <item itemvalue="npm.migrate:up" />
+        <item itemvalue="npm.migrate:undo" />
         <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
@@ -96,6 +134,10 @@
       <workItem from="1674546630927" duration="1338000" />
       <workItem from="1674566997820" duration="344000" />
       <workItem from="1674643369477" duration="1341000" />
+      <workItem from="1675231544133" duration="7334000" />
+      <workItem from="1675253850243" duration="3959000" />
+      <workItem from="1675270651776" duration="1157000" />
+      <workItem from="1675340943762" duration="8405000" />
     </task>
     <task id="LOCAL-00001" summary="fix: add all points">
       <created>1672848188124</created>

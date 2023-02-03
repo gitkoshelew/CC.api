@@ -2,8 +2,8 @@ import { connect } from 'amqplib';
 
 class SubscriberFactory {
   private channelName = 'notifications';
-  private queueName: string;
-  private exchangeName: string;
+  private readonly queueName: string;
+  private readonly exchangeName: string;
   private listeners: ((message: Buffer) => void)[] = [];
 
   constructor() {
@@ -22,8 +22,8 @@ class SubscriberFactory {
       const q = await channel.assertQueue(this.queueName, {
         durable: true,
       });
-      channel.bindQueue(q.queue, this.exchangeName, this.channelName + '.*');
-      channel.consume(q.queue, (msg) => {
+      await channel.bindQueue(q.queue, this.exchangeName, this.channelName + '.*');
+      await channel.consume(q.queue, (msg) => {
         if (msg) {
           console.log(
             '[Subscription -> received a message]',
