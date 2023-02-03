@@ -5,26 +5,26 @@ import { InventoryService } from './inventory.service';
 @ApiTags('Inventory')
 @Controller('api/inventory')
 export class InventoryController {
-  constructor(private readonly inventorySerivce: InventoryService) {}
+  constructor(private readonly inventoryService: InventoryService) {}
 
   @ApiOperation({ summary: 'Method to get difficulty of questions' })
   @ApiResponse({ status: 201 })
   @Get('difficulty')
   getDifficultyTypes() {
-    return this.inventorySerivce.getDifficultyTypes();
+    return this.inventoryService.getDifficultyTypes();
   }
 
   @ApiOperation({ summary: 'Method to get types of questions' })
   @ApiResponse({ status: 200 })
   @Get('types')
   getQuestionsTypes() {
-    return this.inventorySerivce.getQuestionsTypes();
+    return this.inventoryService.getQuestionsTypes();
   }
 
   @ApiOperation({ summary: 'Method to get all themes of quiz' })
   @ApiResponse({ status: 200 })
   @Get('themes')
   getQuizThemes() {
-    return this.inventorySerivce.getAllThemes();
+    return this.inventoryService.getAllThemes();
   }
 }
