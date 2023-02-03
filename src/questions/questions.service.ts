@@ -1,9 +1,10 @@
-import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/sequelize';
-import { Question } from './questions.model';
-import { CreateQuestionDto } from './dto/create-question.dto';
-import { ModerationService } from '../moderation/moderation.service';
-import { AddModerationToQuestionDto } from './dto/addModerationToQuestion.dto';
+import { Injectable } from "@nestjs/common";
+import { InjectModel } from "@nestjs/sequelize";
+import { Question } from "./questions.model";
+import { CreateQuestionDto } from "./dto/create-question.dto";
+import { ModerationService } from "../moderation/moderation.service";
+import { AddModerationToQuestionDto } from "./dto/addModerationToQuestion.dto";
+import { ModerationStatus } from "../moderation/moderation.model";
 
 @Injectable()
 export class QuestionsService {
@@ -13,7 +14,14 @@ export class QuestionsService {
   ) {}
 
   async createQuestion(dto: CreateQuestionDto) {
-    return await this.questionRepository.create(dto);
+    const question = await this.questionRepository.create(dto);
+    const moderation = await this.moderationRepository.createModerationStatus({
+      comment: 'new question',
+      status: ModerationStatus.review,
+    });
+    if (question && moderation) {
+      return await question.$set('moderation', moderation.id);
+    }
   }
 
   async deleteQuestionById(id: number) {
