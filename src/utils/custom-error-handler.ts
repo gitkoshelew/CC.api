@@ -7,37 +7,37 @@ export class CustomErrorHandler extends HttpException {
   }
 
   static BadRequest(message) {
-    return new CustomErrorHandler(HttpErrorTypes.BAD_REQUEST, message);
+    return { statusCode: HttpErrorTypes.BAD_REQUEST, message: message };
   }
 
   static Unauthorized(message) {
-    return new CustomErrorHandler(HttpErrorTypes.UNAUTHORIZED, message);
+    return { statusCode: HttpErrorTypes.UNAUTHORIZED, message: message };
   }
 
   static Forbidden(message) {
-    return new CustomErrorHandler(HttpErrorTypes.FORBIDDEN, message);
+    return { statusCode: HttpErrorTypes.FORBIDDEN, message: message };
   }
 
   static NotFound(message) {
-    return new CustomErrorHandler(HttpErrorTypes.NOT_FOUND, message);
+    return { statusCode: HttpErrorTypes.NOT_FOUND, message: message };
   }
 
   static RequestTimeout(message) {
-    return new CustomErrorHandler(HttpErrorTypes.REQUEST_TIMEOUT, message);
+    return { statusCode: HttpErrorTypes.REQUEST_TIMEOUT, message: message };
   }
 
   static TooManyRequest(message) {
-    return new CustomErrorHandler(HttpErrorTypes.TOO_MANY_REQUESTS, message);
+    return { statusCode: HttpErrorTypes.TOO_MANY_REQUESTS, message: message };
   }
 
   static InternalServerError(message) {
-    return new CustomErrorHandler(
-      HttpErrorTypes.INTERNAL_SERVER_ERROR,
-      message,
-    );
+    return {
+      statusCode: HttpErrorTypes.INTERNAL_SERVER_ERROR,
+      message: message,
+    };
   }
 
-  static ServiceUnavailable(message) {
-    return new CustomErrorHandler(HttpErrorTypes.SERVICE_UNAVAILABLE, message);
+  static SERVICE_UNAVAILABLE(message) {
+    return { statusCode: HttpErrorTypes.BAD_REQUEST, message: message };
   }
 }

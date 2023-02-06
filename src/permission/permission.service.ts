@@ -3,7 +3,6 @@ import { Permission } from './permission.model';
 import { InjectModel } from '@nestjs/sequelize';
 import { CreatePermissionDto } from './dto/create-permission.dto';
 import { CustomErrorHandler } from 'src/utils/custom-error-handler';
-import { HttpErrorTypes } from 'src/utils/error.types';
 
 @Injectable()
 export class PermissionService {
