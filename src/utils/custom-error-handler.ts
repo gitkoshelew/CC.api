@@ -1,11 +1,7 @@
 import { HttpException } from '@nestjs/common';
 import { HttpErrorTypes } from './error.types';
 
-export class CustomErrorHandler extends HttpException {
-  constructor(statusCode: number, message: string) {
-    super(message, statusCode);
-  }
-
+export class CustomErrorHandler {
   static BadRequest(message) {
     return { statusCode: HttpErrorTypes.BAD_REQUEST, message: message };
   }
