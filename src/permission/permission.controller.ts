@@ -23,11 +23,7 @@ export class PermissionController {
   @ApiResponse({ status: 200, type: Permission })
   @Delete(':id')
   deletePermission(@Param('id') id: number) {
-    try {
-      return this.permissionService.deletePermissionById(id);
-    } catch (error) {
-      throw new CustomErrorHandler('Check your DTO', HttpErrorTypes.NOT_FOUND);
-    }
+    return this.permissionService.deletePermissionById(id);
   }
 
   @ApiOperation({ summary: 'vue all permissions' })

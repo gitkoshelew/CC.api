@@ -4,7 +4,6 @@ import { InjectModel } from '@nestjs/sequelize';
 import { CreatePermissionDto } from './dto/create-permission.dto';
 import { CustomErrorHandler } from 'src/utils/custom-error-handler';
 import { HttpErrorTypes } from 'src/utils/error.types';
-import e from 'express';
 
 @Injectable()
 export class PermissionService {
@@ -13,13 +12,10 @@ export class PermissionService {
   ) {}
 
   async createPermission(dto: CreatePermissionDto) {
-    if (dto.name) {
-      return await this.permissionRepository.create(dto);
-    } else
-      throw new CustomErrorHandler(
-        'Check your DTO',
-        HttpErrorTypes.BAD_REQUEST,
-      );
+    if (!dto.name) {
+      return CustomErrorHandler.BadRequest('Check your DTO');
+    }
+    return this.permissionRepository.create(dto);
   }
 
   async deletePermissionById(id: number) {
@@ -32,11 +28,7 @@ export class PermissionService {
       return await this.permissionRepository.findAll({
         include: { all: true },
       });
-    } else
-      throw new CustomErrorHandler(
-        "This Id doesn't exist",
-        HttpErrorTypes.NOT_FOUND,
-      );
+    }
   }
 
   async getPermissionById(id: number) {
@@ -47,11 +39,7 @@ export class PermissionService {
 
     if (permission) {
       return permission;
-    } else
-      throw new CustomErrorHandler(
-        "This Id doesn't exist",
-        HttpErrorTypes.NOT_FOUND,
-      );
+    }
   }
 
   async getAllPermissions() {
@@ -61,10 +49,6 @@ export class PermissionService {
 
     if (permissionList) {
       return permissionList;
-    } else
-      throw new CustomErrorHandler(
-        'Server Error',
-        HttpErrorTypes.INTERNAL_SERVER_ERROR,
-      );
+    }
   }
 }
