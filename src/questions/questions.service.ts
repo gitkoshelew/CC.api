@@ -20,7 +20,7 @@ export class QuestionsService {
       status: ModerationStatus.review,
     });
     if (question && moderation) {
-      return await question.$set('moderation', question.id);
+      return await question.$set('moderation', moderation.id);
     }
   }
 
