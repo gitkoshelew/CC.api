@@ -11,6 +11,13 @@ dotenv.config();
 async function bootstrap() {
   const PORT = process.env.PORT || 5000;
   const app = await NestFactory.create(AppModule);
+  app.enableCors({
+    origin: [
+      'http://localhost:8081',
+      'http://localhost:4200',
+      'http://localhost:3000',
+    ],
+  });
 
   const config = new DocumentBuilder()
     .setTitle('Docs for CC.api')
