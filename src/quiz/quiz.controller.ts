@@ -26,6 +26,8 @@ import { UserInReq } from '../auth/decorators/users.decorator';
 import { UserReqDto } from '../auth/dto/user-req.dto';
 import { NotificationsService } from 'src/shared/services/notifications.service';
 import { NotificationTarget } from 'src/shared/types/notificationTarget.enum';
+import { Permissions } from '../auth/decorators/permission.decorator';
+import { PermissionGuard } from '../auth/permission.guard';
 
 @ApiTags('Quiz')
 @Controller('/api/quiz')
@@ -35,10 +37,12 @@ export class QuizController {
     private readonly notificationService: NotificationsService,
   ) {}
 
+  @Permissions('dsd')
+  @UseGuards(PermissionGuard)
   @ApiOperation({ summary: 'Method to view all quizzes' })
   @ApiResponse({ status: 200, type: Quiz })
-  @Get('/')
-  getAll() {
+  @Get('/:id')
+  getAll(@Param('id') id: number) {
     return this.quizService.getAll();
   }
 
