@@ -2,11 +2,12 @@ import {
   HttpException,
   HttpStatus,
   Injectable,
+  NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
 import { UserService } from '../user/user.service';
 import { CreateUserDto } from '../user/dto/create-user.dto';
-import { LoginUserDto } from './dto/login-user.dto';
+import { LoginUserDto, UserViewType } from './dto/login-user.dto';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { User } from '../user/user.model';
@@ -86,5 +87,18 @@ export class AuthService {
     const user = await this.verifyToken(refreshToken);
     if (!user) throw new UnauthorizedException([]);
     return this.generateToken(user);
+  }
+
+  async checkCurrentUser(userId: number) {
+    const user = await this.userService.getUserById(userId);
+    if (!user) throw new NotFoundException('User is not found');
+    const userInfo: UserViewType = {
+      id: user.id,
+      name: user.name,
+      surname: user.surname,
+      email: user.email,
+      nickname: user.nickname,
+    };
+    return userInfo;
   }
 }
