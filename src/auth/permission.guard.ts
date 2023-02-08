@@ -8,15 +8,11 @@ import {
 import { JwtService } from '@nestjs/jwt';
 import { Reflector } from '@nestjs/core';
 import { PERMISSION_KEY } from './decorators/permission.decorator';
-import { Sequelize } from 'sequelize-typescript';
+import axios from 'axios';
 
 @Injectable()
 export class PermissionGuard implements CanActivate {
-  constructor(
-    private jwtService: JwtService,
-    private reflector: Reflector,
-    private sequelize: Sequelize,
-  ) {}
+  constructor(private jwtService: JwtService, private reflector: Reflector) {}
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const req = context.switchToHttp().getRequest();
     console.log(req.params);
@@ -39,15 +35,24 @@ export class PermissionGuard implements CanActivate {
       }
       const user = this.jwtService.verify(token);
       req.user = user;
-      const quiz = await this.sequelize.query(`SELECT * FROM "quizzes"`);
+
+      const fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+
+      const info = await axios.get(fullUrl);
 
       for (const access of user.accessGroup) {
         const permissionForCurrentAccessGroup = access.permissions;
         for (const permission of permissionForCurrentAccessGroup) {
-          if (permission.name === 'deleteAll') {
+          if (permission.name === 'deleteAll' && req.method === 'DELETE') {
+            return true;
+          }
+          if (permission.name === 'updateAll' && req.method === 'PUT') {
             return true;
           }
           if (permission.name === requiredPermissions) {
+            return true;
+          }
+          if (info.data.author.id === user.userId) {
             return true;
           }
         }

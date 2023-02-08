@@ -37,12 +37,10 @@ export class QuizController {
     private readonly notificationService: NotificationsService,
   ) {}
 
-  @Permissions('dsd')
-  @UseGuards(PermissionGuard)
   @ApiOperation({ summary: 'Method to view all quizzes' })
   @ApiResponse({ status: 200, type: Quiz })
-  @Get('/:id')
-  getAll(@Param('id') id: number) {
+  @Get('/')
+  getAll() {
     return this.quizService.getAll();
   }
 
@@ -93,6 +91,8 @@ export class QuizController {
     return res;
   }
 
+  @Permissions('deleteAll')
+  @UseGuards(PermissionGuard)
   @ApiBearerAuth('JWT-auth')
   @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Method to delete question by id' })
