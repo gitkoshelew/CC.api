@@ -1,9 +1,8 @@
-import { HttpException } from '@nestjs/common';
 import { HttpErrorTypes } from './error.types';
 
 export class CustomErrorHandler {
   static BadRequest(message) {
-    return { statusCode: HttpErrorTypes.BAD_REQUEST, message: message };
+    return { statusCode: HttpErrorTypes.UNAUTHORIZED, message: message };
   }
 
   static Unauthorized(message) {

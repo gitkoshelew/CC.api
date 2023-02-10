@@ -11,10 +11,13 @@ export class PermissionService {
   ) {}
 
   async createPermission(dto: CreatePermissionDto) {
-    if (!dto.name) {
-      return CustomErrorHandler.BadRequest('Check your DTO');
+    try {
+      const create = this.permissionRepository.create(dto);
+      const permission = await create;
+      return permission;
+    } catch (error) {
+      return CustomErrorHandler.BadRequest(error.errors[0].message);
     }
-    return this.permissionRepository.create(dto);
   }
 
   async deletePermissionById(id: number) {
@@ -22,12 +25,14 @@ export class PermissionService {
       where: { id },
     });
 
-    if (permission) {
-      await permission.destroy();
-      return await this.permissionRepository.findAll({
-        include: { all: true },
-      });
+    if (!permission) {
+      return CustomErrorHandler.BadRequest("Id doen't exist");
     }
+
+    await permission.destroy();
+    return await this.permissionRepository.findAll({
+      include: { all: true },
+    });
   }
 
   async getPermissionById(id: number) {
@@ -36,9 +41,11 @@ export class PermissionService {
       include: { all: true },
     });
 
-    if (permission) {
-      return permission;
+    if (!permission) {
+      return CustomErrorHandler.BadRequest("Id doen't exist");
     }
+
+    return permission;
   }
 
   async getAllPermissions() {
@@ -46,8 +53,10 @@ export class PermissionService {
       include: { all: true },
     });
 
-    if (permissionList) {
-      return permissionList;
+    if (!permissionList) {
+      return CustomErrorHandler.InternalServerError('Server problems');
     }
+
+    return permissionList;
   }
 }
