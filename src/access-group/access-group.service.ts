@@ -40,9 +40,9 @@ export class AccessGroupService {
     const permission = await this.permissionRepository.getPermissionById(
       dto.permissionId,
     );
-    // if (permission && access) {
-    //   return await access.$add('permission', permission.id);
-    // }
+    if (permission && access) {
+      return await access.$add('permission', permission.id);
+    }
     throw new HttpException(
       'Пользователь или роль не найдены',
       HttpStatus.NOT_FOUND,

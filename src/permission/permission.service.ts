@@ -16,23 +16,22 @@ export class PermissionService {
       const permission = await create;
       return permission;
     } catch (error) {
-      return CustomErrorHandler.BadRequest(error.errors[0].message);
+      throw CustomErrorHandler.BadRequest(error.errors[0].message);
     }
   }
 
   async deletePermissionById(id: number) {
-    const permission = await this.permissionRepository.findOne({
-      where: { id },
-    });
-
-    if (!permission) {
-      return CustomErrorHandler.BadRequest("Id doen't exist");
+    try {
+      const permission = await this.permissionRepository.findOne({
+        where: { id },
+      });
+      await permission.destroy();
+      return await this.permissionRepository.findAll({
+        include: { all: true },
+      });
+    } catch (error) {
+      throw CustomErrorHandler.BadRequest("Id doen't exist");
     }
-
-    await permission.destroy();
-    return await this.permissionRepository.findAll({
-      include: { all: true },
-    });
   }
 
   async getPermissionById(id: number) {
@@ -42,9 +41,8 @@ export class PermissionService {
     });
 
     if (!permission) {
-      return CustomErrorHandler.BadRequest("Id doen't exist");
+      throw CustomErrorHandler.BadRequest("Id doen't exist");
     }
-
     return permission;
   }
 
@@ -54,9 +52,8 @@ export class PermissionService {
     });
 
     if (!permissionList) {
-      return CustomErrorHandler.InternalServerError('Server problems');
+      throw CustomErrorHandler.InternalServerError('Server problems');
     }
-
     return permissionList;
   }
 }
