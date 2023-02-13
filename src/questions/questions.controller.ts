@@ -1,7 +1,19 @@
-import { Body, Controller, Delete, Get, Param, Post, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  UseGuards,
+} from '@nestjs/common';
 import { QuestionsService } from './questions.service';
 import { CreateQuestionDto } from './dto/create-question.dto';
-import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags,
+import {
+  ApiBearerAuth,
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
 } from '@nestjs/swagger';
 import { Question } from './questions.model';
 import { Put } from '@nestjs/common/decorators';
@@ -43,7 +55,7 @@ export class QuestionsController {
   @Post()
   async create(@Body() dto: CreateQuestionDto) {
     const res = await this.questionService.createQuestion(dto);
-    this.notificationService.created(NotificationTarget.QUESTION, dto);
+    await this.notificationService.created(NotificationTarget.QUESTION, dto);
     return res;
   }
 
@@ -58,7 +70,7 @@ export class QuestionsController {
   @Delete('/:id')
   async deleteById(@Param('id') id: number) {
     const res = await this.questionService.deleteQuestionById(id);
-    this.notificationService.deleted(NotificationTarget.QUESTION, res);
+    await this.notificationService.deleted(NotificationTarget.QUESTION, res);
     return res;
   }
 
