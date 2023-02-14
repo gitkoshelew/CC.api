@@ -4,6 +4,7 @@ import { InjectModel } from '@nestjs/sequelize';
 import { Quiz } from './quiz.model';
 import { AddQuestionDto } from './dto/addQuestion.dto';
 import { QuestionsService } from '../questions/questions.service';
+import { CustomErrorHandler } from 'src/utils/custom-error-handler';
 
 @Injectable()
 export class QuizService {
@@ -13,34 +14,63 @@ export class QuizService {
   ) {}
 
   async getAll() {
-    return await this.quizRepository.findAll({ include: { all: true } });
+    try {
+      const quizList = await this.quizRepository.findAll({
+        include: { all: true },
+      });
+      return quizList;
+    } catch (error) {
+      throw CustomErrorHandler.InternalServerError('Server problems');
+    }
   }
 
   async getById(id: number) {
-    return await this.quizRepository.findOne({
-      where: { id },
-      include: { all: true },
-    });
+    try {
+      const quiz = await this.quizRepository.findOne({
+        where: { id },
+        include: { all: true },
+      });
+      return quiz;
+    } catch (error) {
+      throw CustomErrorHandler.BadRequest("Quiz with this id doen't exist");
+    }
   }
 
   async createQuiz(createQuizDto: CreateQuizDto) {
-    return await this.quizRepository.create(createQuizDto);
+    try {
+      const create = this.quizRepository.create(createQuizDto);
+      const quiz = await create;
+      return quiz;
+    } catch (error) {
+      throw CustomErrorHandler.BadRequest(error.parent.detail);
+    }
   }
 
   async addQuestionToQuiz(dto: AddQuestionDto) {
-    const quiz = await this.getById(dto.quizId);
-    const question = await this.questionService.getQuestionById(dto.questionId);
-    if (quiz && question) {
+    try {
+      const quiz = await this.getById(dto.quizId);
+      const question = await this.questionService.getQuestionById(
+        dto.questionId,
+      );
       return await quiz.$add('question', question.id);
+    } catch (error) {
+      throw CustomErrorHandler.BadRequest(
+        'Check properties of selected question or quiz',
+      );
     }
-    throw new HttpException(
-      'There is no quiz or question with that id',
-      HttpStatus.NOT_FOUND,
-    );
   }
 
   async deleteQuizById(id: number) {
-    const quiz = await this.getById(id);
-    await quiz.destroy();
+    try {
+      const quiz = await this.quizRepository.findOne({
+        where: { id },
+      });
+      await quiz.destroy();
+      return this.quizRepository.findAll({
+        include: { all: true },
+      });
+    } catch (error) {
+      throw CustomErrorHandler.BadRequest("Quiz with this id doen't exist");
+    }
   }
 }

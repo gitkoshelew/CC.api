@@ -26,34 +26,38 @@ export class PermissionService {
         where: { id },
       });
       await permission.destroy();
-      return await this.permissionRepository.findAll({
+      return this.permissionRepository.findAll({
         include: { all: true },
       });
     } catch (error) {
-      throw CustomErrorHandler.BadRequest("Id doen't exist");
+      throw CustomErrorHandler.BadRequest(
+        "Permission with this id doen't exist",
+      );
     }
   }
 
   async getPermissionById(id: number) {
-    const permission = await this.permissionRepository.findOne({
-      where: { id },
-      include: { all: true },
-    });
-
-    if (!permission) {
-      throw CustomErrorHandler.BadRequest("Id doen't exist");
+    try {
+      const permission = await this.permissionRepository.findOne({
+        where: { id },
+        include: { all: true },
+      });
+      return permission;
+    } catch (error) {
+      throw CustomErrorHandler.BadRequest(
+        "Permission with this id doen't exist",
+      );
     }
-    return permission;
   }
 
   async getAllPermissions() {
-    const permissionList = await this.permissionRepository.findAll({
-      include: { all: true },
-    });
-
-    if (!permissionList) {
+    try {
+      const permissionList = await this.permissionRepository.findAll({
+        include: { all: true },
+      });
+      return permissionList;
+    } catch (error) {
       throw CustomErrorHandler.InternalServerError('Server problems');
     }
-    return permissionList;
   }
 }

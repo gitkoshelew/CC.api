@@ -21,33 +21,43 @@ export class ModerationService {
   }
 
   async getAllStatus() {
-    const moderationList = await this.moderationRepository.findAll({
-      include: { all: true },
-    });
-
-    if (!moderationList) {
+    try {
+      const moderationList = await this.moderationRepository.findAll({
+        include: { all: true },
+      });
+      return moderationList;
+    } catch (error) {
       throw CustomErrorHandler.InternalServerError('Server problems');
     }
-    return moderationList;
   }
 
   async getModerationById(id: number) {
-    const moderation = await this.moderationRepository.findOne({
-      where: { id },
-      include: { all: true },
-    });
-
-    if (!moderation) {
-      throw CustomErrorHandler.BadRequest("Id doen't exist");
+    try {
+      const moderation = await this.moderationRepository.findOne({
+        where: { id },
+        include: { all: true },
+      });
+      return moderation;
+    } catch (error) {
+      throw CustomErrorHandler.BadRequest(
+        "Moderation with this id doen't exist",
+      );
     }
-    return moderation;
   }
 
   async deleteModerationById(id: number) {
-    const permission = await this.moderationRepository.findOne({
-      where: { id },
-    });
-    await permission.destroy();
-    return await this.moderationRepository.findAll({ include: { all: true } });
+    try {
+      const moderation = await this.moderationRepository.findOne({
+        where: { id },
+      });
+      await moderation.destroy();
+      return this.moderationRepository.findAll({
+        include: { all: true },
+      });
+    } catch (error) {
+      throw CustomErrorHandler.BadRequest(
+        "Moderation with this id doen't exist",
+      );
+    }
   }
 }
