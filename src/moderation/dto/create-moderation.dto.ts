@@ -11,7 +11,7 @@ export class CreateModerationDto {
   readonly comment: string;
   @ApiProperty({
     example: 'rewrite',
-    description: 'enum status (rewrite/change/block / enum',
+    description: 'enum status (review/rewrite/change/block/accept) / enum',
   })
   readonly status: ModerationStatus;
 }

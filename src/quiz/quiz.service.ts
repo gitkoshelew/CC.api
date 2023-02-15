@@ -1,5 +1,11 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { CreateQuizDto } from './dto/create-quiz.dto';
+import {
+  ForbiddenException,
+  HttpException,
+  HttpStatus,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
+import { CreateQuizDBModel } from './dto/create-quiz.dto';
 import { InjectModel } from '@nestjs/sequelize';
 import { Quiz } from './quiz.model';
 import { AddQuestionDto } from './dto/addQuestion.dto';
@@ -36,15 +42,15 @@ export class QuizService {
     }
   }
 
-  async createQuiz(createQuizDto: CreateQuizDto) {
+
+  async createQuiz(createQuizDBModel: CreateQuizDBModel) {
     try {
-      const create = this.quizRepository.create(createQuizDto);
+      const create = this.quizRepository.create(createQuizDBModel);
       const quiz = await create;
       return quiz;
     } catch (error) {
       throw CustomErrorHandler.BadRequest(error.parent.detail);
     }
-  }
 
   async addQuestionToQuiz(dto: AddQuestionDto) {
     try {
@@ -60,17 +66,20 @@ export class QuizService {
     }
   }
 
+
   async deleteQuizById(id: number) {
     try {
       const quiz = await this.quizRepository.findOne({
         where: { id },
       });
+      if (quiz.authorId !== userId){
+      throw CustomErrorHandler.Forbidden("You don't have permission");
+      }
+
       await quiz.destroy();
-      return this.quizRepository.findAll({
-        include: { all: true },
-      });
+      
     } catch (error) {
       throw CustomErrorHandler.BadRequest("Quiz with this id doen't exist");
     }
-  }
+
 }

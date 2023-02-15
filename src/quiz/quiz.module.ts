@@ -8,6 +8,7 @@ import { Question } from '../questions/questions.model';
 import { QuestionsModule } from '../questions/questions.module';
 import { Quiz_Question } from './quiz.question.model';
 import { User } from '../user/user.model';
+import { AuthModule } from '../auth/auth.module';
 
 @Module({
   controllers: [QuizController],
@@ -16,6 +17,7 @@ import { User } from '../user/user.model';
     SequelizeModule.forFeature([Quiz, Question, Quiz_Question, User]),
     QuestionsModule,
     SharedModule,
+    AuthModule,
   ],
 })
 export class QuizModule {}
