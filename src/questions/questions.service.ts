@@ -14,11 +14,11 @@ export class QuestionsService {
   ) {}
 
   async createQuestion(dto: CreateQuestionDto) {
-    const question = await this.questionRepository.create(dto);
     const moderation = await this.moderationRepository.createModerationStatus({
       comment: 'new question',
       status: ModerationStatus.review,
     });
+    const question = await this.questionRepository.create(dto);
     if (question && moderation) {
       return await question.$set('moderation', question.id);
     }
@@ -45,7 +45,7 @@ export class QuestionsService {
       dto.moderationId,
     );
     if (question && moderation) {
-      return await question.$set('moderation', moderation.id);
+      return await question.$set('moderation', question.id);
     }
   }
 }

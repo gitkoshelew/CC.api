@@ -18,17 +18,15 @@ import {
 import { Question } from './questions.model';
 import { Put } from '@nestjs/common/decorators';
 import { AddModerationToQuestionDto } from './dto/addModerationToQuestion.dto';
-import { NotificationsService } from 'src/shared/services/notifications.service';
-import { NotificationTarget } from 'src/shared/types/notificationTarget.enum';
+// import { NotificationsService } from 'src/shared/services/notifications.service';
+// import { NotificationTarget } from 'src/shared/types/notificationTarget.enum';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @ApiTags('Question')
 @Controller('api/questions')
 export class QuestionsController {
-  constructor(
-    private questionService: QuestionsService,
-    private readonly notificationService: NotificationsService,
-  ) {}
+  constructor(private questionService: QuestionsService) {}
+  // private readonly notificationService: NotificationsService,
 
   @ApiOperation({ summary: 'Method to get all questions' })
   @ApiResponse({ status: 200, type: Question })
@@ -55,7 +53,7 @@ export class QuestionsController {
   @Post()
   async create(@Body() dto: CreateQuestionDto) {
     const res = await this.questionService.createQuestion(dto);
-    await this.notificationService.created(NotificationTarget.QUESTION, dto);
+    // await this.notificationService.created(NotificationTarget.QUESTION, dto);
     return res;
   }
 
@@ -70,7 +68,7 @@ export class QuestionsController {
   @Delete('/:id')
   async deleteById(@Param('id') id: number) {
     const res = await this.questionService.deleteQuestionById(id);
-    await this.notificationService.deleted(NotificationTarget.QUESTION, res);
+    // await this.notificationService.deleted(NotificationTarget.QUESTION, res);
     return res;
   }
 
