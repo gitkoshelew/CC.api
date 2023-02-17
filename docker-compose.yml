@@ -28,7 +28,7 @@ services:
     ports:
       - ${POSTGRES_PORT}:${POSTGRES_PORT}
     volumes:
-#      - pgdata:/var/lib/postgresql/data
+      #      - pgdata:/var/lib/postgresql/data
       - ./postgresData:/var/lib/postgresql/data
     restart: always
 
@@ -80,7 +80,7 @@ services:
       - .env
     ports:
       - ${RABBITMQ_LOCAL_PORT}:${RABBITMQ_NATIVE_PORT}
-      - "5672:5672"
+      - '5672:5672'
     restart: always
 
 volumes:

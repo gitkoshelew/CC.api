@@ -1,11 +1,13 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { DifficultyTypes, QuestionTypes } from '../questions.types';
+import { IsNotEmpty } from 'class-validator';
 
 export class CreateQuestionDto {
   @ApiProperty({
     example: 'NodeJS question #13',
     description: 'required title / not uniq / string',
   })
+  @IsNotEmpty()
   readonly title: string;
   @ApiProperty({
     example: {
@@ -29,6 +31,7 @@ export class CreateQuestionDto {
     example: 'this question can find your weakness at EventLoop',
     description: 'piece of description for the question / required',
   })
+  @IsNotEmpty()
   readonly description: string;
   @ApiProperty({
     example: 1,
