@@ -52,9 +52,8 @@ export class QuestionsController {
   })
   @Post()
   async create(@Body() dto: CreateQuestionDto) {
-    const res = await this.questionService.createQuestion(dto);
+    return await this.questionService.createQuestion(dto);
     // await this.notificationService.created(NotificationTarget.QUESTION, dto);
-    return res;
   }
 
   @UseGuards(JwtAuthGuard)
@@ -67,9 +66,8 @@ export class QuestionsController {
   })
   @Delete('/:id')
   async deleteById(@Param('id') id: number) {
-    const res = await this.questionService.deleteQuestionById(id);
+    return await this.questionService.deleteQuestionById(id);
     // await this.notificationService.deleted(NotificationTarget.QUESTION, res);
-    return res;
   }
 
   @UseGuards(JwtAuthGuard)
