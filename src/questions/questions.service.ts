@@ -16,17 +16,20 @@ export class QuestionsService {
 
   async createQuestion(dto: CreateQuestionDto) {
     try {
-     const question = await this.questionRepository.create(dto);
-    const moderation = await this.moderationRepository.createModerationStatus({
-      comment: 'new question',
-      status: ModerationStatus.review,
-    })
-    if (question && moderation) {
-      return await question.$set('moderation', question.id);
-    } 
-  } catch (error) {
-    throw CustomErrorHandler.BadRequest(error.parent.detail);
-  } }
+      const question = await this.questionRepository.create(dto);
+      const moderation = await this.moderationRepository.createModerationStatus(
+        {
+          comment: 'new question',
+          status: ModerationStatus.review,
+        },
+      );
+      if (question && moderation) {
+        return await question.$set('moderation', question.id);
+      }
+    } catch (error) {
+      throw CustomErrorHandler.BadRequest(error.parent.detail);
+    }
+  }
 
   async deleteQuestionById(id: number) {
     try {

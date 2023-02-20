@@ -1,6 +1,4 @@
-import {
-   Injectable,
-} from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { CreateQuizDBModel } from './dto/create-quiz.dto';
 import { InjectModel } from '@nestjs/sequelize';
 import { Quiz } from './quiz.model';
@@ -38,7 +36,6 @@ export class QuizService {
     }
   }
 
-
   async createQuiz(createQuizDBModel: CreateQuizDBModel) {
     try {
       const create = this.quizRepository.create(createQuizDBModel);
@@ -63,21 +60,18 @@ export class QuizService {
     }
   }
 
-
   async deleteQuizById(id: number, userId: number) {
     try {
       const quiz = await this.quizRepository.findOne({
         where: { id },
       });
-      if (quiz.authorId !== userId){
-      throw CustomErrorHandler.Forbidden("You don't have permission");
+      if (quiz.authorId !== userId) {
+        throw CustomErrorHandler.Forbidden("You don't have permission");
       }
 
       await quiz.destroy();
-      
     } catch (error) {
       throw CustomErrorHandler.BadRequest("Quiz with this id doen't exist");
     }
-
-}
+  }
 }
