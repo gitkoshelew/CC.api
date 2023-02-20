@@ -11,6 +11,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { Question } from '../questions/questions.model';
 import { Quiz_Question } from './quiz.question.model';
 import { User } from '../user/user.model';
+import { Topic } from '../topic/topic.model';
 
 interface QuizCreationAttrs {
   title: string;
@@ -41,6 +42,17 @@ export class Quiz extends Model<Quiz, QuizCreationAttrs> {
 
   @BelongsTo(() => User)
   author: User;
+
+  @ApiProperty({
+    example: 1,
+    description: 'number of topic that should be import into question',
+  })
+  @ForeignKey(() => Topic)
+  @Column({ type: DataType.INTEGER })
+  topicId: number;
+
+  @BelongsTo(() => Topic)
+  topic: Topic;
 
   @BelongsToMany(() => Question, () => Quiz_Question)
   question: Question[];
