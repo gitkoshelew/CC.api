@@ -1,9 +1,5 @@
 import {
-  ForbiddenException,
-  HttpException,
-  HttpStatus,
-  Injectable,
-  NotFoundException,
+   Injectable,
 } from '@nestjs/common';
 import { CreateQuizDBModel } from './dto/create-quiz.dto';
 import { InjectModel } from '@nestjs/sequelize';
@@ -51,6 +47,7 @@ export class QuizService {
     } catch (error) {
       throw CustomErrorHandler.BadRequest(error.parent.detail);
     }
+  }
 
   async addQuestionToQuiz(dto: AddQuestionDto) {
     try {
@@ -67,7 +64,7 @@ export class QuizService {
   }
 
 
-  async deleteQuizById(id: number) {
+  async deleteQuizById(id: number, userId: number) {
     try {
       const quiz = await this.quizRepository.findOne({
         where: { id },
@@ -82,4 +79,5 @@ export class QuizService {
       throw CustomErrorHandler.BadRequest("Quiz with this id doen't exist");
     }
 
+}
 }
