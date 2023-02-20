@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { User } from './user.model';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -7,7 +7,6 @@ import { AccessGroupService } from 'src/access-group/access-group.service';
 import { CustomErrorHandler } from 'src/utils/custom-error-handler';
 import { AccessGroup } from '../access-group/access-group.model';
 import { Permission } from '../permission/permission.model';
-
 
 @Injectable()
 export class UserService {
