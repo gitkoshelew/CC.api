@@ -6,7 +6,7 @@ module.exports = {
     try {
       await queryInterface.addColumn('quizzes', 'topicId', {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
         references: {
           model: 'topics',
           key: 'id',
