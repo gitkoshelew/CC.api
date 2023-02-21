@@ -3,6 +3,8 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
+    const quizTable = await queryInterface.describeTable('quizzes');
+    if (quizTable.topicId) return;
     try {
       await queryInterface.addColumn('quizzes', 'topicId', {
         type: Sequelize.INTEGER,
