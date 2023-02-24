@@ -13,7 +13,7 @@ export class CreateQuizDto {
   readonly description: string;
 
   @ApiProperty({
-    example: 'Some quiz comment ',
+    example: 'Some quiz comment',
     description: 'not required field / not uniq / string',
   })
   readonly comment: string;
