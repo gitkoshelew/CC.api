@@ -35,6 +35,20 @@ export class Quiz extends Model<Quiz, QuizCreationAttrs> {
   @Column({ type: DataType.STRING, allowNull: false })
   title: string;
 
+  @ApiProperty({
+    example: "I'm a quiz comment",
+    description: 'not required name / not uniq / string',
+  })
+  @Column({ type: DataType.STRING, allowNull: true })
+  comment: string;
+
+  @ApiProperty({
+    example: '2023-02-19 18:00:16.693018+03',
+    description: 'not required name / not uniq / string',
+  })
+  @Column({ type: DataType.STRING, allowNull: true })
+  creationDate: string;
+
   @ForeignKey(() => User)
   @ApiProperty({ example: 1, description: 'foreign key for author' })
   @Column({ type: DataType.INTEGER })
