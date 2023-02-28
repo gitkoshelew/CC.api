@@ -17,12 +17,14 @@ async function bootstrap() {
       'http://localhost:4200',
       'http://localhost:3000',
     ],
+    methods: 'GET,PUT,POST,DELETE',
+    credentials: true,
   });
 
   const config = new DocumentBuilder()
     .setTitle('Docs for CC.api')
     .setDescription(
-      'This is description for all methods that available in our app. You can find ALL endpoints and examples of data to ANY available method and responce',
+      'This is description for all methods that available in our app. You can find ALL endpoints and examples of data to ANY available method and response',
     )
     .addBearerAuth(
       {
