@@ -10,7 +10,6 @@ import { CreateUserDto } from '../user/dto/create-user.dto';
 import { LoginUserDto, UserViewType } from './dto/login-user.dto';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
-import { User } from '../user/user.model';
 
 @Injectable()
 export class AuthService {
@@ -40,16 +39,16 @@ export class AuthService {
       ...userDto,
       password: passwordHash,
     });
-    return this.generateToken(user);
+    return this.generateToken(user.id);
   }
 
   async login(userDto: LoginUserDto) {
     const user = await this.validateUser(userDto);
-    return this.generateToken(user);
+    return this.generateToken(user.id);
   }
 
-  private async generateToken(user: User) {
-    const payload = { userId: user.id };
+  private async generateToken(userId: number) {
+    const payload = { userId };
     return {
       accessToken: this.jwtService.sign(payload, { expiresIn: '1h' }),
       refreshToken: this.jwtService.sign(payload, { expiresIn: '24h' }),
@@ -86,7 +85,7 @@ export class AuthService {
   async updateToken(refreshToken: string) {
     const user = await this.verifyToken(refreshToken);
     if (!user) throw new UnauthorizedException([]);
-    return this.generateToken(user);
+    return this.generateToken(user.userId);
   }
 
   async checkCurrentUser(userId: number) {
