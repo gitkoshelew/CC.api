@@ -24,13 +24,13 @@ export class QuestionsService {
     });
     const question = await this.questionRepository.create(dto);
     if (question && moderation) {
-      return await question.$set('moderation', question.id);
+      await question.$set('moderation', question.id);
     }
+    return question;
   }
 
   async createQuestionForQuiz(dto: CreateQuestionForQuizDto) {
     const { quizId, ...questionDto } = dto;
-    // const t = await sequelize.transaction();
     const question = await this.createQuestion(questionDto);
     return this.quizService.addQuestionToQuiz({
       quizId: quizId,
