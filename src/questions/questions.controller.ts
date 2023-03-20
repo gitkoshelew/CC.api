@@ -21,6 +21,7 @@ import { AddModerationToQuestionDto } from './dto/addModerationToQuestion.dto';
 // import { NotificationsService } from 'src/shared/services/notifications.service';
 // import { NotificationTarget } from 'src/shared/types/notificationTarget.enum';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { CreateQuestionForQuizDto } from './dto/create-questionForQuiz.dto';
 
 @ApiTags('Question')
 @Controller('api/questions')
@@ -51,8 +52,8 @@ export class QuestionsController {
     description: 'If user is not authorized',
   })
   @Post()
-  async create(@Body() dto: CreateQuestionDto) {
-    return await this.questionService.createQuestion(dto);
+  async createQuestionForQuiz(@Body() dto: CreateQuestionForQuizDto) {
+    return await this.questionService.createQuestionForQuiz(dto);
     // await this.notificationService.created(NotificationTarget.QUESTION, dto);
   }
 
