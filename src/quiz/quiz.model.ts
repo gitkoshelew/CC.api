@@ -46,7 +46,7 @@ export class Quiz extends Model<Quiz, QuizCreationAttrs> {
     example: '2023-02-19 18:00:16.693018+03',
     description: 'not required name / not uniq / string',
   })
-  @Column({ type: DataType.STRING, allowNull: true })
+  @Column({ type: DataType.STRING, allowNull: false })
   creationDate: string;
 
   @ForeignKey(() => User)
