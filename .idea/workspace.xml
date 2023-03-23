@@ -6,76 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="e0a5d3cc-808d-4c7d-8d54-4fff7de41be8" name="Changes" comment="feature: CORS was added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/access-group/access-group.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/access-group/access-group.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/access-group/access-group.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/access-group/access-group.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/access-group/access-group.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/access-group/access-group.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/access-group/access-group.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/access-group/access-group.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/access-group/access-permission.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/access-group/access-permission.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/access-group/dto/access-group.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/access-group/dto/access-group.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/access-group/dto/addPermissionToAccess.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/access-group/dto/addPermissionToAccess.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.controller.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.controller.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/auth/auth.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/auth.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/auth/auth.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/auth.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/auth/decorators/cookies.decorator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/decorators/cookies.decorator.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/auth/decorators/users.decorator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/decorators/users.decorator.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/auth/dto/login-user.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/dto/login-user.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/auth/dto/user-req.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/dto/user-req.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/auth/jwt-auth.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/jwt-auth.guard.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chat-service/src/app.controller.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/chat-service/src/app.controller.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chat-service/src/app.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/chat-service/src/app.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chat-service/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/chat-service/src/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chat-service/src/app.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/chat-service/src/app.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chat-service/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/chat-service/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chat-service/test/app.e2e-spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/chat-service/test/app.e2e-spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/inventory/inventory.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/inventory/inventory.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/inventory/inventory.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/inventory/inventory.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/inventory/inventory.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/inventory/inventory.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moderation/dto/create-moderation.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/moderation/dto/create-moderation.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moderation/moderation.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/moderation/moderation.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moderation/moderation.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/moderation/moderation.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moderation/moderation.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/moderation/moderation.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moderation/moderation.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/moderation/moderation.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/permission/dto/create-permission.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/permission/dto/create-permission.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/permission/permission.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/permission/permission.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/permission/permission.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/permission/permission.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/permission/permission.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/permission/permission.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/permission/permission.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/permission/permission.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/questions/dto/addModerationToQuestion.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/questions/dto/addModerationToQuestion.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/questions/dto/create-question.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/questions/dto/create-question.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/questions/questions.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/questions/questions.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/questions/questions.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/questions/questions.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/questions/questions.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/questions/questions.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/questions/questions.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/questions/questions.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/questions/questions.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/questions/questions.types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/quiz/dto/addQuestion.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/quiz/dto/addQuestion.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/quiz/dto/create-quiz.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/quiz/dto/create-quiz.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/quiz/quiz.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/quiz/quiz.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgresData/base/16384/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/postgresData/base/16384/pg_internal.init" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgresData/base/5/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/postgresData/base/5/pg_internal.init" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgresData/global/pg_control" beforeDir="false" afterPath="$PROJECT_DIR$/postgresData/global/pg_control" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgresData/global/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/postgresData/global/pg_internal.init" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgresData/pg_wal/000000010000000000000001" beforeDir="false" afterPath="$PROJECT_DIR$/postgresData/pg_wal/000000010000000000000001" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/quiz/quiz.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/quiz/quiz.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/quiz/quiz.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/quiz/quiz.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/quiz/quiz.question.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/quiz/quiz.question.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/quiz/quiz.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/quiz/quiz.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/services/notifications.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/services/notifications.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/shared.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/shared.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/types/notificationTarget.enum.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/types/notificationTarget.enum.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/topic/dto/create-topic.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/topic/dto/create-topic.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/topic/topic.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/topic/topic.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/topic/topic.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/topic/topic.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/topic/topic.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/topic/topic.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/topic/topic.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/topic/topic.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/dto/addAccessToUser.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/dto/addAccessToUser.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/dto/create-user.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/dto/create-user.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/user.access.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/user.access.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/user.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/user.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/user.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/user.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/user.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/user.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/user.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/app.e2e-spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test/app.e2e-spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +34,6 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -111,22 +49,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/entership/CC.api&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\yuryz\\Documents\\ITechArtLab\\CC.api\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "E:/entership/CC.api",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "prettier.import.notification.dismissed": "true",
+    "ts.external.directory.path": "C:\\Users\\yuryz\\Documents\\ITechArtLab\\CC.api\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\entership\CC.api\src\access-group\dto" />
@@ -183,11 +122,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
-        <item itemvalue="npm.migrate:up" />
         <item itemvalue="npm.start:dev" />
+        <item itemvalue="npm.migrate:up" />
         <item itemvalue="npm.migrate:undo" />
         <item itemvalue="npm.migrate:create" />
+        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
