@@ -1,7 +1,9 @@
 import {
   ForbiddenException,
+  forwardRef,
   HttpException,
   HttpStatus,
+  Inject,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
@@ -15,6 +17,7 @@ import { QuestionsService } from '../questions/questions.service';
 export class QuizService {
   constructor(
     @InjectModel(Quiz) private quizRepository: typeof Quiz,
+    @Inject(forwardRef(() => QuestionsService))
     private questionService: QuestionsService,
   ) {}
 
