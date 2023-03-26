@@ -23,6 +23,8 @@ import { UserAccess } from './user/user.access.model';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { InventoryModule } from './inventory/inventory.module';
+import { FeatureModule } from './feature/feature.module';
+import { FeatureFlagModule } from './feature-flag/feature-flag.module';
 
 @Module({
   imports: [
@@ -59,6 +61,8 @@ import { InventoryModule } from './inventory/inventory.module';
     ModerationModule,
     QuestionsModule,
     InventoryModule,
+    FeatureModule,
+    FeatureFlagModule,
   ],
 
   controllers: [AppController],
