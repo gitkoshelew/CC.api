@@ -1,10 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { IsNotEmpty } from 'class-validator';
 
 export class CreateQuizDto {
   @ApiProperty({
     example: 'NodeJS',
     description: 'required name / not uniq / string',
   })
+  @IsNotEmpty()
   readonly title: string;
   @ApiProperty({
     example: 'Some description and/or information of quiz',

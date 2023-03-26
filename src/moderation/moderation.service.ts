@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateModerationDto } from './dto/create-moderation.dto';
 import { InjectModel } from '@nestjs/sequelize';
 import { Moderation } from './moderation.model';
+import { CustomErrorHandler } from 'src/utils/custom-error-handler';
 
 @Injectable()
 export class ModerationService {
@@ -10,22 +11,53 @@ export class ModerationService {
   ) {}
 
   async createModerationStatus(dto: CreateModerationDto) {
-    return await this.moderationRepository.create(dto);
+    try {
+      const create = this.moderationRepository.create(dto);
+      const moderation = await create;
+      return moderation;
+    } catch (error) {
+      throw CustomErrorHandler.BadRequest(error.errors[0].message);
+    }
   }
 
   async getAllStatus() {
-    return await this.moderationRepository.findAll({ include: { all: true } });
+    try {
+      const moderationList = await this.moderationRepository.findAll({
+        include: { all: true },
+      });
+      return moderationList;
+    } catch (error) {
+      throw CustomErrorHandler.InternalServerError('Server problems');
+    }
   }
 
   async getModerationById(id: number) {
-    return await this.moderationRepository.findOne({ where: { id } });
+    try {
+      const moderation = await this.moderationRepository.findOne({
+        where: { id },
+        include: { all: true },
+      });
+      return moderation;
+    } catch (error) {
+      throw CustomErrorHandler.BadRequest(
+        "Moderation with this id doen't exist",
+      );
+    }
   }
 
   async deleteModerationById(id: number) {
-    const permission = await this.moderationRepository.findOne({
-      where: { id },
-    });
-    await permission.destroy();
-    return await this.moderationRepository.findAll({ include: { all: true } });
+    try {
+      const moderation = await this.moderationRepository.findOne({
+        where: { id },
+      });
+      await moderation.destroy();
+      return this.moderationRepository.findAll({
+        include: { all: true },
+      });
+    } catch (error) {
+      throw CustomErrorHandler.BadRequest(
+        "Moderation with this id doen't exist",
+      );
+    }
   }
 }
