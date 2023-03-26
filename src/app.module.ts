@@ -25,6 +25,8 @@ import { AuthModule } from './auth/auth.module';
 import { InventoryModule } from './inventory/inventory.module';
 import { FeatureModule } from './feature/feature.module';
 import { FeatureFlagModule } from './feature-flag/feature-flag.module';
+import { FeatureFlag } from './feature-flag/feature-flag.model';
+import { Feature } from './feature/feature.model';
 
 @Module({
   imports: [
@@ -49,6 +51,8 @@ import { FeatureFlagModule } from './feature-flag/feature-flag.module';
         Question,
         Quiz_Question,
         UserAccess,
+        Feature,
+        FeatureFlag,
       ],
       autoLoadModels: true,
     }),

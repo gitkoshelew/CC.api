@@ -1,7 +1,7 @@
+import { FlagTitle } from '../feature-flag.model';
+
 export class CreateFeatureFlagDto {
   readonly featureId: number;
-  readonly nextJSStatus: boolean;
-  readonly nestJSStatus: boolean;
-  readonly reactNativeStatus: boolean;
-  readonly angularStatus: boolean;
+  readonly title: FlagTitle;
+  readonly status: boolean;
 }

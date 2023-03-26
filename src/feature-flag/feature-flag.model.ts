@@ -8,11 +8,16 @@ import {
 } from 'sequelize-typescript';
 import { Feature } from '../feature/feature.model';
 
-interface FeatureFlagCreationAttrs {
-  nextJSStatus: boolean;
-  nestJSStatus: boolean;
-  reactNativeStatus: boolean;
-  angularStatus: boolean;
+export enum FlagTitle {
+  NestJS = 'nest',
+  NextJS = 'next',
+  Angular = 'angular',
+  ReactNative = 'mobile',
+}
+
+export interface FeatureFlagCreationAttrs {
+  title: FlagTitle;
+  flagStatus: boolean;
 }
 
 @Table({ tableName: 'feature-flags' })
@@ -28,18 +33,16 @@ export class FeatureFlag extends Model<FeatureFlag, FeatureFlagCreationAttrs> {
   @ForeignKey(() => Feature)
   @Column({ type: DataType.INTEGER })
   featureId: number;
+
+  @Column({
+    type: DataType.ENUM,
+    values: ['nest', 'next', 'angular', 'mobile'],
+  })
+  title: FlagTitle;
+
+  @Column({ type: DataType.BOOLEAN, allowNull: false })
+  status: boolean;
+
   @BelongsTo(() => Feature)
-  feature: Feature;
-
-  @Column({ type: DataType.BOOLEAN, allowNull: false })
-  nextJSStatus: boolean;
-
-  @Column({ type: DataType.BOOLEAN, allowNull: false })
-  nestJSStatus: boolean;
-
-  @Column({ type: DataType.BOOLEAN, allowNull: false })
-  reactNativeStatus: boolean;
-
-  @Column({ type: DataType.BOOLEAN, allowNull: false })
-  angularStatus: boolean;
+  featureTitle: Feature;
 }
