@@ -23,6 +23,8 @@ import { UserAccess } from './user/user.access.model';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { InventoryModule } from './inventory/inventory.module';
+import { CorrectAnswers } from './questions/correctAnswer.model';
+import { Options } from './questions/options.model';
 
 @Module({
   imports: [
@@ -47,6 +49,8 @@ import { InventoryModule } from './inventory/inventory.module';
         Question,
         Quiz_Question,
         UserAccess,
+        CorrectAnswers,
+        Options,
       ],
       autoLoadModels: true,
     }),

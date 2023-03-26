@@ -6,6 +6,7 @@ import {
   BelongsTo,
   ForeignKey,
   BelongsToMany,
+  HasMany,
 } from 'sequelize-typescript';
 import {
   QuestionCreationAttrs,
@@ -17,6 +18,8 @@ import { Moderation } from '../moderation/moderation.model';
 import { ApiProperty } from '@nestjs/swagger';
 import { Quiz } from '../quiz/quiz.model';
 import { Quiz_Question } from '../quiz/quiz.question.model';
+import { CorrectAnswers } from './correctAnswer.model';
+import { Options } from './options.model';
 
 @Table({ tableName: 'questions', createdAt: false, updatedAt: false })
 export class Question extends Model<Question, QuestionCreationAttrs> {
@@ -35,16 +38,6 @@ export class Question extends Model<Question, QuestionCreationAttrs> {
   })
   @Column({ type: DataType.STRING, allowNull: false })
   title: string;
-
-  @ApiProperty({
-    example: {
-      options: ['answer1', 'answer2', 'answer3', 'answer4'],
-      correctAnswer: ['answer2'],
-    },
-    description: 'sample of question at JSON datatype/ required',
-  })
-  @Column({ type: DataType.JSON, allowNull: false })
-  content: JSON;
 
   @ApiProperty({
     example: 'single / multi',
@@ -105,4 +98,10 @@ export class Question extends Model<Question, QuestionCreationAttrs> {
 
   @BelongsToMany(() => Quiz, () => Quiz_Question)
   quiz: Quiz[];
+
+  @HasMany(() => CorrectAnswers)
+  correctAnswers: CorrectAnswers[];
+
+  @HasMany(() => Options)
+  options: Options[];
 }
