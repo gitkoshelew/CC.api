@@ -4,17 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0a5d3cc-808d-4c7d-8d54-4fff7de41be8" name="Changes" comment="feat: added .gitignore dependencies">
-      <change afterPath="$PROJECT_DIR$/config/config.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/20230203062916-Moderation.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/index.js" afterDir="false" />
+    <list default="true" id="e0a5d3cc-808d-4c7d-8d54-4fff7de41be8" name="Changes" comment="feature: CORS was added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rmq-sockets/src/subscriber.ts" beforeDir="false" afterPath="$PROJECT_DIR$/rmq-sockets/src/subscriber.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moderation/dto/create-moderation.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/moderation/dto/create-moderation.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/questions/questions.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/questions/questions.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/questions/questions.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/questions/questions.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgresData/base/16384/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/postgresData/base/16384/pg_internal.init" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgresData/base/5/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/postgresData/base/5/pg_internal.init" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgresData/global/pg_control" beforeDir="false" afterPath="$PROJECT_DIR$/postgresData/global/pg_control" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgresData/global/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/postgresData/global/pg_internal.init" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgresData/pg_wal/000000010000000000000001" beforeDir="false" afterPath="$PROJECT_DIR$/postgresData/pg_wal/000000010000000000000001" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/quiz/quiz.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/quiz/quiz.model.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
@@ -23,9 +21,19 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dev" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -53,7 +61,8 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "yarn",
-    "ts.external.directory.path": "E:\\entership\\CC.api\\node_modules\\typescript\\lib",
+    "prettier.import.notification.dismissed": "true",
+    "ts.external.directory.path": "C:\\Users\\yuryz\\Documents\\ITechArtLab\\CC.api\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -62,7 +71,25 @@
       <recent name="E:\entership\CC.api\src\access-group\dto" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.migrate:up">
+  <component name="RunManager" selected="Docker.docker-compose.yml: Compose Deployment">
+    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="migrate:create" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="migrate:create" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="migrate:undo" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -83,16 +110,6 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="start" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <configuration name="start:dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -108,7 +125,8 @@
         <item itemvalue="npm.start:dev" />
         <item itemvalue="npm.migrate:up" />
         <item itemvalue="npm.migrate:undo" />
-        <item itemvalue="npm.start" />
+        <item itemvalue="npm.migrate:create" />
+        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -138,6 +156,7 @@
       <workItem from="1675253850243" duration="3959000" />
       <workItem from="1675270651776" duration="1157000" />
       <workItem from="1675340943762" duration="8405000" />
+      <workItem from="1676450812863" duration="11705000" />
     </task>
     <task id="LOCAL-00001" summary="fix: add all points">
       <created>1672848188124</created>
@@ -188,7 +207,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675098896843</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="feature: CORS was added">
+      <created>1676282746000</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1676282746001</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,7 +240,8 @@
     <MESSAGE value="feat: added user and fixed quiz, topic" />
     <MESSAGE value="fix: fix quiz" />
     <MESSAGE value="fix: added some dependencies to run app" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: added some dependencies to run app" />
+    <MESSAGE value="feature: CORS was added" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature: CORS was added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

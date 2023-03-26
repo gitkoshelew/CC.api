@@ -24,16 +24,14 @@ import { Quiz_Question } from './quiz.question.model';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { UserInReq } from '../auth/decorators/users.decorator';
 import { UserReqDto } from '../auth/dto/user-req.dto';
-import { NotificationsService } from 'src/shared/services/notifications.service';
-import { NotificationTarget } from 'src/shared/types/notificationTarget.enum';
+// import { NotificationsService } from 'src/shared/services/notifications.service';
+// import { NotificationTarget } from 'src/shared/types/notificationTarget.enum';
 
 @ApiTags('Quiz')
 @Controller('/api/quiz')
 export class QuizController {
-  constructor(
-    private readonly quizService: QuizService,
-    private readonly notificationService: NotificationsService,
-  ) {}
+  constructor(private readonly quizService: QuizService) {}
+  // private readonly notificationService: NotificationsService,
 
   @ApiOperation({ summary: 'Method to view all quizzes' })
   @ApiResponse({ status: 200, type: Quiz })
@@ -67,10 +65,10 @@ export class QuizController {
       ...createQuizDto,
       authorId: user.userId,
     });
-    this.notificationService.created(NotificationTarget.QUIZ, {
-      ...createQuizDto,
-      authorId: user.userId,
-    });
+    // await this.notificationService.created(NotificationTarget.QUIZ, {
+    //   ...createQuizDto,
+    //   authorId: user.userId,
+    // });
     return res;
   }
 
@@ -85,7 +83,7 @@ export class QuizController {
   @Put('/add')
   async addQuestionToQuiz(@Body() dto: AddQuestionDto) {
     const res = await this.quizService.addQuestionToQuiz(dto);
-    this.notificationService.created(NotificationTarget.QUESTION, dto);
+    // await this.notificationService.created(NotificationTarget.QUESTION, dto);
     return res;
   }
 
@@ -104,7 +102,7 @@ export class QuizController {
   @Delete(':id')
   async deleteQuizById(@Param('id') id: number, @UserInReq() user: UserReqDto) {
     const res = await this.quizService.deleteQuizById(id, user.userId);
-    this.notificationService.deleted(NotificationTarget.QUIZ, id);
+    // await this.notificationService.deleted(NotificationTarget.QUIZ, id);
     return res;
   }
 }

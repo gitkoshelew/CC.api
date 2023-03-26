@@ -1,4 +1,12 @@
-import { Injectable } from '@nestjs/common';
+import {
+  ForbiddenException,
+  forwardRef,
+  HttpException,
+  HttpStatus,
+  Inject,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateQuizDBModel } from './dto/create-quiz.dto';
 import { InjectModel } from '@nestjs/sequelize';
 import { Quiz } from './quiz.model';
@@ -10,6 +18,7 @@ import { CustomErrorHandler } from 'src/utils/custom-error-handler';
 export class QuizService {
   constructor(
     @InjectModel(Quiz) private quizRepository: typeof Quiz,
+    @Inject(forwardRef(() => QuestionsService))
     private questionService: QuestionsService,
   ) {}
 

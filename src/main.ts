@@ -11,11 +11,21 @@ dotenv.config();
 async function bootstrap() {
   const PORT = process.env.PORT || 5000;
   const app = await NestFactory.create(AppModule);
+  app.enableCors({
+    origin: [
+      'http://localhost:8081',
+      'http://localhost:4200',
+      'http://localhost:3000',
+      'http://localhost:3001',
+    ],
+    methods: 'GET,PUT,POST,DELETE',
+    credentials: true,
+  });
 
   const config = new DocumentBuilder()
     .setTitle('Docs for CC.api')
     .setDescription(
-      'This is description for all methods that available in our app. You can find ALL endpoints and examples of data to ANY available method and responce',
+      'This is description for all methods that available in our app. You can find ALL endpoints and examples of data to ANY available method and response',
     )
     .addBearerAuth(
       {

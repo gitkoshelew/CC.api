@@ -13,6 +13,18 @@ export class CreateQuizDto {
     description: 'required field / not uniq / string',
   })
   readonly description: string;
+
+  @ApiProperty({
+    example: 'Some quiz comment',
+    description: 'not required field / not uniq / string',
+  })
+  readonly comment: string;
+
+  @ApiProperty({
+    example: 1,
+    description: 'topic of the question / required',
+  })
+  readonly topicId: number;
 }
 
 export class CreateQuizDBModel {

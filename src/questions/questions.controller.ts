@@ -18,17 +18,16 @@ import {
 import { Question } from './questions.model';
 import { Put } from '@nestjs/common/decorators';
 import { AddModerationToQuestionDto } from './dto/addModerationToQuestion.dto';
-import { NotificationsService } from 'src/shared/services/notifications.service';
-import { NotificationTarget } from 'src/shared/types/notificationTarget.enum';
+// import { NotificationsService } from 'src/shared/services/notifications.service';
+// import { NotificationTarget } from 'src/shared/types/notificationTarget.enum';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { CreateQuestionForQuizDto } from './dto/create-question-quiz.dto';
 
 @ApiTags('Question')
 @Controller('api/questions')
 export class QuestionsController {
-  constructor(
-    private questionService: QuestionsService,
-    private readonly notificationService: NotificationsService,
-  ) {}
+  constructor(private questionService: QuestionsService) {}
+  // private readonly notificationService: NotificationsService,
 
   @ApiOperation({ summary: 'Method to get all questions' })
   @ApiResponse({ status: 200, type: Question })
@@ -53,10 +52,9 @@ export class QuestionsController {
     description: 'If user is not authorized',
   })
   @Post()
-  async create(@Body() dto: CreateQuestionDto) {
-    const res = await this.questionService.createQuestion(dto);
-    await this.notificationService.created(NotificationTarget.QUESTION, dto);
-    return res;
+  async createQuestionForQuiz(@Body() dto: CreateQuestionForQuizDto) {
+    return await this.questionService.createQuestionForQuiz(dto);
+    // await this.notificationService.created(NotificationTarget.QUESTION, dto);
   }
 
   @UseGuards(JwtAuthGuard)
@@ -69,9 +67,8 @@ export class QuestionsController {
   })
   @Delete('/:id')
   async deleteById(@Param('id') id: number) {
-    const res = await this.questionService.deleteQuestionById(id);
-    await this.notificationService.deleted(NotificationTarget.QUESTION, res);
-    return res;
+    return await this.questionService.deleteQuestionById(id);
+    // await this.notificationService.deleted(NotificationTarget.QUESTION, res);
   }
 
   @UseGuards(JwtAuthGuard)

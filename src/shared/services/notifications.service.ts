@@ -1,4 +1,4 @@
-import { NotificationTarget } from './../types/notificationTarget.enum';
+import { NotificationTarget } from '../types/notificationTarget.enum';
 import { Injectable } from '@nestjs/common';
 import { Channel, connect, Replies } from 'amqplib';
 

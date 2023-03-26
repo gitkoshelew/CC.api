@@ -1,5 +1,5 @@
-import { SharedModule } from './../shared/shared.module';
-import { Module } from '@nestjs/common';
+import { SharedModule } from '../shared/shared.module';
+import { forwardRef, Module } from '@nestjs/common';
 import { QuizController } from './quiz.controller';
 import { QuizService } from './quiz.service';
 import { SequelizeModule } from '@nestjs/sequelize';
@@ -14,10 +14,11 @@ import { AuthModule } from '../auth/auth.module';
   controllers: [QuizController],
   providers: [QuizService],
   imports: [
+    forwardRef(() => QuestionsModule),
     SequelizeModule.forFeature([Quiz, Question, Quiz_Question, User]),
-    QuestionsModule,
     SharedModule,
     AuthModule,
   ],
+  exports: [QuizService],
 })
 export class QuizModule {}

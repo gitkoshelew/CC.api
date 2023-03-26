@@ -10,6 +10,31 @@ export class LoginUserDto {
   readonly password: string;
 }
 
-export type Token = {
-  accessToken: string;
-};
+export class UserViewType {
+  @ApiProperty({ example: '1', description: 'uniq id' })
+  id: number;
+
+  @ApiProperty({
+    example: 'Mary',
+    description: 'required name / not uniq / string',
+  })
+  name: string;
+
+  @ApiProperty({
+    example: 'Bogdanova',
+    description: 'not required surname / not uniq / string',
+  })
+  surname: string;
+
+  @ApiProperty({
+    example: 'mary.bogdanova79@gmail.com',
+    description: 'uniq and require email / string',
+  })
+  email: string;
+
+  @ApiProperty({
+    example: 'MaryBog',
+    description: 'uniq nickname and required / string',
+  })
+  nickname: string;
+}

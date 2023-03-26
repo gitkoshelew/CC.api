@@ -3,7 +3,8 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    // addColumn field description to quiz table
+    const quizTable = await queryInterface.describeTable('quizzes');
+    if (quizTable.comment) return;
     try {
       await queryInterface.addColumn('quizzes', 'comment', {
         type: Sequelize.DataTypes.STRING,
