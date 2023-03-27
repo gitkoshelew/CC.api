@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e0a5d3cc-808d-4c7d-8d54-4fff7de41be8" name="Changes" comment="feature: CORS was added">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgresData/base/16384/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/postgresData/base/16384/pg_internal.init" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgresData/base/5/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/postgresData/base/5/pg_internal.init" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgresData/global/pg_control" beforeDir="false" afterPath="$PROJECT_DIR$/postgresData/global/pg_control" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgresData/global/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/postgresData/global/pg_internal.init" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgresData/pg_wal/000000010000000000000001" beforeDir="false" afterPath="$PROJECT_DIR$/postgresData/pg_wal/000000010000000000000001" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/quiz/quiz.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/quiz/quiz.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dev" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2JZzHGQxsJw0yOJHfDJh2GCKEYz" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "E:/entership/CC.api",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "prettier.import.notification.dismissed": "true",
+    "ts.external.directory.path": "C:\\Users\\yuryz\\Documents\\ITechArtLab\\CC.api\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\entership\CC.api\src\access-group\dto" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Docker.docker-compose.yml: Compose Deployment">
+    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="migrate:create" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="migrate:create" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="migrate:undo" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="migrate:undo" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="migrate:up" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="migrate:up" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start:dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start:dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start:dev" />
+        <item itemvalue="npm.migrate:up" />
+        <item itemvalue="npm.migrate:undo" />
+        <item itemvalue="npm.migrate:create" />
+        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e0a5d3cc-808d-4c7d-8d54-4fff7de41be8" name="Changes" comment="" />
+      <created>1672300303954</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1672300303954</updated>
+      <workItem from="1672300305572" duration="4747000" />
+      <workItem from="1672741692706" duration="18645000" />
+      <workItem from="1672813508986" duration="39307000" />
+      <workItem from="1672988450020" duration="4395000" />
+      <workItem from="1673174510606" duration="448000" />
+      <workItem from="1673346845406" duration="7499000" />
+      <workItem from="1673421959552" duration="1587000" />
+      <workItem from="1673433797580" duration="12699000" />
+      <workItem from="1673506340571" duration="10720000" />
+      <workItem from="1674487808069" duration="27000" />
+      <workItem from="1674488823279" duration="4154000" />
+      <workItem from="1674546630927" duration="1338000" />
+      <workItem from="1674566997820" duration="344000" />
+      <workItem from="1674643369477" duration="1341000" />
+      <workItem from="1675231544133" duration="7334000" />
+      <workItem from="1675253850243" duration="3959000" />
+      <workItem from="1675270651776" duration="1157000" />
+      <workItem from="1675340943762" duration="8405000" />
+      <workItem from="1676450812863" duration="11705000" />
+    </task>
+    <task id="LOCAL-00001" summary="fix: add all points">
+      <created>1672848188124</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1672848188124</updated>
+    </task>
+    <task id="LOCAL-00002" summary="fix: added relationship between permission and access + added relationship between moderation and question">
+      <created>1672933784414</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1672933784414</updated>
+    </task>
+    <task id="LOCAL-00003" summary="fix: added relationship all of models">
+      <created>1673352972544</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1673352972544</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fix: fixed relationship between access and permission&#10;feat: added swagger to permission, moderation, access">
+      <created>1673444487811</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1673444487811</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feat: added user and fixed quiz, topic">
+      <created>1673521927941</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1673521927941</updated>
+    </task>
+    <task id="LOCAL-00006" summary="fix: fix quiz">
+      <created>1673527800369</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1673527800369</updated>
+    </task>
+    <task id="LOCAL-00007" summary="fix: added some dependencies to run app">
+      <created>1675098896843</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1675098896843</updated>
+    </task>
+    <task id="LOCAL-00008" summary="feature: CORS was added">
+      <created>1676282746000</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1676282746001</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="fix: add all points" />
+    <MESSAGE value="fix: added relationship between permission and access + added relationship between moderation and question" />
+    <MESSAGE value="fix: added relationship all of models" />
+    <MESSAGE value="fix: fixed relationship between access and permission&#10;feat: added swagger to permission, moderation, access" />
+    <MESSAGE value="feat: added user and fixed quiz, topic" />
+    <MESSAGE value="fix: fix quiz" />
+    <MESSAGE value="fix: added some dependencies to run app" />
+    <MESSAGE value="feature: CORS was added" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature: CORS was added" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/access-group/access-group.service.ts</url>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/user/user.service.ts</url>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

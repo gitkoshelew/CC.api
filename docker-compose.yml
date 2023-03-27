@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  main:
+    container_name: main
+    build:
+      context: .
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - ${PORT}:${PORT}
+      - ${ALTERNATIVE_PORT}:${ALTERNATIVE_PORT}
+    command: yarn start
+    depends_on:
+      - postgres
+    restart: always
+
+  postgres:
+    container_name: postgres
+    image: postgres:15
+    env_file:
+      - .env
+    environment:
+      PG_DATA: /var/lib/postgresql/data
+    ports:
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
+    volumes:
+      #      - pgdata:/var/lib/postgresql/data
+      - ./postgresData:/var/lib/postgresql/data
+    restart: always
+
+  pgadmin:
+    container_name: pg_admin
+    image: dpage/pgadmin4
+    env_file:
+      - .env
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
+    ports:
+      - ${PGADMIN_LOCAL_PORT}:${PGADMIN_NATIVE_PORT}
+    restart: unless-stopped
+    volumes:
+      - pgadmin:/root/.pgadmin
+
+#  chat-service:
+#    container_name: chat-service
+#    build: ./src/chat-service
+#    env_file:
+#      - ./src/chat-service/.env
+#    volumes:
+#      - ./src/chat-service:/chat
+#      - /chat/node_modules
+#    ports:
+#      - ${CHAT_SERVICE_PORT}:${CHAT_SERVICE_PORT}
+#    restart: always
+#
+#  rmq:
+#    container_name: rmq
+#    image: rabbitmq:3-management
+#    env_file:
+#      - .env
+#    ports:
+#      - ${RABBITMQ_LOCAL_PORT}:${RABBITMQ_NATIVE_PORT}
+#      - "5672:5672"
+#    restart: always
+
+volumes:
+  pgdata:
+  pgadmin:
+  pgdata-chat:
