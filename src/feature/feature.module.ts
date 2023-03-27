@@ -9,5 +9,6 @@ import { Feature } from './feature.model';
   providers: [FeatureService],
   controllers: [FeatureController],
   imports: [SequelizeModule.forFeature([Feature, FeatureFlag])],
+  exports: [FeatureService],
 })
 export class FeatureModule {}
