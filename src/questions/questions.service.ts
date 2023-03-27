@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { Question } from './questions.model';
 import { CreateQuestionDto } from './dto/create-question.dto';
@@ -6,12 +6,16 @@ import { ModerationService } from '../moderation/moderation.service';
 import { AddModerationToQuestionDto } from './dto/addModerationToQuestion.dto';
 import { CustomErrorHandler } from 'src/utils/custom-error-handler';
 import { ModerationStatus } from '../moderation/moderation.model';
+import { QuizService } from 'src/quiz/quiz.service';
+import { CreateQuestionForQuizDto } from './dto/create-question-quiz.dto';
 
 @Injectable()
 export class QuestionsService {
   constructor(
     @InjectModel(Question) private questionRepository: typeof Question,
     private moderationRepository: ModerationService,
+    @Inject(forwardRef(() => QuizService))
+    private quizService: QuizService,
   ) {}
 
   async createQuestion(dto: CreateQuestionDto) {
@@ -24,11 +28,22 @@ export class QuestionsService {
         },
       );
       if (question && moderation) {
-        return await question.$set('moderation', question.id);
+        await question.$set('moderation', question.id);
+        return question;
       }
+      return question;
     } catch (error) {
       throw CustomErrorHandler.BadRequest(error.parent.detail);
     }
+  }
+
+  async createQuestionForQuiz(dto: CreateQuestionForQuizDto) {
+    const { quizId, ...questionDto } = dto;
+    const question = await this.createQuestion(questionDto);
+    return this.quizService.addQuestionToQuiz({
+      quizId: quizId,
+      questionId: question.id,
+    });
   }
 
   async deleteQuestionById(id: number) {
