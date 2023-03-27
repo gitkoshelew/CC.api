@@ -28,7 +28,7 @@ services:
     ports:
       - ${POSTGRES_PORT}:${POSTGRES_PORT}
     volumes:
-#      - pgdata:/var/lib/postgresql/data
+      #      - pgdata:/var/lib/postgresql/data
       - ./postgresData:/var/lib/postgresql/data
     restart: always
 
@@ -56,6 +56,21 @@ services:
       - /chat/node_modules
     ports:
       - ${CHAT_SERVICE_PORT}:${CHAT_SERVICE_PORT}
+    depends_on:
+      - postgres-chat
+    restart: always
+
+  postgres-chat:
+    container_name: postgres_chat
+    image: postgres:15
+    env_file:
+      - ./src/chat-service/.env
+    environment:
+      PG_DATA: /var/lib/postgresql/data
+    ports:
+      - ${CHAT_POSTGRES_PORT}:${POSTGRES_PORT}
+    volumes:
+      - pgdata-chat:/var/lib/postgresql/data
     restart: always
 
   rmq:
@@ -65,9 +80,10 @@ services:
       - .env
     ports:
       - ${RABBITMQ_LOCAL_PORT}:${RABBITMQ_NATIVE_PORT}
-      - "5672:5672"
+      - '5672:5672'
     restart: always
 
 volumes:
   pgdata:
   pgadmin:
+  pgdata-chat:

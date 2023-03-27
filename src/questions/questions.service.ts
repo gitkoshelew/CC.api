@@ -4,6 +4,7 @@ import { Question } from './questions.model';
 import { CreateQuestionDto } from './dto/create-question.dto';
 import { ModerationService } from '../moderation/moderation.service';
 import { AddModerationToQuestionDto } from './dto/addModerationToQuestion.dto';
+import { CustomErrorHandler } from 'src/utils/custom-error-handler';
 import { ModerationStatus } from '../moderation/moderation.model';
 import { QuizService } from 'src/quiz/quiz.service';
 import { CreateQuestionForQuizDto } from './dto/create-question-quiz.dto';
@@ -18,15 +19,22 @@ export class QuestionsService {
   ) {}
 
   async createQuestion(dto: CreateQuestionDto) {
-    const question = await this.questionRepository.create(dto);
-    const moderation = await this.moderationRepository.createModerationStatus({
-      comment: 'new question',
-      status: ModerationStatus.review,
-    });
-    if (question && moderation) {
-      await question.$set('moderation', question.id);
+    try {
+      const question = await this.questionRepository.create(dto);
+      const moderation = await this.moderationRepository.createModerationStatus(
+        {
+          comment: 'new question',
+          status: ModerationStatus.review,
+        },
+      );
+      if (question && moderation) {
+        await question.$set('moderation', question.id);
+        return question;
+      }
+      return question;
+    } catch (error) {
+      throw CustomErrorHandler.BadRequest(error.parent.detail);
     }
-    return question;
   }
 
   async createQuestionForQuiz(dto: CreateQuestionForQuizDto) {
@@ -39,27 +47,53 @@ export class QuestionsService {
   }
 
   async deleteQuestionById(id: number) {
-    return await this.questionRepository.destroy({ where: { id } });
+    try {
+      const question = await this.questionRepository.findOne({
+        where: { id },
+      });
+      await question.destroy();
+      return this.questionRepository.findAll({
+        include: { all: true },
+      });
+    } catch (error) {
+      throw CustomErrorHandler.BadRequest("Question with this id doen't exist");
+    }
   }
 
   async getQuestionById(id: number) {
-    return await this.questionRepository.findOne({
-      where: { id },
-      include: { all: true },
-    });
+    try {
+      const question = await this.questionRepository.findOne({
+        where: { id },
+        include: { all: true },
+      });
+      return question;
+    } catch (error) {
+      throw CustomErrorHandler.BadRequest("Question with this id doen't exist");
+    }
   }
 
   async getAllQuestions() {
-    return await this.questionRepository.findAll({ include: { all: true } });
+    try {
+      const questionList = await this.questionRepository.findAll({
+        include: { all: true },
+      });
+      return questionList;
+    } catch (error) {
+      throw CustomErrorHandler.InternalServerError('Server problems');
+    }
   }
 
   async addModerationToQuestion(dto: AddModerationToQuestionDto) {
-    const question = await this.getQuestionById(dto.questionId);
-    const moderation = await this.moderationRepository.getModerationById(
-      dto.moderationId,
-    );
-    if (question && moderation) {
+    try {
+      const question = await this.getQuestionById(dto.questionId);
+      const moderation = await this.moderationRepository.getModerationById(
+        dto.moderationId,
+      );
       return await question.$set('moderation', moderation.id);
+    } catch (error) {
+      throw CustomErrorHandler.BadRequest(
+        'Check properties of selected moderation or question',
+      );
     }
   }
 }
