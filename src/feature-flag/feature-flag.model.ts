@@ -9,9 +9,9 @@ import {
 import { Feature } from '../feature/feature.model';
 
 export interface FeatureFlagCreationAttrs {
-  nextFeatureStatus: boolean;
-  angularFeatureStatus: boolean;
-  mobileFeatureStatus: boolean;
+  featureId: number;
+  portal: string;
+  status: boolean;
 }
 
 @Table({ tableName: 'feature-flags' })
@@ -28,12 +28,11 @@ export class FeatureFlag extends Model<FeatureFlag, FeatureFlagCreationAttrs> {
   @Column({ type: DataType.INTEGER })
   featureId: number;
 
+  @Column({ type: DataType.STRING, allowNull: false })
+  portal: string;
+
   @Column({ type: DataType.BOOLEAN, allowNull: false })
-  nextFeatureStatus: boolean;
-  @Column({ type: DataType.BOOLEAN, allowNull: false })
-  angularFeatureStatus: boolean;
-  @Column({ type: DataType.BOOLEAN, allowNull: false })
-  mobileFeatureStatus: boolean;
+  status: boolean;
 
   @BelongsTo(() => Feature)
   feature: Feature;
