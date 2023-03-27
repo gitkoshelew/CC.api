@@ -8,16 +8,10 @@ import {
 } from 'sequelize-typescript';
 import { Feature } from '../feature/feature.model';
 
-export enum FlagTitle {
-  NestJS = 'nest',
-  NextJS = 'next',
-  Angular = 'angular',
-  ReactNative = 'mobile',
-}
-
 export interface FeatureFlagCreationAttrs {
-  title: FlagTitle;
-  flagStatus: boolean;
+  nextFeatureStatus: boolean;
+  angularFeatureStatus: boolean;
+  mobileFeatureStatus: boolean;
 }
 
 @Table({ tableName: 'feature-flags' })
@@ -34,15 +28,13 @@ export class FeatureFlag extends Model<FeatureFlag, FeatureFlagCreationAttrs> {
   @Column({ type: DataType.INTEGER })
   featureId: number;
 
-  @Column({
-    type: DataType.ENUM,
-    values: ['nest', 'next', 'angular', 'mobile'],
-  })
-  title: FlagTitle;
-
   @Column({ type: DataType.BOOLEAN, allowNull: false })
-  status: boolean;
+  nextFeatureStatus: boolean;
+  @Column({ type: DataType.BOOLEAN, allowNull: false })
+  angularFeatureStatus: boolean;
+  @Column({ type: DataType.BOOLEAN, allowNull: false })
+  mobileFeatureStatus: boolean;
 
   @BelongsTo(() => Feature)
-  featureTitle: Feature;
+  feature: Feature;
 }

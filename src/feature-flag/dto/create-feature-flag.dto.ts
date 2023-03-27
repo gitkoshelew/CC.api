@@ -1,7 +1,6 @@
-import { FlagTitle } from '../feature-flag.model';
-
 export class CreateFeatureFlagDto {
   readonly featureId: number;
-  readonly title: FlagTitle;
-  readonly status: boolean;
+  readonly nextFeatureStatus: boolean;
+  readonly angularFeatureStatus: boolean;
+  readonly mobileFeatureStatus: boolean;
 }

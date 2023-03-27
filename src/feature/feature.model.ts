@@ -1,4 +1,4 @@
-import { Column, DataType, HasMany, Model, Table } from 'sequelize-typescript';
+import { Column, DataType, HasOne, Model, Table } from 'sequelize-typescript';
 import { FeatureFlag } from '../feature-flag/feature-flag.model';
 
 interface FeatureCreationAttrs {
@@ -26,6 +26,6 @@ export class Feature extends Model<Feature, FeatureCreationAttrs> {
   @Column({ type: DataType.STRING, allowNull: false })
   description: string;
 
-  @HasMany(() => FeatureFlag)
-  flagTitle: FeatureFlag[];
+  @HasOne(() => FeatureFlag)
+  feature: FeatureFlag;
 }
