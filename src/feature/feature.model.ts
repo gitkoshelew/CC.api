@@ -27,5 +27,5 @@ export class Feature extends Model<Feature, FeatureCreationAttrs> {
   description: string;
 
   @HasMany(() => FeatureFlag)
-  features: FeatureFlag[];
+  featureFlags: FeatureFlag[];
 }

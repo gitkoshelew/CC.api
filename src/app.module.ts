@@ -27,6 +27,9 @@ import { FeatureModule } from './feature/feature.module';
 import { FeatureFlagModule } from './feature-flag/feature-flag.module';
 import { FeatureFlag } from './feature-flag/feature-flag.model';
 import { Feature } from './feature/feature.model';
+import { FeatureAdminService } from './feature-admin/feature-admin.service';
+import { FeatureAdminModule } from './feature-admin/feature-admin.module';
+import { FeatureAdmin } from './feature-admin/feature-admin.model';
 
 @Module({
   imports: [
@@ -53,6 +56,7 @@ import { Feature } from './feature/feature.model';
         UserAccess,
         Feature,
         FeatureFlag,
+        FeatureAdmin,
       ],
       autoLoadModels: true,
     }),
@@ -67,9 +71,10 @@ import { Feature } from './feature/feature.model';
     InventoryModule,
     FeatureModule,
     FeatureFlagModule,
+    FeatureAdminModule,
   ],
 
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, FeatureAdminService],
 })
 export class AppModule {}

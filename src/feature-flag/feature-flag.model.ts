@@ -8,9 +8,14 @@ import {
 } from 'sequelize-typescript';
 import { Feature } from '../feature/feature.model';
 
+export enum Portals {
+  MobilePortalFlagStatus = 'mobile-portal',
+  UserPortalFlagStatus = 'user-portal',
+  AdminPortalFlagStatus = 'admin-portal',
+}
 export interface FeatureFlagCreationAttrs {
   featureId: number;
-  portal: string;
+  portal: Portals;
   status: boolean;
 }
 
@@ -28,8 +33,11 @@ export class FeatureFlag extends Model<FeatureFlag, FeatureFlagCreationAttrs> {
   @Column({ type: DataType.INTEGER })
   featureId: number;
 
-  @Column({ type: DataType.STRING, allowNull: false })
-  portal: string;
+  @Column({
+    type: DataType.ENUM,
+    values: ['mobile-portal', 'user-portal', 'admin-portal'],
+  })
+  portal: Portals;
 
   @Column({ type: DataType.BOOLEAN, allowNull: false })
   status: boolean;
