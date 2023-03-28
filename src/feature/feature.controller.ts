@@ -2,6 +2,7 @@ import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { FeatureService } from './feature.service';
 import { CreateFeatureDto } from './dto/create-feature.dto';
 import { Delete, Put } from '@nestjs/common/decorators';
+import { AddModerationToQuestionDto } from "../questions/dto/addModerationToQuestion.dto";
 
 @Controller('api/feature')
 export class FeatureController {
@@ -25,5 +26,10 @@ export class FeatureController {
   @Delete(':id')
   deleteFeature(@Param('id') id: number) {
     return this.featureService.deleteFeatureById(id);
+  }
+
+  @Put(':id')
+  updateFeature(@Body() dto: CreateFeatureDto, @Param('id') id: number) {
+    return this.featureService.updateFeature(dto, id);
   }
 }
