@@ -8,6 +8,6 @@ import { QuestionOptionsService } from './question-options.service';
   controllers: [QuestionOptionsController],
   providers: [QuestionOptionsService],
   imports: [SequelizeModule.forFeature([QuestionOptions])],
-  exports:[QuestionOptionsService]
+  exports: [QuestionOptionsService],
 })
 export class QuestionOptionsModule {}

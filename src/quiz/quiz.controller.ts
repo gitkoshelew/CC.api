@@ -31,9 +31,8 @@ import { NotificationTarget } from 'src/shared/types/notificationTarget.enum';
 @Controller('/api/quiz')
 export class QuizController {
   constructor(
-    private readonly quizService: QuizService,
-  ) // private readonly notificationService: NotificationsService,
-  {}
+    private readonly quizService: QuizService, // private readonly notificationService: NotificationsService,
+  ) {}
 
   @ApiOperation({ summary: 'Method to view all quizzes' })
   @ApiResponse({ status: 200, type: Quiz })
