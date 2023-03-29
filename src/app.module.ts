@@ -23,10 +23,6 @@ import { UserAccess } from './user/user.access.model';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { InventoryModule } from './inventory/inventory.module';
-import { FeatureModule } from './feature/feature.module';
-import { FeatureFlagModule } from './feature-flag/feature-flag.module';
-import { FeatureFlag } from './feature-flag/feature-flag.model';
-import { Feature } from './feature/feature.model';
 import { FeatureAdminService } from './feature-admin/feature-admin.service';
 import { FeatureAdminModule } from './feature-admin/feature-admin.module';
 import { FeatureAdmin } from './feature-admin/feature-admin.model';
@@ -54,8 +50,6 @@ import { FeatureAdmin } from './feature-admin/feature-admin.model';
         Question,
         Quiz_Question,
         UserAccess,
-        Feature,
-        FeatureFlag,
         FeatureAdmin,
       ],
       autoLoadModels: true,
@@ -69,8 +63,6 @@ import { FeatureAdmin } from './feature-admin/feature-admin.model';
     ModerationModule,
     QuestionsModule,
     InventoryModule,
-    FeatureModule,
-    FeatureFlagModule,
     FeatureAdminModule,
   ],
 
