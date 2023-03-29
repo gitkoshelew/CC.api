@@ -23,8 +23,10 @@ import { UserAccess } from './user/user.access.model';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { InventoryModule } from './inventory/inventory.module';
-import { CorrectAnswers } from './questions/correctAnswer.model';
-import { Options } from './questions/options.model';
+import { CorrectAnswers } from './correct-answer/correct-answer.model';
+import { CorrectAnswerModule } from './correct-answer/correct-answer.module';
+import { QuestionOptionsModule } from './question-options/question-options.module';
+import { QuestionOptions } from './question-options/question-options.model';
 
 @Module({
   imports: [
@@ -50,7 +52,7 @@ import { Options } from './questions/options.model';
         Quiz_Question,
         UserAccess,
         CorrectAnswers,
-        Options,
+        QuestionOptions,
       ],
       autoLoadModels: true,
     }),
@@ -63,8 +65,9 @@ import { Options } from './questions/options.model';
     ModerationModule,
     QuestionsModule,
     InventoryModule,
+    CorrectAnswerModule,
+    QuestionOptionsModule,
   ],
-
   controllers: [AppController],
   providers: [AppService],
 })

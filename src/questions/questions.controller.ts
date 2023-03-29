@@ -70,7 +70,7 @@ export class QuestionsController {
   @Delete('/:id')
   async deleteById(@Param('id') id: number) {
     const res = await this.questionService.deleteQuestionById(id);
-    await this.notificationService.deleted(NotificationTarget.QUESTION, res);
+    // await this.notificationService.deleted(NotificationTarget.QUESTION, res);
     return res;
   }
 

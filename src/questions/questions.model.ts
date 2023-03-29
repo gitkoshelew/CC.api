@@ -18,8 +18,8 @@ import { Moderation } from '../moderation/moderation.model';
 import { ApiProperty } from '@nestjs/swagger';
 import { Quiz } from '../quiz/quiz.model';
 import { Quiz_Question } from '../quiz/quiz.question.model';
-import { CorrectAnswers } from './correctAnswer.model';
-import { Options } from './options.model';
+import { CorrectAnswers } from '../correct-answer/correct-answer.model';
+import { QuestionOptions } from 'src/question-options/question-options.model';
 
 @Table({ tableName: 'questions', createdAt: false, updatedAt: false })
 export class Question extends Model<Question, QuestionCreationAttrs> {
@@ -102,6 +102,6 @@ export class Question extends Model<Question, QuestionCreationAttrs> {
   @HasMany(() => CorrectAnswers)
   correctAnswers: CorrectAnswers[];
 
-  @HasMany(() => Options)
-  options: Options[];
+  @HasMany(() => QuestionOptions)
+  options: QuestionOptions[];
 }

@@ -7,14 +7,14 @@ import {
   Model,
   Table,
 } from 'sequelize-typescript';
-import { Question } from './questions.model';
+import { Question } from '../questions/questions.model';
 
-interface OptionsAttrs {
+interface CorrectAnswersAttrs {
   name: string;
 }
 
-@Table({ tableName: 'options', createdAt: true, updatedAt: true })
-export class Options extends Model<Options, OptionsAttrs> {
+@Table({ tableName: 'correct_answers', createdAt: true, updatedAt: true })
+export class CorrectAnswers extends Model<CorrectAnswers, CorrectAnswersAttrs> {
   @ApiProperty({ example: 1, description: 'uniq id' })
   @Column({
     type: DataType.INTEGER,
@@ -25,8 +25,8 @@ export class Options extends Model<Options, OptionsAttrs> {
   id: number;
 
   @ApiProperty({
-    example: 'options 1',
-    description: 'your options',
+    example: 'answer 1',
+    description: 'your correct answer',
   })
   @Column({ type: DataType.STRING, allowNull: false })
   name: string;

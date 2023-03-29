@@ -21,7 +21,7 @@ export class UserService {
       const user = await create;
       return user;
     } catch (error) {
-      throw CustomErrorHandler.BadRequest(error.errors[0].message);
+      throw CustomErrorHandler.BadRequest(error);
     }
   }
 

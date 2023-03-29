@@ -27,7 +27,7 @@ export class QuestionsService {
         return await question.$set('moderation', question.id);
       }
     } catch (error) {
-      throw CustomErrorHandler.BadRequest(error.parent.detail);
+      throw CustomErrorHandler.BadRequest(error);
     }
   }
 

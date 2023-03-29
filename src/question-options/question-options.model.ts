@@ -7,14 +7,17 @@ import {
   Model,
   Table,
 } from 'sequelize-typescript';
-import { Question } from './questions.model';
+import { Question } from '../questions/questions.model';
 
-interface CorrectAnswersAttrs {
+interface QuestionOptionsAttrs {
   name: string;
 }
 
-@Table({ tableName: 'correct_answers', createdAt: true, updatedAt: true })
-export class CorrectAnswers extends Model<CorrectAnswers, CorrectAnswersAttrs> {
+@Table({ tableName: 'question_options', createdAt: true, updatedAt: true })
+export class QuestionOptions extends Model<
+  QuestionOptions,
+  QuestionOptionsAttrs
+> {
   @ApiProperty({ example: 1, description: 'uniq id' })
   @Column({
     type: DataType.INTEGER,
