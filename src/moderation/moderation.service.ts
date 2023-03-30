@@ -12,9 +12,9 @@ export class ModerationService {
 
   async createModerationStatus(dto: CreateModerationDto) {
     try {
-      const create = this.moderationRepository.create(dto);
-      const moderation = await create;
-      return moderation;
+      // <Remark>
+      // return directly
+      return  this.moderationRepository.create(dto);
     } catch (error) {
       throw CustomErrorHandler.BadRequest(error.errors[0].message);
     }
@@ -22,10 +22,11 @@ export class ModerationService {
 
   async getAllStatus() {
     try {
-      const moderationList = await this.moderationRepository.findAll({
+      // <Remark>
+      // return directly
+      return await this.moderationRepository.findAll({
         include: { all: true },
       });
-      return moderationList;
     } catch (error) {
       throw CustomErrorHandler.InternalServerError('Server problems');
     }
@@ -33,11 +34,10 @@ export class ModerationService {
 
   async getModerationById(id: number) {
     try {
-      const moderation = await this.moderationRepository.findOne({
+      return await this.moderationRepository.findOne({
         where: { id },
         include: { all: true },
       });
-      return moderation;
     } catch (error) {
       throw CustomErrorHandler.BadRequest(
         "Moderation with this id doen't exist",

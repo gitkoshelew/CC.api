@@ -9,6 +9,9 @@ import { ApiProperty } from '@nestjs/swagger';
 import { Quiz } from './quiz.model';
 import { Question } from '../questions/questions.model';
 
+// <Remark>
+// Is Quiz_Question is proper name for the class
+// It should be named QuizQuestion
 @Table({ tableName: 'quiz_questions', createdAt: false, updatedAt: false })
 export class Quiz_Question extends Model<Quiz_Question> {
   @ApiProperty({ example: '1', description: 'uniq id' })

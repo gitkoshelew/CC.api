@@ -10,9 +10,10 @@ export class TopicService {
 
   async createTopic(dto: CreateTopicDto) {
     try {
-      const create = this.topicRepository.create(dto);
-      const topic = await create;
-      return topic;
+      // <Remark>
+      // why use create variable for getting the promise?
+      // just return the result directly
+      return await this.topicRepository.create(dto);
     } catch (error) {
       throw CustomErrorHandler.BadRequest(error.errors[0].message);
     }
@@ -20,10 +21,9 @@ export class TopicService {
 
   async getAllTopics() {
     try {
-      const topicList = await this.topicRepository.findAll({
+      return await this.topicRepository.findAll({
         include: { all: true },
       });
-      return topicList;
     } catch (error) {
       throw CustomErrorHandler.InternalServerError('Server problems');
     }
@@ -31,22 +31,28 @@ export class TopicService {
 
   async getTopicById(id: number) {
     try {
-      const topic = await this.topicRepository.findOne({
+      // <Remark>
+      // Return the result directly
+      // Name of function already tells you what to expect
+      return await this.topicRepository.findOne({
         where: { id },
         include: { all: true },
       });
-      return topic;
     } catch (error) {
       throw CustomErrorHandler.BadRequest("Topic with this id doen't exist");
     }
   }
 
+  // <Remark>
+  // do not forget about splitting the logical blocks by using new lines
   async deleteTopicById(id: number) {
     try {
       const topic = await this.topicRepository.findOne({
         where: { id },
       });
+
       await topic.destroy();
+
       return this.topicRepository.findAll({
         include: { all: true },
       });

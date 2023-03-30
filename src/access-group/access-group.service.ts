@@ -15,9 +15,9 @@ export class AccessGroupService {
 
   async createAccessGroup(dto: CreateAccessGroupDto) {
     try {
-      const create = this.accessGroupRepository.create(dto);
-      const accessGroup = await create;
-      return accessGroup;
+      // <Remark>
+      // return directly
+      return await this.accessGroupRepository.create(dto);
     } catch (error) {
       throw CustomErrorHandler.BadRequest('Name is required');
     }
@@ -39,10 +39,11 @@ export class AccessGroupService {
 
   async getAllAccessGroup() {
     try {
-      const accessGroups = await this.accessGroupRepository.findAll({
+      // <Remark>
+      // return directly
+      return await this.accessGroupRepository.findAll({
         include: { all: true },
       });
-      return accessGroups;
     } catch (error) {
       throw CustomErrorHandler.InternalServerError('Server problems');
     }
@@ -50,11 +51,12 @@ export class AccessGroupService {
 
   async getAccessGroupById(id: number) {
     try {
-      const accessGroup = await this.accessGroupRepository.findOne({
+      // <Remark>
+      // return directly
+      return await this.accessGroupRepository.findOne({
         where: { id },
         include: { all: true },
       });
-      return accessGroup;
     } catch (error) {
       throw CustomErrorHandler.BadRequest("Access with this id doen't exist");
     }

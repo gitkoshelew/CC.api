@@ -1,6 +1,9 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty } from 'class-validator';
 
+// <Remark>
+// index.ts should have all dtos related to questions module
+// file naming is inconsistent
 export class AddModerationToQuestionDto {
   @ApiProperty({
     example: 1,

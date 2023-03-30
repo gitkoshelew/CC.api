@@ -1,12 +1,12 @@
-import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/sequelize';
-import { User } from './user.model';
-import { CreateUserDto } from './dto/create-user.dto';
-import { AddAccessDto } from './dto/addAccessToUser.dto';
-import { AccessGroupService } from 'src/access-group/access-group.service';
-import { CustomErrorHandler } from 'src/utils/custom-error-handler';
-import { AccessGroup } from '../access-group/access-group.model';
-import { Permission } from '../permission/permission.model';
+import { Injectable } from "@nestjs/common";
+import { InjectModel } from "@nestjs/sequelize";
+import { User } from "./user.model";
+import { CreateUserDto } from "./dto/create-user.dto";
+import { AddAccessDto } from "./dto/addAccessToUser.dto";
+import { AccessGroupService } from "src/access-group/access-group.service";
+import { CustomErrorHandler } from "src/utils/custom-error-handler";
+import { AccessGroup } from "../access-group/access-group.model";
+import { Permission } from "../permission/permission.model";
 
 @Injectable()
 export class UserService {
@@ -17,9 +17,9 @@ export class UserService {
 
   async createUser(dto: CreateUserDto) {
     try {
-      const create = this.userRepository.create(dto);
-      const user = await create;
-      return user;
+      // <Remark>
+      // return user directly
+      return await this.userRepository.create(dto);
     } catch (error) {
       throw CustomErrorHandler.BadRequest(error.errors[0].message);
     }
@@ -27,11 +27,10 @@ export class UserService {
 
   async getUserById(id: number) {
     try {
-      const user = await this.userRepository.findOne({
+      return await this.userRepository.findOne({
         where: { id },
         include: { all: true },
       });
-      return user;
     } catch (error) {
       throw CustomErrorHandler.BadRequest("User with this id doen't exist");
     }
@@ -39,10 +38,9 @@ export class UserService {
 
   async getAllUsers() {
     try {
-      const userList = await this.userRepository.findAll({
+      return await this.userRepository.findAll({
         include: { all: true },
       });
-      return userList;
     } catch (error) {
       throw CustomErrorHandler.InternalServerError('Server problems');
     }

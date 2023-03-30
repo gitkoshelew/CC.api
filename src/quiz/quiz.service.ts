@@ -1,4 +1,6 @@
 import {
+  // <Remark>
+  // Remove unused imports
   ForbiddenException,
   forwardRef,
   HttpException,
@@ -24,10 +26,11 @@ export class QuizService {
 
   async getAll() {
     try {
-      const quizList = await this.quizRepository.findAll({
+      // <Remark>
+      // return result
+      return await this.quizRepository.findAll({
         include: { all: true },
       });
-      return quizList;
     } catch (error) {
       throw CustomErrorHandler.InternalServerError('Server problems');
     }
@@ -35,11 +38,10 @@ export class QuizService {
 
   async getById(id: number) {
     try {
-      const quiz = await this.quizRepository.findOne({
+      return await this.quizRepository.findOne({
         where: { id },
         include: { all: true },
       });
-      return quiz;
     } catch (error) {
       throw CustomErrorHandler.BadRequest("Quiz with this id doen't exist");
     }
@@ -47,9 +49,7 @@ export class QuizService {
 
   async createQuiz(createQuizDBModel: CreateQuizDBModel) {
     try {
-      const create = this.quizRepository.create(createQuizDBModel);
-      const quiz = await create;
-      return quiz;
+      return await this.quizRepository.create(createQuizDBModel);
     } catch (error) {
       throw CustomErrorHandler.BadRequest(error.parent.detail);
     }
@@ -70,17 +70,24 @@ export class QuizService {
   }
 
   async deleteQuizById(id: number, userId: number) {
-    try {
-      const quiz = await this.quizRepository.findOne({
-        where: { id },
-      });
-      if (quiz.authorId !== userId) {
-        throw CustomErrorHandler.Forbidden("You don't have permission");
-      }
+    const quiz = await this.quizRepository.findOne({
+      where: { id },
+    });
 
-      await quiz.destroy();
-    } catch (error) {
+    if (!quiz) {
       throw CustomErrorHandler.BadRequest("Quiz with this id doen't exist");
     }
+
+    if (quiz.authorId !== userId) {
+      // <Remark>
+      // this error is caught by local catch
+      // so that this error will be overriden by another one
+      throw CustomErrorHandler.Forbidden("You don't have permission");
+    }
+
+    await quiz.destroy();
+    // <Remark>
+    // you need to use try catch block in controller for example
+    // so that you can throw custom errors in services and catch them in controller
   }
 }

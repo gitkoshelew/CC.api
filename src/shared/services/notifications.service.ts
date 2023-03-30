@@ -20,12 +20,16 @@ export class NotificationsService {
     try {
       const connection = await connect('amqp://localhost');
       this.channel = await connection.createChannel();
+      // <Remark>
+      // empty lines
       await this.channel.assertExchange(this.exchangeName, 'topic', {
         durable: true,
       });
+
       this.queue = await this.channel.assertQueue(this.queueName, {
         durable: true,
       });
+
       this.channel.bindQueue(
         this.queue.queue,
         this.exchangeName,
@@ -35,15 +39,20 @@ export class NotificationsService {
       console.error('[notifications.service] -> init', error);
     }
   }
+  // <Remark>
+  // add empty lines between function declarations
   public async created(notificationTarget: NotificationTarget, message: any) {
     await this.notify(notificationTarget, '.created', message);
   }
+
   public async updated(notificationTarget: NotificationTarget, message: any) {
     await this.notify(notificationTarget, '.updated', message);
   }
+
   public async deleted(notificationTarget: NotificationTarget, message: any) {
     await this.notify(notificationTarget, '.deleted', message);
   }
+
   private async notify(
     target: NotificationTarget,
     topic: string,

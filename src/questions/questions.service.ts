@@ -62,11 +62,13 @@ export class QuestionsService {
 
   async getQuestionById(id: number) {
     try {
-      const question = await this.questionRepository.findOne({
+
+      // <Remark>
+      // return question directly
+      return await this.questionRepository.findOne({
         where: { id },
         include: { all: true },
       });
-      return question;
     } catch (error) {
       throw CustomErrorHandler.BadRequest("Question with this id doen't exist");
     }
@@ -74,10 +76,11 @@ export class QuestionsService {
 
   async getAllQuestions() {
     try {
-      const questionList = await this.questionRepository.findAll({
+      // <Remark>
+      // Return results directly
+      return await this.questionRepository.findAll({
         include: { all: true },
       });
-      return questionList;
     } catch (error) {
       throw CustomErrorHandler.InternalServerError('Server problems');
     }

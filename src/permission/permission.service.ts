@@ -12,9 +12,9 @@ export class PermissionService {
 
   async createPermission(dto: CreatePermissionDto) {
     try {
-      const create = this.permissionRepository.create(dto);
-      const permission = await create;
-      return permission;
+      // <Remark>
+      // return directly
+      return await this.permissionRepository.create(dto);
     } catch (error) {
       throw CustomErrorHandler.BadRequest(error.errors[0].message);
     }
@@ -38,11 +38,12 @@ export class PermissionService {
 
   async getPermissionById(id: number) {
     try {
-      const permission = await this.permissionRepository.findOne({
+      // <Remark>
+      // return directly
+      return await this.permissionRepository.findOne({
         where: { id },
         include: { all: true },
       });
-      return permission;
     } catch (error) {
       throw CustomErrorHandler.BadRequest(
         "Permission with this id doen't exist",
@@ -52,10 +53,11 @@ export class PermissionService {
 
   async getAllPermissions() {
     try {
-      const permissionList = await this.permissionRepository.findAll({
+      // <Remark>
+      // return directly
+      return await this.permissionRepository.findAll({
         include: { all: true },
       });
-      return permissionList;
     } catch (error) {
       throw CustomErrorHandler.InternalServerError('Server problems');
     }

@@ -6,6 +6,8 @@ import {
 } from '@nestjs/common';
 import { Request, Response } from 'express';
 
+// <Remark>
+// file name exception-filter.ts
 @Catch(HttpException)
 export class HttpExceptionFilter implements ExceptionFilter {
   catch(exception: HttpException, host: ArgumentsHost) {

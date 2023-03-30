@@ -1,6 +1,9 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty } from 'class-validator';
 
+// <Remark>
+// index.ts with dtos within this module
+// inconsistent file naming
 export class AddPermissionDto {
   @ApiProperty({
     example: 1,

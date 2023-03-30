@@ -2,6 +2,8 @@ import { ModerationStatus } from '../moderation.model';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty } from 'class-validator';
 
+// <Remark>
+// index.ts with dtos within this module
 export class CreateModerationDto {
   @ApiProperty({
     example: 'Rewrite please some points that were doubt',

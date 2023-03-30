@@ -24,6 +24,8 @@ import { Quiz_Question } from './quiz.question.model';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { UserInReq } from '../auth/decorators/users.decorator';
 import { UserReqDto } from '../auth/dto/user-req.dto';
+// <Remark>
+// Remove these comments
 // import { NotificationsService } from 'src/shared/services/notifications.service';
 // import { NotificationTarget } from 'src/shared/types/notificationTarget.enum';
 
@@ -61,15 +63,13 @@ export class QuizController {
     @Body() createQuizDto: CreateQuizDto,
     @UserInReq() user: UserReqDto,
   ) {
-    const res = await this.quizService.createQuiz({
+
+    // <Remark>
+    // Return the result directly
+    return await this.quizService.createQuiz({
       ...createQuizDto,
       authorId: user.userId,
     });
-    // await this.notificationService.created(NotificationTarget.QUIZ, {
-    //   ...createQuizDto,
-    //   authorId: user.userId,
-    // });
-    return res;
   }
 
   @UseGuards(JwtAuthGuard)
@@ -82,9 +82,9 @@ export class QuizController {
   })
   @Put('/add')
   async addQuestionToQuiz(@Body() dto: AddQuestionDto) {
-    const res = await this.quizService.addQuestionToQuiz(dto);
-    // await this.notificationService.created(NotificationTarget.QUESTION, dto);
-    return res;
+    // <Remark>
+    // Return the result directly
+    return await this.quizService.addQuestionToQuiz(dto);
   }
 
   @ApiBearerAuth('JWT-auth')
@@ -101,8 +101,11 @@ export class QuizController {
   })
   @Delete(':id')
   async deleteQuizById(@Param('id') id: number, @UserInReq() user: UserReqDto) {
-    const res = await this.quizService.deleteQuizById(id, user.userId);
-    // await this.notificationService.deleted(NotificationTarget.QUIZ, id);
-    return res;
+    // <Remark>
+    // I understand, that old code can be commented,
+    // but new code should be optimized, if old code is commented
+    // return the result directly
+    // EsLint gives the hint to do this
+    return await this.quizService.deleteQuizById(id, user.userId);
   }
 }

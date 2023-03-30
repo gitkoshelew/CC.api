@@ -1,5 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 
+// <Remark>
+// index.ts with dtos within this module
 export class LoginUserDto {
   @ApiProperty({
     example: 'mary.bogdanova79@gmail.com',

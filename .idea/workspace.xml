@@ -6,14 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="e0a5d3cc-808d-4c7d-8d54-4fff7de41be8" name="Changes" comment="feature: CORS was added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgresData/base/16384/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/postgresData/base/16384/pg_internal.init" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgresData/base/5/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/postgresData/base/5/pg_internal.init" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgresData/global/pg_control" beforeDir="false" afterPath="$PROJECT_DIR$/postgresData/global/pg_control" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgresData/global/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/postgresData/global/pg_internal.init" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgresData/pg_wal/000000010000000000000001" beforeDir="false" afterPath="$PROJECT_DIR$/postgresData/pg_wal/000000010000000000000001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/quiz/quiz.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/quiz/quiz.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/services/notifications.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/services/notifications.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/topic/topic.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/topic/topic.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/dto/addAccessToUser.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/dto/addAccessToUser.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/user.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,14 +51,14 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "E:/entership/CC.api",
+    "last_opened_file_path": "D:/Anvar/Projects/Node.js/CC.api",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "yarn",
     "prettier.import.notification.dismissed": "true",
-    "ts.external.directory.path": "C:\\Users\\yuryz\\Documents\\ITechArtLab\\CC.api\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "D:\\Anvar\\Projects\\Node.js\\CC.api\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -157,6 +153,7 @@
       <workItem from="1675270651776" duration="1157000" />
       <workItem from="1675340943762" duration="8405000" />
       <workItem from="1676450812863" duration="11705000" />
+      <workItem from="1680156993497" duration="2556000" />
     </task>
     <task id="LOCAL-00001" summary="fix: add all points">
       <created>1672848188124</created>
@@ -249,10 +246,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/access-group/access-group.service.ts</url>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/user/user.service.ts</url>
-          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

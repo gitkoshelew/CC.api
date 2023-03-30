@@ -1,5 +1,8 @@
 import { HttpErrorTypes } from './error.types';
 
+// <Remark>
+// Do not use word custom here. Just ErrorHandler
+// file name also error-handler.ts
 export class CustomErrorHandler {
   static BadRequest(message) {
     return { statusCode: HttpErrorTypes.BAD_REQUEST, message: message };
