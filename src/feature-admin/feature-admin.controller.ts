@@ -17,6 +17,11 @@ export class FeatureAdminController {
     return this.featureAdminService.getAllFeaturesAdmin();
   }
 
+  @Get('user-portal')
+  getUserPortalData() {
+    return this.featureAdminService.getUserPortalFeaturesAdmin();
+  }
+
   @Get(':id')
   getFeatureById(@Param('id') id: number) {
     return this.featureAdminService.getOneFeatureAdmin(id);

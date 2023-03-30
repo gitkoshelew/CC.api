@@ -3,7 +3,6 @@ import { InjectModel } from '@nestjs/sequelize';
 import { FeatureAdmin } from './feature-admin.model';
 import { CreateFeatureAdminDto } from './dto/create-feature-admin.dto';
 import { CustomErrorHandler } from '../utils/custom-error-handler';
-import { CreateFeatureDto } from '../feature/dto/create-feature.dto';
 
 @Injectable()
 export class FeatureAdminService {
@@ -23,6 +22,18 @@ export class FeatureAdminService {
     try {
       return await this.featureAdminRepository.findAll({
         include: { all: true },
+      });
+    } catch (e) {
+      throw CustomErrorHandler.InternalServerError('Server problems');
+    }
+  }
+
+  async getUserPortalFeaturesAdmin() {
+    try {
+      return await this.featureAdminRepository.findAll({
+        attributes: {
+          exclude: ['adminPortalFeatureStatus', 'mobilePortalFeatureStatus'],
+        },
       });
     } catch (e) {
       throw CustomErrorHandler.InternalServerError('Server problems');
@@ -56,7 +67,7 @@ export class FeatureAdminService {
     }
   }
 
-  async updateFeatureAdmin(dto: CreateFeatureDto, id: number) {
+  async updateFeatureAdmin(dto: CreateFeatureAdminDto, id: number) {
     try {
       const feature = await this.featureAdminRepository.findOne({
         where: { id },

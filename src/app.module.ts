@@ -23,7 +23,6 @@ import { UserAccess } from './user/user.access.model';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { InventoryModule } from './inventory/inventory.module';
-import { FeatureAdminService } from './feature-admin/feature-admin.service';
 import { FeatureAdminModule } from './feature-admin/feature-admin.module';
 import { FeatureAdmin } from './feature-admin/feature-admin.model';
 
@@ -67,6 +66,6 @@ import { FeatureAdmin } from './feature-admin/feature-admin.model';
   ],
 
   controllers: [AppController],
-  providers: [AppService, FeatureAdminService],
+  providers: [AppService],
 })
 export class AppModule {}
