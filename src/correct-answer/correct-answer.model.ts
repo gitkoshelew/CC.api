@@ -32,7 +32,7 @@ export class CorrectAnswers extends Model<CorrectAnswers, CorrectAnswersAttrs> {
   name: string;
 
   @ForeignKey(() => Question)
-  @ApiProperty({ example: 1, description: 'foreign key for author' })
+  @ApiProperty({ example: 1, description: 'foreign key for question' })
   @Column({ type: DataType.INTEGER })
   questionId: number;
 

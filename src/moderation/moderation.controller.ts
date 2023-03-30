@@ -13,28 +13,28 @@ export class ModerationController {
   @ApiOperation({ summary: 'Method to create moderation status' })
   @ApiResponse({ status: 201, type: Moderation })
   @Post()
-  create(@Body() dto: CreateModerationDto) {
+  async create(@Body() dto: CreateModerationDto) {
     return this.moderationService.createModerationStatus(dto);
   }
 
   @ApiOperation({ summary: 'Method to get all status checkpoints' })
   @ApiResponse({ status: 200, type: [Moderation] })
   @Get()
-  getAllModerations() {
+  async getAllModerations() {
     return this.moderationService.getAllStatus();
   }
 
   @ApiOperation({ summary: 'Method to get all status checkpoints' })
   @ApiResponse({ status: 200, type: Moderation })
   @Get(':id')
-  getModerationById(@Param('id') id: number) {
+  async getModerationById(@Param('id') id: number) {
     return this.moderationService.getModerationById(id);
   }
 
   @ApiOperation({ summary: 'delete moderation' })
   @ApiResponse({ status: 200, type: Moderation })
   @Delete(':id')
-  deleteModeration(@Param('id') id: number) {
+  async deleteModeration(@Param('id') id: number) {
     return this.moderationService.deleteModerationById(id);
   }
 }

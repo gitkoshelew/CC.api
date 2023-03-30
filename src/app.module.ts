@@ -18,7 +18,6 @@ import { AccessPermission } from './access-group/access-permission.model';
 import { AccessGroup } from './access-group/access-group.model';
 import { User } from './user/user.model';
 import { Quiz } from './quiz/quiz.model';
-import { Quiz_Question } from './quiz/quiz.question.model';
 import { UserAccess } from './user/user.access.model';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
@@ -49,7 +48,6 @@ import { QuestionOptions } from './question-options/question-options.model';
         Topic,
         Moderation,
         Question,
-        Quiz_Question,
         UserAccess,
         CorrectAnswers,
         QuestionOptions,

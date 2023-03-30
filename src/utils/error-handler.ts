@@ -1,6 +1,6 @@
 import { HttpErrorTypes } from './error.types';
 
-export class CustomErrorHandler {
+export class ErrorHandler {
   static BadRequest(message) {
     return { statusCode: HttpErrorTypes.BAD_REQUEST, message: message };
   }

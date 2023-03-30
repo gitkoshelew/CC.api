@@ -4,7 +4,7 @@ import { User } from './user.model';
 import { CreateUserDto } from './dto/create-user.dto';
 import { AddAccessDto } from './dto/addAccessToUser.dto';
 import { AccessGroupService } from 'src/access-group/access-group.service';
-import { CustomErrorHandler } from 'src/utils/custom-error-handler';
+import { ErrorHandler } from 'src/utils/error-handler';
 import { AccessGroup } from '../access-group/access-group.model';
 import { Permission } from '../permission/permission.model';
 
@@ -17,34 +17,30 @@ export class UserService {
 
   async createUser(dto: CreateUserDto) {
     try {
-      const create = this.userRepository.create(dto);
-      const user = await create;
-      return user;
+      return this.userRepository.create(dto);
     } catch (error) {
-      throw CustomErrorHandler.BadRequest(error);
+      throw ErrorHandler.BadRequest(error);
     }
   }
 
   async getUserById(id: number) {
     try {
-      const user = await this.userRepository.findOne({
+      return this.userRepository.findOne({
         where: { id },
         include: { all: true },
       });
-      return user;
     } catch (error) {
-      throw CustomErrorHandler.BadRequest("User with this id doen't exist");
+      throw ErrorHandler.BadRequest("User with this id doen't exist");
     }
   }
 
   async getAllUsers() {
     try {
-      const userList = await this.userRepository.findAll({
+      return this.userRepository.findAll({
         include: { all: true },
       });
-      return userList;
     } catch (error) {
-      throw CustomErrorHandler.InternalServerError('Server problems');
+      throw ErrorHandler.InternalServerError('Server problems');
     }
   }
 
@@ -58,7 +54,7 @@ export class UserService {
         include: { all: true },
       });
     } catch (error) {
-      throw CustomErrorHandler.BadRequest("User with this id doen't exist");
+      throw ErrorHandler.BadRequest("User with this id doen't exist");
     }
   }
 
@@ -70,7 +66,7 @@ export class UserService {
       const user = await this.getUserById(dto.userId);
       return await user.$add('access', access.id);
     } catch (error) {
-      throw CustomErrorHandler.BadRequest(
+      throw ErrorHandler.BadRequest(
         'Check properties of selected access group or user',
       );
     }

@@ -1,10 +1,26 @@
-import { Body, Controller, HttpCode, Post, Res } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  Post,
+  Res,
+  UseGuards,
+} from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { CreateUserDto } from '../user/dto/create-user.dto';
-import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { LoginUserDto } from './dto/login-user.dto';
+import {
+  ApiBearerAuth,
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
+import { LoginUserDto, UserViewType } from './dto/login-user.dto';
 import { Response } from 'express';
 import { Cookies } from './decorators/cookies.decorator';
+import { JwtAuthGuard } from './jwt-auth.guard';
+import { UserInReq } from './decorators/users.decorator';
+import { UserReqDto } from './dto/user-req.dto';
 
 @ApiTags('Authorization')
 @Controller('/api/auth')
@@ -93,5 +109,19 @@ export class AuthController {
       secure: true,
     });
     return { accessToken: updateToken.accessToken };
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth('JWT-auth')
+  @ApiOperation({ summary: 'Get information about current user' })
+  @ApiResponse({ status: 200, type: UserViewType })
+  @ApiResponse({
+    status: 401,
+    description: 'Unauthorized',
+  })
+  @Get('/me')
+  @HttpCode(200)
+  async checkCurrentUser(@UserInReq() user: UserReqDto) {
+    return this.authService.checkCurrentUser(user.userId);
   }
 }

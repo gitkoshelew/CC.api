@@ -1,6 +1,14 @@
-import { Column, DataType, HasOne, Model, Table } from 'sequelize-typescript';
+import {
+  Column,
+  DataType,
+  HasMany,
+  HasOne,
+  Model,
+  Table,
+} from 'sequelize-typescript';
 import { Question } from '../questions/questions.model';
 import { ApiProperty } from '@nestjs/swagger';
+import { Quiz } from 'src/quiz/quiz.model';
 
 export enum ModerationStatus {
   review = 'review',
@@ -43,6 +51,6 @@ export class Moderation extends Model<Moderation, ModerationCreationAttrs> {
   })
   status: ModerationStatus;
 
-  @HasOne(() => Question)
-  question: Question;
+  @HasMany(() => Quiz)
+  quiz: Quiz[];
 }

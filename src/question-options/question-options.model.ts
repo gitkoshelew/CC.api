@@ -28,8 +28,8 @@ export class QuestionOptions extends Model<
   id: number;
 
   @ApiProperty({
-    example: 'answer 1',
-    description: 'your correct answer',
+    example: 'option',
+    description: 'your option',
   })
   @Column({ type: DataType.STRING, allowNull: false })
   name: string;

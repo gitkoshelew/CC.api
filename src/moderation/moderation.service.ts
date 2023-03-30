@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateModerationDto } from './dto/create-moderation.dto';
 import { InjectModel } from '@nestjs/sequelize';
 import { Moderation } from './moderation.model';
-import { CustomErrorHandler } from 'src/utils/custom-error-handler';
+import { ErrorHandler } from 'src/utils/error-handler';
 
 @Injectable()
 export class ModerationService {
@@ -12,52 +12,42 @@ export class ModerationService {
 
   async createModerationStatus(dto: CreateModerationDto) {
     try {
-      const create = this.moderationRepository.create(dto);
-      const moderation = await create;
-      return moderation;
+      return this.moderationRepository.create(dto);
     } catch (error) {
-      throw CustomErrorHandler.BadRequest(error.errors[0].message);
+      throw ErrorHandler.BadRequest(error);
     }
   }
 
   async getAllStatus() {
     try {
-      const moderationList = await this.moderationRepository.findAll({
+      return this.moderationRepository.findAll({
         include: { all: true },
       });
-      return moderationList;
     } catch (error) {
-      throw CustomErrorHandler.InternalServerError('Server problems');
+      throw ErrorHandler.InternalServerError('Server problems');
     }
   }
 
   async getModerationById(id: number) {
     try {
-      const moderation = await this.moderationRepository.findOne({
+      return this.moderationRepository.findOne({
         where: { id },
         include: { all: true },
       });
-      return moderation;
     } catch (error) {
-      throw CustomErrorHandler.BadRequest(
-        "Moderation with this id doen't exist",
-      );
+      throw ErrorHandler.BadRequest("Moderation with this id doen't exist");
     }
   }
 
   async deleteModerationById(id: number) {
     try {
-      const moderation = await this.moderationRepository.findOne({
-        where: { id },
-      });
+      const moderation = await this.getModerationById(id);
       await moderation.destroy();
       return this.moderationRepository.findAll({
         include: { all: true },
       });
     } catch (error) {
-      throw CustomErrorHandler.BadRequest(
-        "Moderation with this id doen't exist",
-      );
+      throw ErrorHandler.BadRequest("Moderation with this id doen't exist");
     }
   }
 }

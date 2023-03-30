@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
+import { ErrorHandler } from 'src/utils/error-handler';
 import { CorrectAnswers } from './correct-answer.model';
 import { CreateCorrectAnswerDto } from './dto/create-correctAnswer.dto';
 
@@ -11,7 +12,10 @@ export class CorrectAnswerService {
   ) {}
 
   async createCorrectAnswer(dto: CreateCorrectAnswerDto) {
-    const correctAnswer = this.correctAnswerRepository.create(dto);
-    return correctAnswer;
+    try {
+      return this.correctAnswerRepository.create(dto);
+    } catch (error) {
+      throw ErrorHandler.BadRequest(error);
+    }
   }
 }

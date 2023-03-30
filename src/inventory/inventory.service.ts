@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { DifficultyTypes, QuestionTypes } from 'src/questions/questions.types';
 import { Quiz } from 'src/quiz/quiz.model';
-import { CustomErrorHandler } from 'src/utils/custom-error-handler';
+import { ErrorHandler } from 'src/utils/error-handler';
 
 @Injectable()
 export class InventoryService {
@@ -14,7 +14,7 @@ export class InventoryService {
         attributes: ['title'],
       });
     } catch (error) {
-      throw CustomErrorHandler.InternalServerError('Server problems');
+      throw ErrorHandler.InternalServerError('Server problems');
     }
   }
 
@@ -22,7 +22,7 @@ export class InventoryService {
     try {
       return QuestionTypes;
     } catch (error) {
-      throw CustomErrorHandler.InternalServerError('Server problems');
+      throw ErrorHandler.InternalServerError('Server problems');
     }
   }
 
@@ -30,7 +30,7 @@ export class InventoryService {
     try {
       return DifficultyTypes;
     } catch (error) {
-      throw CustomErrorHandler.InternalServerError('Server problems');
+      throw ErrorHandler.InternalServerError('Server problems');
     }
   }
 }

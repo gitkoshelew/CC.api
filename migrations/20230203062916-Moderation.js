@@ -3,11 +3,13 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    // addColumn field Update_time to check how far it has been updated
+    const moderationTable = await queryInterface.describeTable('moderations');
+    if (moderationTable.updatedTime) return;
     try {
       await queryInterface.addColumn('moderations', 'updatedTime', {
-        type: Sequelize.DataTypes.DATE,
-        allowNull: true,
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.fn('NOW'),
       });
     } catch (e) {
       throw new Error(e.message);

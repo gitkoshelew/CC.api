@@ -12,28 +12,28 @@ export class TopicController {
   @ApiOperation({ summary: 'Creating topic' })
   @ApiResponse({ status: 201, type: Topic })
   @Post()
-  createTopic(@Body() dto: CreateTopicDto) {
+  async createTopic(@Body() dto: CreateTopicDto) {
     return this.topicService.createTopic(dto);
   }
 
   @ApiOperation({ summary: 'Get all topics' })
   @ApiResponse({ status: 200, type: [Topic] })
   @Get()
-  getAllTopics() {
+  async getAllTopics() {
     return this.topicService.getAllTopics();
   }
 
   @ApiOperation({ summary: 'Method to get one topic by id' })
   @ApiResponse({ status: 200, type: [Topic] })
   @Get('/:id')
-  getById(@Param('id') id: number) {
+  async getById(@Param('id') id: number) {
     return this.topicService.getTopicById(id);
   }
 
   @ApiOperation({ summary: 'Method to delete topic by id' })
   @ApiResponse({ status: 200, type: Topic })
   @Delete('/:id')
-  deleteById(@Param('id') id: number) {
+  async deleteById(@Param('id') id: number) {
     return this.topicService.deleteTopicById(id);
   }
 }

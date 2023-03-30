@@ -14,14 +14,14 @@ export class AccessGroupController {
   @ApiOperation({ summary: 'create access group' })
   @ApiResponse({ status: 201, type: AccessGroup })
   @Post()
-  create(@Body() accessGroupDto: CreateAccessGroupDto) {
+  async create(@Body() accessGroupDto: CreateAccessGroupDto) {
     return this.accessGroupService.createAccessGroup(accessGroupDto);
   }
 
   @ApiOperation({ summary: 'view all accesses group' })
   @ApiResponse({ status: 200, type: [AccessGroup] })
   @Get()
-  getAll() {
+  async getAll() {
     return this.accessGroupService.getAllAccessGroup();
   }
 
@@ -29,21 +29,21 @@ export class AccessGroupController {
   @ApiResponse({ status: 200, type: AccessGroup })
   @ApiResponse({ status: 404, description: 'not found access with that id' })
   @Get(':id')
-  getById(@Param('id') id: number) {
+  async getById(@Param('id') id: number) {
     return this.accessGroupService.getAccessGroupById(id);
   }
 
   @ApiOperation({ summary: 'delete accesses group by id' })
   @ApiResponse({ status: 200, type: AccessGroup })
   @Delete(':id')
-  deletePermission(@Param('id') id: number) {
+  async deletePermission(@Param('id') id: number) {
     return this.accessGroupService.deleteAccessGroup(id);
   }
 
   @ApiOperation({ summary: 'add permission to access group' })
   @ApiResponse({ status: 200, type: AccessGroup })
   @Put('/add')
-  addPermissionToAccessGroup(@Body() dto: AddPermissionDto) {
+  async addPermissionToAccessGroup(@Body() dto: AddPermissionDto) {
     return this.accessGroupService.addPermissionToAccessGroup(dto);
   }
 }

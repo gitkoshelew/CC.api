@@ -17,7 +17,6 @@ import { Topic } from '../topic/topic.model';
 import { Moderation } from '../moderation/moderation.model';
 import { ApiProperty } from '@nestjs/swagger';
 import { Quiz } from '../quiz/quiz.model';
-import { Quiz_Question } from '../quiz/quiz.question.model';
 import { CorrectAnswers } from '../correct-answer/correct-answer.model';
 import { QuestionOptions } from 'src/question-options/question-options.model';
 
@@ -73,31 +72,13 @@ export class Question extends Model<Question, QuestionCreationAttrs> {
   @Column({ type: DataType.INTEGER, allowNull: false })
   timer: number;
 
-  @ApiProperty({
-    example: 1,
-    description: 'number of topic that should be import into question',
-  })
-  @ForeignKey(() => Topic)
+  @ForeignKey(() => Quiz)
+  @ApiProperty({ example: 1, description: 'foreign key for quiz' })
   @Column({ type: DataType.INTEGER })
-  topicId: number;
+  quizId: number;
 
-  @BelongsTo(() => Topic)
-  topic: Topic;
-
-  @ApiProperty({
-    example: 1,
-    description:
-      'id of moderation if questions needs of moderation (not enough correct)',
-  })
-  @ForeignKey(() => Moderation)
-  @Column({ type: DataType.INTEGER })
-  moderationId: number;
-
-  @BelongsTo(() => Moderation)
-  moderation: Moderation;
-
-  @BelongsToMany(() => Quiz, () => Quiz_Question)
-  quiz: Quiz[];
+  @BelongsTo(() => Quiz)
+  quiz: Quiz;
 
   @HasMany(() => CorrectAnswers)
   correctAnswers: CorrectAnswers[];

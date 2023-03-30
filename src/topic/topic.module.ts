@@ -8,7 +8,7 @@ import { Question } from '../questions/questions.model';
 @Module({
   providers: [TopicService],
   controllers: [TopicController],
-  imports: [SequelizeModule.forFeature([Topic, Question])],
+  imports: [SequelizeModule.forFeature([Topic])],
   exports: [TopicService],
 })
 export class TopicModule {}

@@ -1,84 +1,66 @@
-import { Injectable } from '@nestjs/common';
+import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { Question } from './questions.model';
 import { CreateQuestionDto } from './dto/create-question.dto';
-import { ModerationService } from '../moderation/moderation.service';
-import { AddModerationToQuestionDto } from './dto/addModerationToQuestion.dto';
-import { CustomErrorHandler } from 'src/utils/custom-error-handler';
-import { ModerationStatus } from '../moderation/moderation.model';
+import { ErrorHandler } from 'src/utils/error-handler';
+import { QuizService } from 'src/quiz/quiz.service';
+import { CreateQuestionForQuizDto } from './dto/create-question-quiz.dto';
 
 @Injectable()
 export class QuestionsService {
   constructor(
     @InjectModel(Question) private questionRepository: typeof Question,
-    private moderationRepository: ModerationService,
+    @Inject(forwardRef(() => QuizService))
+    private quizService: QuizService,
   ) {}
 
   async createQuestion(dto: CreateQuestionDto) {
     try {
-      const question = await this.questionRepository.create(dto);
-      const moderation = await this.moderationRepository.createModerationStatus(
-        {
-          comment: 'new question',
-          status: ModerationStatus.review,
-        },
-      );
-      if (question && moderation) {
-        return await question.$set('moderation', question.id);
-      }
+      return await this.questionRepository.create(dto);
     } catch (error) {
-      throw CustomErrorHandler.BadRequest(error);
+      throw ErrorHandler.BadRequest(error);
     }
+  }
+
+  async createQuestionForQuiz(dto: CreateQuestionForQuizDto) {
+    const { quizId, ...questionDto } = dto;
+    const question = await this.createQuestion(questionDto);
+    return this.quizService.addQuestionToQuiz({
+      quizId: quizId,
+      questionId: question.id,
+    });
   }
 
   async deleteQuestionById(id: number) {
     try {
-      const question = await this.questionRepository.findOne({
-        where: { id },
-      });
+      const question = await this.getQuestionById(id);
       await question.destroy();
       return this.questionRepository.findAll({
         include: { all: true },
       });
     } catch (error) {
-      throw CustomErrorHandler.BadRequest("Question with this id doen't exist");
+      throw ErrorHandler.BadRequest("Question with this id doen't exist");
     }
   }
 
   async getQuestionById(id: number) {
     try {
-      const question = await this.questionRepository.findOne({
+      return this.questionRepository.findOne({
         where: { id },
         include: { all: true },
       });
-      return question;
     } catch (error) {
-      throw CustomErrorHandler.BadRequest("Question with this id doen't exist");
+      throw ErrorHandler.BadRequest("Question with this id doen't exist");
     }
   }
 
   async getAllQuestions() {
     try {
-      const questionList = await this.questionRepository.findAll({
+      return this.questionRepository.findAll({
         include: { all: true },
       });
-      return questionList;
     } catch (error) {
-      throw CustomErrorHandler.InternalServerError('Server problems');
-    }
-  }
-
-  async addModerationToQuestion(dto: AddModerationToQuestionDto) {
-    try {
-      const question = await this.getQuestionById(dto.questionId);
-      const moderation = await this.moderationRepository.getModerationById(
-        dto.moderationId,
-      );
-      return await question.$set('moderation', moderation.id);
-    } catch (error) {
-      throw CustomErrorHandler.BadRequest(
-        'Check properties of selected moderation or question',
-      );
+      throw ErrorHandler.InternalServerError('Server problems');
     }
   }
 }

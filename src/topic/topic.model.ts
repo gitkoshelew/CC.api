@@ -1,6 +1,6 @@
 import { Column, DataType, HasMany, Model, Table } from 'sequelize-typescript';
-import { Question } from '../questions/questions.model';
 import { ApiProperty } from '@nestjs/swagger';
+import { Quiz } from '../quiz/quiz.model';
 
 interface TopicCreationAttrs {
   title: string;
@@ -24,6 +24,6 @@ export class Topic extends Model<Topic, TopicCreationAttrs> {
   @Column({ type: DataType.STRING, allowNull: false, unique: true })
   title: string;
 
-  @HasMany(() => Question)
-  questions: Question[];
+  @HasMany(() => Quiz)
+  quizzes: Quiz[];
 }

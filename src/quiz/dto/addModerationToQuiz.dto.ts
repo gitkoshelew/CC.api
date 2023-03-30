@@ -13,5 +13,5 @@ export class AddModerationToQuestionDto {
     description: 'question id that should take moderation',
   })
   @IsNotEmpty()
-  readonly questionId: number;
+  readonly quizId: number;
 }

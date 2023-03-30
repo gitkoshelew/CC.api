@@ -1,5 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { CorrectAnswers } from './correct-answer.model';
 import { CorrectAnswerService } from './correct-answer.service';
 import { CreateCorrectAnswerDto } from './dto/create-correctAnswer.dto';
 
@@ -8,8 +9,10 @@ import { CreateCorrectAnswerDto } from './dto/create-correctAnswer.dto';
 export class CorrectAnswerController {
   constructor(private correctAnswerService: CorrectAnswerService) {}
 
+  @ApiOperation({ summary: 'Method to add correct answer to question' })
+  @ApiResponse({ status: 200, type: CorrectAnswers })
   @Post()
-  create(@Body() dto: CreateCorrectAnswerDto) {
+  async create(@Body() dto: CreateCorrectAnswerDto) {
     return this.correctAnswerService.createCorrectAnswer(dto);
   }
 }
