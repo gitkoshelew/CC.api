@@ -1,5 +1,5 @@
 export class CreateFeatureAdminDto {
-  readonly title: string;
+  readonly isOrderEditingEnabled: string;
   readonly description: string;
   readonly adminPortalFeatureStatus: boolean;
   readonly userPortalFeatureStatus: boolean;

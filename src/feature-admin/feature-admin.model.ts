@@ -26,7 +26,7 @@ export class FeatureAdmin extends Model<
     unique: true,
     allowNull: false,
   })
-  title: string;
+  isOrderEditingEnabled: string;
 
   @Column({ type: DataType.STRING, allowNull: false })
   description: string;

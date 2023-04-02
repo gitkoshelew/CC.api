@@ -32,7 +32,31 @@ export class FeatureAdminService {
     try {
       return await this.featureAdminRepository.findAll({
         attributes: {
-          exclude: ['adminPortalFeatureStatus', 'mobilePortalFeatureStatus'],
+          exclude: [
+            'description',
+            'adminPortalFeatureStatus',
+            'mobilePortalFeatureStatus',
+            'createdAt',
+            'updatedAt',
+          ],
+        },
+      });
+    } catch (e) {
+      throw CustomErrorHandler.InternalServerError('Server problems');
+    }
+  }
+
+  async getMobilePortalFeaturesAdmin() {
+    try {
+      return await this.featureAdminRepository.findAll({
+        attributes: {
+          exclude: [
+            'description',
+            'adminPortalFeatureStatus',
+            'userPortalFeatureStatus',
+            'createdAt',
+            'updatedAt',
+          ],
         },
       });
     } catch (e) {

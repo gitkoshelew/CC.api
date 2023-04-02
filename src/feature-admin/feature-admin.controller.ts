@@ -22,6 +22,11 @@ export class FeatureAdminController {
     return this.featureAdminService.getUserPortalFeaturesAdmin();
   }
 
+  @Get('mobile-portal')
+  getMobilePortalData() {
+    return this.featureAdminService.getMobilePortalFeaturesAdmin();
+  }
+
   @Get(':id')
   getFeatureById(@Param('id') id: number) {
     return this.featureAdminService.getOneFeatureAdmin(id);
