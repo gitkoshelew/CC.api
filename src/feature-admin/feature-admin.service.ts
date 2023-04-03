@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/sequelize';
 import { FeatureAdmin } from './feature-admin.model';
 import { CreateFeatureAdminDto } from './dto/create-feature-admin.dto';
 import { CustomErrorHandler } from '../utils/custom-error-handler';
+import { UpdateFeatureAdminDto } from './dto/update-feature-admin.dto';
 
 @Injectable()
 export class FeatureAdminService {
@@ -82,8 +83,7 @@ export class FeatureAdminService {
       const feature = await this.featureAdminRepository.findOne({
         where: { id },
       });
-      await feature.destroy();
-      return this.featureAdminRepository.findAll();
+      return await feature.destroy();
     } catch (e) {
       throw CustomErrorHandler.BadRequest(
         'Feature with this id does not exist',
@@ -91,14 +91,13 @@ export class FeatureAdminService {
     }
   }
 
-  async updateFeatureAdmin(dto: CreateFeatureAdminDto, id: number) {
+  async updateFeatureAdmin(dto: UpdateFeatureAdminDto, id: number) {
     try {
       const feature = await this.featureAdminRepository.findOne({
         where: { id },
         include: { all: true },
       });
-      await feature.update(dto);
-      return this.featureAdminRepository.findAll();
+      return await feature.update(dto);
     } catch (e) {
       throw CustomErrorHandler.BadRequest(
         'Feature with this id does not exist',
