@@ -26,7 +26,7 @@ export class FeatureAdmin extends Model<
   @ApiProperty({ example: 'Create profile page', description: 'Feature title' })
   @Column({
     type: DataType.STRING,
-    unique: true,
+    unique: false,
     allowNull: false,
   })
   isOrderEditingEnabled: string;
