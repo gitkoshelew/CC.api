@@ -23,6 +23,8 @@ import { UserAccess } from './user/user.access.model';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { InventoryModule } from './inventory/inventory.module';
+import { FeatureAdminModule } from './feature-admin/feature-admin.module';
+import { FeatureAdmin } from './feature-admin/feature-admin.model';
 
 @Module({
   imports: [
@@ -47,6 +49,7 @@ import { InventoryModule } from './inventory/inventory.module';
         Question,
         Quiz_Question,
         UserAccess,
+        FeatureAdmin,
       ],
       autoLoadModels: true,
     }),
@@ -59,6 +62,7 @@ import { InventoryModule } from './inventory/inventory.module';
     ModerationModule,
     QuestionsModule,
     InventoryModule,
+    FeatureAdminModule,
   ],
 
   controllers: [AppController],
