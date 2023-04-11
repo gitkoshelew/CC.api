@@ -27,6 +27,7 @@ import { FeatureModule } from './feature/feature.module';
 import { FeatureFlagModule } from './feature-flag/feature-flag.module';
 import { FeatureFlag } from './feature-flag/feature-flag.model';
 import { Feature } from './feature/feature.model';
+import { GoogleUser } from "./auth/oauth2/google/google.model";
 
 @Module({
   imports: [
@@ -53,6 +54,7 @@ import { Feature } from './feature/feature.model';
         UserAccess,
         Feature,
         FeatureFlag,
+        GoogleUser,
       ],
       autoLoadModels: true,
     }),
