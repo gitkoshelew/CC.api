@@ -21,6 +21,7 @@ import { Cookies } from './decorators/cookies.decorator';
 import { JwtAuthGuard } from './jwt-auth.guard';
 import { UserInReq } from './decorators/users.decorator';
 import { UserReqDto } from './dto/user-req.dto';
+import { GoogleAuthGuard } from './oauth2/google/google-auth.guard';
 
 @ApiTags('Authorization')
 @Controller('/api/auth')
@@ -123,5 +124,17 @@ export class AuthController {
   @HttpCode(200)
   async checkCurrentUser(@UserInReq() user: UserReqDto) {
     return this.authService.checkCurrentUser(user.userId);
+  }
+
+  @Get('google/login')
+  @UseGuards(GoogleAuthGuard)
+  handleLogin() {
+    return { msg: 'Google Authentication' };
+  }
+
+  @Get('google/redirect')
+  @UseGuards(GoogleAuthGuard)
+  handleRedirect() {
+    return { msg: 'OK' };
   }
 }
