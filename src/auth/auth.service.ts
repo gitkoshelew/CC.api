@@ -10,10 +10,15 @@ import { CreateUserDto } from '../user/dto/create-user.dto';
 import { LoginUserDto, UserViewType } from './dto/login-user.dto';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
+import { GoogleLoginUserDto } from './oauth2/google/dto/google-login-user.dto';
+import { InjectModel } from '@nestjs/sequelize';
+import { GoogleUser } from './oauth2/google/google.model';
 
 @Injectable()
 export class AuthService {
   constructor(
+    @InjectModel(GoogleUser)
+    private readonly googleUserModel: typeof GoogleUser,
     private userService: UserService,
     private jwtService: JwtService,
   ) {}
@@ -99,5 +104,20 @@ export class AuthService {
       nickname: user.nickname,
     };
     return userInfo;
+  }
+
+  async validateGoogleUser(details: GoogleLoginUserDto) {
+    console.log('AuthService');
+    console.log(details);
+    const googleUser = await this.googleUserModel.findOne({
+      where: { email: details.email },
+    });
+    console.log(googleUser);
+    if (googleUser) return googleUser;
+    console.log('User not found. Creating...');
+    return this.googleUserModel.create(details);
+  }
+  async findGoogleUser(id: number) {
+    return await this.googleUserModel.findOne({ where: { id } });
   }
 }
